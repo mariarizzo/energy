@@ -44,10 +44,47 @@ function(x, y, index=1.0, R) {
         estimates = dcorr,
         p.value = pval,
         replicates = n* a$reps^2,
+        n = n,
         data.name = dataname)
     class(e) <- "htest"
     return(e)
 }
+
+dcor.test <-
+  function(x, y, index=1.0, R) {
+    # distance correlation test for multivariate independence
+    # like dcov.test but using dcor as the test statistic
+    RESULT <- dcov.test(x, y, index=1.0, R) 
+    # this test statistic is n times the square of dCov statistic
+    DCOVteststat <- RESULT$statistic
+    DCOVreplicates <- RESULT$replicates
+    
+    # RESULT$estimates = [dCov,dCor,dVar(x),dVar(y)]
+    # dVar are invariant under permutation of sample indices
+    
+    DCORteststat <- RESULT$estimates[2]
+    dvarX <- RESULT$estimates[3]
+    dvarY <- RESULT$estimates[4]
+    n <- RESULT$n
+    DCORreps <- sqrt(DCOVreplicates / n) / sqrt(dvarX * dvarY)
+    
+    if (R > 0)
+      p.value <- (1 + sum(DCORreps >= DCORteststat)) / (1 + R) else p.value <- NA
+    
+    names(DCORteststat) <- "dCor"
+    dataname <- paste("index ", index, ", replicates ", R, sep="")
+    e <- list(
+      method = paste("dCor test of independence", sep = ""),
+      statistic = DCORteststat,
+      estimates = RESULT$estimates,
+      p.value = p.value,
+      replicates = DCORreps,
+      n = n,
+      data.name = dataname)
+    class(e) <- "htest"
+    return(e)
+  }
+
 
 .dcov <-
 function(x, y, index=1.0) {

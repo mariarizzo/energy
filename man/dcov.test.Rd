@@ -1,13 +1,15 @@
 \name{dcov.test}
 \alias{distance covariance}
 \alias{dcov.test}
-\title{ Distance Covariance Test}
+\alias{dcor.test}
+\title{ Distance Covariance Test and Distance Correlation test}
 \description{
- Distance covariance test of multivariate independence.
+ Distance covariance test and distance correlation test of multivariate independence.
  Distance covariance and distance correlation are
  multivariate measures of dependence.}
 \usage{
 dcov.test(x, y, index = 1.0, R)
+dcor.test(x, y, index = 1.0, R)
 }
 \arguments{
   \item{x}{ data or distances of first sample}
@@ -16,8 +18,8 @@ dcov.test(x, y, index = 1.0, R)
   \item{index}{ exponent on Euclidean distance, in (0,2]}
 }
 \details{
- \code{dcov.test} performs a nonparametric
- test of multivariate independence. The test decision is
+ \code{dcov.test} and \code{dcor.test} are nonparametric
+ tests of multivariate independence. The test decision is
  obtained via permutation bootstrap, with \code{R} replicates.
 
  The sample sizes (number of rows) of the two samples must
@@ -25,12 +27,15 @@ dcov.test(x, y, index = 1.0, R)
  \code{x}, \code{y} can optionally be \code{\link{dist}} objects;
  otherwise these arguments are treated as data.
 
- The statistic is
+ The \code{dcov} test statistic is
  \eqn{n \mathcal V_n^2}{nV_n^2} where
  \eqn{\mathcal V_n(x,y)}{V_n(x,y)} = dcov(x,y),
  which is based on interpoint Euclidean distances
  \eqn{\|x_{i}-x_{j}\|}{||x_{i}-x_{j}||}. The \code{index}
  is an optional exponent on Euclidean distance.
+
+Similarly, the \code{dcor} test statistic is based on the normalized
+coefficient, the distance correlation. (See the manual page for \code{dcor}.)
 
 Distance correlation is a new measure of dependence between random
 vectors introduced by Szekely, Rizzo, and Bakirov (2007).
@@ -61,18 +66,19 @@ with coefficients that depend on the distributions of \eqn{X} and \eqn{Y}. For t
 theoretical properties of the test, including statistical consistency.
 }
 \value{
-\code{dcov.test} returns a list with class \code{htest} containing
+\code{dcov.test} or \code{dcor.test} returns a list with class \code{htest} containing
    \item{     method}{ description of test}
    \item{  statistic}{ observed value of the test statistic}
-   \item{   estimate}{ dCov(x,y)}
+   \item{   estimate}{ dCov(x,y) or dCor(x,y)}
    \item{  estimates}{ a vector: [dCov(x,y), dCor(x,y), dVar(x), dVar(y)]}
    \item{ replicates}{ replicates of the test statistic}
    \item{    p.value}{ approximate p-value of the test}
+   \item{          n}{ sample size}
    \item{  data.name}{ description of data}
 }
-\note{For the test of independence,
+\note{For the dcov test of independence,
 the distance covariance test statistic is the V-statistic
-\eqn{\mathrm{n\, dCov^2} = n \mathcal{V}_n^2}{n V_n^2} (not dCov).
+\eqn{\mathrm{n\, dCov^2} = n \mathcal{V}_n^2}{n V_n^2} (not dCov). 
 }
 \seealso{
  \code{\link{dcov} } \code{\link{dcor} } \code{\link{DCOR}}
@@ -102,7 +108,10 @@ Gabor J. Szekely
  x <- iris[1:50, 1:4]
  y <- iris[51:100, 1:4]
  set.seed(1)
+ dcor.test(dist(x), dist(y), R=199)
+ set.seed(1)
  dcov.test(x, y, R=199)
+
  \dontrun{
    set.seed(1)
    dcov.test(dist(x), dist(y), R=199)  #same thing

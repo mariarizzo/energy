@@ -12,6 +12,7 @@ export(
   dcor,
   DCOR,
   dcor.t,
+  dcor.test,
   dcor.ttest,
   dcov,
   dcov.test,
