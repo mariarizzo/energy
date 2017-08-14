@@ -1,0 +1,97 @@
+Changes to version 1.7-1
+
+  o  User level changes
+     -  Provided new dcor.test function, similar to dcov.test but using the
+        distance correlation as the test statistic. 
+     -  Number of replicates R for Monte Carlo and permutation tests now matches
+        the argument of the boot::boot function (no default value, user must specify).
+     -  If user runs a test with 0 replicates, p-value printed is NA
+  o  Internal changes
+     -  energy_init.c added for registering routines
+
+Changes to version 1.7-0
+
+  o  Partial Distance Correlation statistics and tests added
+     - pdcov, pdcor, pdcov.test, pdcor.test
+     - dcovU: unbiased estimator of distance covariance
+     - bcdcor: bias corrected distance correlation
+     - Ucenter, Dcenter, U_center, D_center: double-centering and U-centering utilities
+     - U_product: inner product in U-centered Hilbert space
+
+  o  updated NAMESPACE and DESCRIPTION imports, etc.
+  o  revised package Title and Description in DESCRIPTION
+  o  package now links to Rcpp
+  o  mvnorm c code ported to c++ (mvnorm.cpp); corresponding changes in Emvnorm.R
+  o  syntax for bcdcor: "distance" argument removed, now argument can optionally
+     be a dist object
+  o  syntax for energy.hclust: first argument must now be a dist object
+  o  default number of replicates R in tests: for all tests, R now defaults to 0
+     or R has no default value.
+
+Changes to version 1.6.2
+
+  o  inserted GetRNGstate() .. PutRNGState around repl.
+     loop in dcov.c.
+
+Changes to Version 1.6.1
+
+  o  replace Depends with Imports in DESCRIPTION file
+
+Changes to Version 1.6.0
+
+  o  implementation of high-dim distance correlation t-test
+     introduced in JMVA Volume 117, pp. 193-213 (2013).
+  o  new functions dcor.t, dcor.ttest in dcorT.R
+  o  minor changes to tidy other code in dcov.R
+  o  removed unused internal function .dcov.test
+
+Changes to Version 1.5.0
+
+	o  NAMESPACE: insert UseDynLib; remove zzz.R, .First.Lib()
+
+Changes to Version 1.4-0
+
+	o  NAMESPACE added.
+	o  (dcov.c, Eindep.c) Unused N was removed.
+	o  (dcov.c) In case dcov=0, bypass the unnecessary loop
+	   that generates replicates (in dCOVtest and dCovTest).
+	   In this case dcor=0 and test is not significant.
+	   (dcov=0 if one of the samples is constant.)
+	o  (Eqdist.R) in eqdist.e and eqdist.etest, method="disco"
+	   is replaced by two options: "discoB" (between sample
+	   components) and "discoF" (disco F ratio).
+	o  (disco.R) Added disco.between and internal functions
+	   that compute the disco between-sample component and
+	   corresponding test.
+	o  (utilities.c) In permute function replaced rand_unif
+	   with runif.
+	o  (energy.c) In ksampleEtest the pval computation
+	   changed from ek/B to (ek+1)/(B+1) as it should be for
+	   a permutation test, and unneeded int* n removed.
+
+Changes to Version 1.3-0
+
+	o  In distance correlation, distance covariance functions
+	   (dcov, dcor, DCOR) and dcov.test, arguments x and y can now
+	   optionally be distance objects (result of dist function or
+	   as.dist). Matrices x and y will always be treated as data.
+
+	o  Functions in dcov.c and utilities.c were modified to support
+	   arguments that are distances rather than data. In utilities.c
+	   the index_distance function changed. In dcov.c there are many
+	   changes. Most importantly for the exported objects, there is
+	   now an extra required parameter in the dims argument passed
+	   from R. In dCOVtest dims must be a vector c(n, p, q, dst, R)
+	   where n is sample size, p and q are dimensions of x and y,
+	   dst is logical (TRUE if distances) and R is number of replicates.
+	   For dCOV dims must be c(n, p, q, dst).
+
+Changes to Version 1.2-0
+
+	o  disco (distance components) added for one-way layout.
+	o  A method argument was added to ksample.e, eqdist.e, and
+	   eqdist.etest, method = c("original", "disco").
+  o  A method argument was added to edist, which summarizes cluster
+     distances in a table:
+         method = c("cluster","discoB","discoF"))
+
