@@ -8,7 +8,7 @@
  Distance covariance and distance correlation are
  multivariate measures of dependence.}
 \usage{
-dcov.test(x, y, index = 1.0, R)
+dcov.test(x, y, index = 1.0, R = NULL)
 dcor.test(x, y, index = 1.0, R)
 }
 \arguments{

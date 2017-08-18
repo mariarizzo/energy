@@ -1,4 +1,4 @@
-Changes to version 1.7-1
+Changes to version 1.7-2
 
   o  User level changes
      -  Provided new dcor.test function, similar to dcov.test but using the

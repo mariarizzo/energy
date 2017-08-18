@@ -1,5 +1,14 @@
 dcov.test <-
-function(x, y, index=1.0, R) {
+function(x, y, index=1.0, R=NULL) {
+    ## check for valid number of replicates R
+    method <- "Specify the number of replicates R (R > 0) to perform the test of independence"
+    if (! is.null(R)) {
+      R <- floor(R)
+      if (R < 1) R <- 0
+      if (R > 0) 
+        method <- "dCov test of independence"
+    }
+
     # distance covariance test for multivariate independence
     if (!(class(x) == "dist")) x <- dist(x)
     if (!(class(y) == "dist")) y <- dist(y)
@@ -12,6 +21,11 @@ function(x, y, index=1.0, R) {
     if (! (all(is.finite(c(x, y)))))
         stop("Data contains missing or infinite values")
 
+    if (is.null(R)) {
+      stats <- .dcov(x, y, index)
+      return(list(dcov = stats[1], dcor = stats[2], msg = method))
+    }
+    
     stat <- dcorr <- reps <- 0
     dcov <- rep(0, 4)
     if (R > 0) reps <- rep(0, R)
@@ -38,8 +52,8 @@ function(x, y, index=1.0, R) {
     dataname <- paste("index ", index, ", replicates ", R, sep="")
     pval <- ifelse (R < 1, NA, a$pval)
     e <- list(
-        method = paste("dCov test of independence", sep = ""),
         statistic = stat,
+        method = method,
         estimate = V,
         estimates = dcorr,
         p.value = pval,
@@ -54,6 +68,7 @@ dcor.test <-
   function(x, y, index=1.0, R) {
     # distance correlation test for multivariate independence
     # like dcov.test but using dcor as the test statistic
+    R <- ifelse(R > 0, floor(R), 0)
     RESULT <- dcov.test(x, y, index=1.0, R) 
     # this test statistic is n times the square of dCov statistic
     DCOVteststat <- RESULT$statistic
