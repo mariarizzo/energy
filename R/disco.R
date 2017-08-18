@@ -17,7 +17,7 @@
 
 
 
-disco <- function(x, factors, distance = FALSE, index = 1, R = 0,
+disco <- function(x, factors, distance = FALSE, index = 1, R,
                   method = c("disco", "discoB", "discoF")) {
   ## x is response or Euclidean distance matrix or dist() object factors
   ## is a matrix or data frame of group labels distance=TRUE if x is
@@ -84,7 +84,7 @@ disco <- function(x, factors, distance = FALSE, index = 1, R = 0,
   e
 }
 
-disco.between <- function(x, factors, distance = FALSE, index = 1, R = 0) {
+disco.between <- function(x, factors, distance = FALSE, index = 1, R) {
   ## disco test based on the between-sample component similar to disco
   ## except that 'disco' test is based on the F ratio disco.between test
   ## for one factor (balanced) is asymptotically equivalent to k-sample E

@@ -8,8 +8,8 @@
   and anova.
 }
 \usage{
-disco(x, factors, distance, index=1.0, R=0, method=c("disco","discoB","discoF"))
-disco.between(x, factors, distance, index=1.0, R=0)
+disco(x, factors, distance, index=1.0, R, method=c("disco","discoB","discoF"))
+disco.between(x, factors, distance, index=1.0, R)
 }
 \arguments{
   \item{x}{ data matrix or distance matrix}
@@ -110,7 +110,7 @@ function \code{edist}, and energy tests for equality of distribution
 	    disco(Y, factors=rate, R=99, method="discoB")
 
       ## Just extract the decomposition table
-      disco(Y, factors=rate)$stats
+      disco(Y, factors=rate, R=0)$stats
 
 	    ## Compare eqdist.e methods for rate
 	    ## disco between stat is half of original when sample sizes equal
@@ -118,7 +118,7 @@ function \code{edist}, and energy tests for equality of distribution
 	    eqdist.e(Y, sizes=c(10, 10), method="discoB")
 
       ## The between-sample distance component
-      disco.between(Y, factors=rate)
+      disco.between(Y, factors=rate, R=0)
 }
 \keyword{ htest }
 \keyword{ multivariate }
