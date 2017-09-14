@@ -14,6 +14,7 @@ Maintainer: Maria Rizzo <mrizzo@bgsu.edu>
 Imports: Rcpp (>= 0.12.6), stats, boot
 LinkingTo: Rcpp
 Suggests: MASS
+URL: https://github.com/mariarizzo/energy
 License: GPL (>= 2)
 NeedsCompilation: yes
 Repository: CRAN
