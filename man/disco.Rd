@@ -12,7 +12,7 @@ disco(x, factors, distance, index=1.0, R, method=c("disco","discoB","discoF"))
 disco.between(x, factors, distance, index=1.0, R)
 }
 \arguments{
-  \item{x}{ data matrix or distance matrix}
+  \item{x}{ data matrix or distance matrix or dist object}
   \item{factors}{ matrix of factor labels or integers (not design matrix)}
   \item{distance}{ logical, TRUE if x is distance matrix}
   \item{index}{ exponent on Euclidean distance in (0,2]}
@@ -25,6 +25,9 @@ disco.between(x, factors, distance, index=1.0, R)
   disco "F" ratio (default \code{method="disco"}),
   or using the between component statistic (\code{method="discoB"}),
   each implemented by permutation test.
+  
+  If \code{x} is a \code{dist} object, argument \code{distance} is
+  ignored. If \code{x} is a distance matrix, set \code{distance=TRUE}. 
 
   In the current release \code{disco} computes the decomposition for one-way models
   only.
