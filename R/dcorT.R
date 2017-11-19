@@ -22,18 +22,21 @@ Astar <- function(d) {
 BCDCOR <- function(x, y, distance=FALSE) {
   ## compute bias corrected distance correlation
   ## attempt to check if distance flag is valid
-  if (distance==FALSE) {
-    if (class(x)=="dist" || class(y)=="dist")
-      stop("distance==FALSE but argument is a dist object")
-    x <- as.matrix(dist(x))
-    y <- as.matrix(dist(y))
-  } else {
-    x <- as.matrix(x)
-    y <- as.matrix(y)
-    if (distance == TRUE)
-      if (!isSymmetric(x) || !isSymmetric(y))
-        stop("distance==TRUE but matrices non-symmetric")
-  }
+  if (length(distance) < 2)
+    distance <- rep(distance, 2)
+  if (class(x) == "dist") distance[1] <- TRUE
+  if (class(y) == "dist") distance[2] <- TRUE
+
+  if (distance[1] == FALSE) x <- dist(x)
+  if (distance[2] == FALSE) y <- dist(y)
+  x <- as.matrix(x)
+  y <- as.matrix(y)
+
+  if (distance[1] && !isSymmetric(x)) 
+    stop("distance==TRUE but x is not a dist object or a distance matrix")
+  if (distance[2] && !isSymmetric(y))  
+    stop("distance==TRUE but y is not a dist object or a distance matrix")
+
   n <- NROW(x)
   AA <- Astar(x)
   BB <- Astar(y)
