@@ -1,3 +1,16 @@
+Changes to version 1.7-4
+
+  o  User level changes
+     - disco: handle the case when the user argument x is dist with
+       conflicting argument distance=FALSE
+     - dcor.t and dcor.ttest: handle the cases when class of argument x or y
+       conflicts with the distance argument 
+     - Split manual page of dcovU into two files.
+     
+  o  Internal changes
+     - BCDCOR: handle the cases when class of argument x or y conflicts with 
+       the distance argument
+
 Changes to version 1.7-2
 
   o  User level changes

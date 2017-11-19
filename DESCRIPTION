@@ -1,7 +1,7 @@
 Package: energy
 Title: E-Statistics: Multivariate Inference via the Energy of Data
-Version: 1.7-2
-Date: 2017-09-14
+Version: 1.7-4
+Date: 2017-11-19
 Author: Maria L. Rizzo and Gabor J. Szekely
 Description: E-statistics (energy) tests and statistics for multivariate and univariate inference,
              including distance correlation, one-sample, two-sample, and multi-sample tests for
@@ -18,3 +18,4 @@ URL: https://github.com/mariarizzo/energy
 License: GPL (>= 2)
 NeedsCompilation: yes
 Repository: CRAN
+RoxygenNote: 6.0.1
