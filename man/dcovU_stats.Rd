@@ -1,32 +1,29 @@
-\name{Unbiased distance covariance}
-\alias{bcdcor}
-\alias{dcovU}
-\title{Unbiased dcov and bias-corrected dcor statistics}
+\name{dcovU_stats}
+\alias{dcovU_stats}
+\title{Unbiased distance covariance statistics}
 \description{
- These functions compute unbiased estimators of squared distance
- covariance and a bias-corrected estimator of
+ This function computes unbiased estimators of squared distance
+ covariance, distance variance, and a bias-corrected estimator of
  (squared) distance correlation.
 }
 \usage{
-bcdcor(x, y)
-dcovU(x, y)
+dcovU_stats(Dx, Dy)
 }
 \arguments{
-  \item{x}{ data or dist object of first sample}
-  \item{y}{ data or dist object of second sample}
+  \item{Dx}{ distance matrix of first sample}
+  \item{Dy}{ distance matrix of second sample}
 }
 \details{
  The unbiased (squared) dcov is inner product definition of
  dCov, in the Hilbert space of U-centered distance matrices.
 
  The sample sizes (number of rows) of the two samples must
- agree, and samples must not contain missing values. Arguments
- \code{x}, \code{y} can optionally be \code{\link{dist}} objects;
- otherwise these arguments are treated as data.
+ agree, and samples must not contain missing values. The
+ arguments must be square symmetric matrices. 
 }
 \value{
-\code{dcovU} returns the unbiased estimator of squared dcov.
-\code{bcdcor} returns a bias-corrected estimator of squared dcor.
+\code{dcovU_stats} returns a vector of the components of bias-corrected
+dcor: [dCovU, bcdcor, dVarXU, dVarYU].
 }
 \note{
 Unbiased distance covariance (SR2014) corresponds to the biased
@@ -60,9 +57,10 @@ Gabor J. Szekely
 \examples{
  x <- iris[1:50, 1:4]
  y <- iris[51:100, 1:4]
- dcovU(x, y)
- bcdcor(x, y)
-}
+ Dx <- as.matrix(dist(x))
+ Dy <- as.matrix(dist(y))
+ dcovU_stats(Dx, Dy)
+ }
 \keyword{ multivariate }
 \keyword{ nonparametric }
 \concept{ independence }
