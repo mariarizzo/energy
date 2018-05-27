@@ -4,16 +4,14 @@ energy package NEWS
 Version 1.7-4
 ---
 
-*  New functions
-     - bcdcor2 and dcovU2 are faster O(n log n) versions of computing
-       formulas for bcdcor and dcovU, for bivariate (x, y) only. 
-
 *  User level changes
      - disco: handle the case when the user argument x is dist with
        conflicting argument distance=FALSE
      - dcor.t and dcor.ttest: handle the cases when class of argument x or y
        conflicts with the distance argument
      - Split manual page of dcovU into two files.
+     - indep.etest and indep.e removed now Defunct (were Deprecated since
+       Version 1.1-0, 2008-04-07; replaced by indep.test).
 
 *  Internal changes
      - BCDCOR: handle the cases when class of argument x or y conflicts with
