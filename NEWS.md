@@ -1,8 +1,18 @@
-energy package NEWS
-===================
+# energy 1.7-5
 
-Version 1.7-4
----
+
+*  User level changes
+     - dcor2 and dcov2 functions for O(n log n) computing of bivariate
+       V- or U-statistics.
+     
+*  Internal changes
+     - dyadic.cpp implements part of the O(n log n) algorithm for bivariate
+       dcov or dcor.
+     - twoSampleE computes energy statistic without storing distances.
+     - util.cpp for computing components of energy statistics without
+       distance matrices.
+
+# energy 1.7-4
 
 *  User level changes
      - disco: handle the case when the user argument x is dist with
@@ -17,8 +27,8 @@ Version 1.7-4
      - BCDCOR: handle the cases when class of argument x or y conflicts with
        the distance argument
 
-Version 1.7-2
----
+# energy 1.7-2
+ 
 
 *  User level changes
      -  Provided new dcor.test function, similar to dcov.test but using the
@@ -29,8 +39,8 @@ Version 1.7-2
 *  Internal changes
      -  energy_init.c added for registering routines
 
-Version 1.7-0
----
+# energy 1.7-0
+ 
 
 *  Partial Distance Correlation statistics and tests added
      - pdcov, pdcor, pdcov.test, pdcor.test
@@ -49,19 +59,19 @@ Version 1.7-0
 *  default number of replicates R in tests: for all tests, R now defaults to 0
      or R has no default value.
 
-Version 1.6.2
----
+# energy 1.6.2
+ 
 
 *  inserted GetRNGstate() .. PutRNGState around repl.
      loop in dcov.c.
 
-Version 1.6.1
----
+# energy 1.6.1
+ 
 
 *  replace Depends with Imports in DESCRIPTION file
 
-Version 1.6.0
----
+# energy 1.6.0
+ 
 
 *  implementation of high-dim distance correlation t-test
      introduced in JMVA Volume 117, pp. 193-213 (2013).
@@ -69,13 +79,13 @@ Version 1.6.0
 *  minor changes to tidy other code in dcov.R
 *  removed unused internal function .dcov.test
 
-Version 1.5.0
----
+# energy 1.5.0
+ 
 
 *  NAMESPACE: insert UseDynLib; remove zzz.R, .First.Lib()
 
-Version 1.4-0
----
+# energy 1.4-0
+ 
 
 *  NAMESPACE added.
 *  (dcov.c, Eindep.c) Unused N was removed.
@@ -95,8 +105,8 @@ Version 1.4-0
 	   changed from ek/B to (ek+1)/(B+1) as it should be for
 	   a permutation test, and unneeded int* n removed.
 
-Version 1.3-0
----
+# energy 1.3-0
+ 
 
 *  In distance correlation, distance covariance functions
 	   (dcov, dcor, DCOR) and dcov.test, arguments x and y can now
@@ -113,8 +123,8 @@ Version 1.3-0
 	   dst is logical (TRUE if distances) and R is number of replicates.
 	   For dCOV dims must be c(n, p, q, dst).
 
-Version 1.2-0
----
+# energy 1.2-0
+ 
 
 *  disco (distance components) added for one-way layout.
 *  A method argument was added to ksample.e, eqdist.e, and

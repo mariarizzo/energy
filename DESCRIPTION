@@ -1,8 +1,10 @@
 Package: energy
 Title: E-Statistics: Multivariate Inference via the Energy of Data
-Version: 1.7-4
+Version: 1.7-5
 Date: 2018-05-27
-Author: Maria L. Rizzo and Gabor J. Szekely
+Authors@R: c(
+    person("Maria", "Rizzo", , "mrizzo@bgsu.edu", c("aut", "cre")),
+    person("Gabor", "Szekely", , , "aut"))
 Description: E-statistics (energy) tests and statistics for multivariate and univariate inference,
              including distance correlation, one-sample, two-sample, and multi-sample tests for
              comparing multivariate distributions, are implemented. Measuring and testing
@@ -10,7 +12,6 @@ Description: E-statistics (energy) tests and statistics for multivariate and uni
              multivariate goodness-of-fit tests, clustering based on energy distance, testing for
              multivariate normality, distance components (disco) for non-parametric analysis of
              structured data, and other energy statistics/methods are implemented.
-Maintainer: Maria Rizzo <mrizzo@bgsu.edu>
 Imports: Rcpp (>= 0.12.6), stats, boot
 LinkingTo: Rcpp
 Suggests: MASS
