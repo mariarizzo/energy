@@ -1,16 +1,9 @@
 # energy 1.7-5
 
-
-*  User level changes
-     - dcor2 and dcov2 functions for O(n log n) computing of bivariate
-       V- or U-statistics.
-     
-*  Internal changes
-     - dyadic.cpp implements part of the O(n log n) algorithm for bivariate
-       dcov or dcor.
-     - twoSampleE computes energy statistic without storing distances.
-     - util.cpp for computing components of energy statistics without
-       distance matrices.
+*  User level changes:
+     - misc. updates
+*  Internal changes: 
+     - misc. updates
 
 # energy 1.7-4
 

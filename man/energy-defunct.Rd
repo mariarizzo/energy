@@ -2,7 +2,7 @@
 \alias{indep.e}
 \alias{indep.etest}
 \title{ Energy Statistic Test of Independence}
-\description{Deprecated: use \code{indep.test} with \code{method = mvI}.
+\description{Defunct: use \code{indep.test} with \code{method = mvI}.
  Computes a multivariate nonparametric E-statistic and test of independence.}
 \usage{
 indep.e(x, y)
