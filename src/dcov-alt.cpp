@@ -5,9 +5,13 @@ using namespace Rcpp;
 // without storing distance matrices 
 // algebraically equivalent to dcor(x,y)^2, bcdcor, dcov(x,y)^2, dcovU(x,y), etc.
 
+
+NumericVector Btree_sum (IntegerVector y, NumericVector z);
+
 double sum_paired_dist(NumericMatrix x, NumericMatrix y);
 double sum_dist3(NumericMatrix x, NumericMatrix y);
 NumericVector rowSums_dist(NumericMatrix x);
+
 NumericVector get_dcov_sums (NumericMatrix x, NumericMatrix y, bool all);
 NumericVector dcov_UV(NumericMatrix x, NumericMatrix y, bool all);
   
