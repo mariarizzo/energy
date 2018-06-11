@@ -37,6 +37,7 @@ export(
   pdcov.test,
   poisson.m,
   poisson.mtest,
+  sortrank,
   U_center,
   U_product,
   Ucenter
