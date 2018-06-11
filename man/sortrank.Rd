@@ -1,7 +1,8 @@
 \name{sortrank}
+\alias{sortrank}
 \title{ Sort, order and rank a vector }
 \description{
-A utility that returns a list with the equivalent components
+A utility that returns a list with the components
 equivalent to sort(x), order(x), rank(x).
  }
 \usage{

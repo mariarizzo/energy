@@ -9,6 +9,9 @@ double        Gini_sum2(NumericMatrix x, NumericMatrix y);
 double        sum_paired_dist(NumericMatrix x, NumericMatrix y);
 double        sum_dist3(NumericMatrix x, NumericMatrix y);
 NumericVector rowSums_dist(NumericMatrix x);
+
+// in B-tree.cpp          
+NumericVector Btree_sum (IntegerVector y, NumericVector z);
           
 // [[Rcpp::export]]
 double Gini_sum(NumericMatrix x) {
@@ -207,30 +210,31 @@ NumericVector rowSums_dist(NumericMatrix x) {
   return rowsums;
 }
 
+// 
+// // [[Rcpp::export]]
+// NumericVector sum_paired_dist2d (NumericVector x, NumericVector y,
+//                                  List SRx, List SRy1) {
+//   // for real-valued x and y only, an O(n log n) algorithm
+//   // to compute \sum_{ij=1}^n |x_i-x_j| |y_i-y_j| and
+//   // \sum_{ij=1}^n |x_i-x_j|^2 and \sum_{ij=1}^n |y_i-y_j|^2
+//   // without storing distance matrices
+//   // binary search algorithm based on avd tree
+//   // SRx is result of sortrank(x), SRy1 is sortrank(y[order(x)])
+//   NumericVector sums =
+//     NumericVector::create(_["sumAB"]=0.0,_["sumAA"]=0.0, _["sumBB"]=0.0);
+//   int n = x.size();
+//   NumericVector x1 = Rcpp::clone(x);
+//   NumericVector y1 = Rcpp::clone(y);
+// 
+//   // if x in R^1: dvar(x)^2 ==  2 * n * (n-1) * var(x)
+//   // Rcpp::var is nearly as fast as std::inner_product version
+//   sums["sumsAA"] = (double) (2 * n * (n-1)) * Rcpp::var(x);
+//   sums["sumsBB"] = (double) (2 * n * (n-1)) * Rcpp::var(y);
+// 
+//   // insert here all the code to compute the sums a_{ij}b_{ij}
+//   // using the B-tree
+//   
+//   return sums;
+// }
 
-// You can include R code blocks in C++ files processed with sourceCpp
-// (useful for testing and development). The R code will be automatically 
-// run after the compilation.
-//
 
-/*** R
-x <- as.matrix(iris[1:50, 1:2])
-y <- as.matrix(iris[1:50, 3:4])
-n <- 50
-
-aidot <- rowSums_dist(x)
-bidot <- rowSums_dist(y)
-a <- sum(aidot)
-b <- sum(bidot)
-ab3 <- sum_dist3(x, y)
-ab <- sum_paired_dist(x, y)
-ab
-2 * sum(dist(x)*dist(y))
-
-a
-Gini_sum(x)
-
-v <- ab / n^2 + a*b/n^4 - 2*ab3/n^3
-v
-energy::dcov(x, y)^2
-*/
