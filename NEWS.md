@@ -2,8 +2,12 @@
 
 *  User level changes:
      - misc. updates
-*  Internal changes: 
-     - misc. updates
+     - sortrank() function added (a utility)
+     
+*  Internal changes:
+     - distances.cpp: compute energy sums without storing dist
+     - B-tree.cpp: binary tree search for 2-way partial sums in dcov
+     - sortrank.cpp: some functions like sortrank() 
 
 # energy 1.7-4
 

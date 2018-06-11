@@ -18,6 +18,8 @@ export(
   dcov.test,
   dcovU,
   dcovU_stats,
+  dcovU.test,
+  dcovV.test,
   disco,
   disco.between,
   edist,
