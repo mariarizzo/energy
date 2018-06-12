@@ -1,16 +1,19 @@
 dcov.test <-
-function(x, y, index=1.0, R=NULL) {
-    ## check for valid number of replicates R
-    method <- "Specify the number of replicates R (R > 0) to perform the test of independence"
-    if (! is.null(R)) {
-      R <- floor(R)
-      if (R < 1) R <- 0
-      if (R > 0) 
-        method <- "dCov test of independence"
-    } else {
-      R <- 0
+function(x, y, index = 1.0, R = NULL, test = c("perm","limit","auto")) {
+    dataname <- paste(deparse(substitute(x)), "and", deparse(substitute(y)))
+    test <- match.arg(test)
+    if (test == "perm") {
+      ## check for valid number of replicates R
+      method <- "Specify the number of replicates R (R > 0) for a permutation test"
+      if (! is.null(R)) {
+        R <- floor(R)
+        if (R < 1) R <- 0
+        if (R > 0) 
+          method <- "dCov permutation test of independence"
+      } else {
+        R <- 0
+      }
     }
-
     # distance covariance test for multivariate independence
     if (!(class(x) == "dist")) x <- dist(x)
     if (!(class(y) == "dist")) y <- dist(y)
@@ -21,40 +24,72 @@ function(x, y, index=1.0, R=NULL) {
     m <- nrow(y)
     if (n != m) stop("Sample sizes must agree")
     if (! (all(is.finite(c(x, y)))))
-        stop("Data contains missing or infinite values")
+      stop("Data contains missing or infinite values")
     
-    stat <- dcorr <- reps <- 0
-    dcov <- rep(0, 4)
-    if (R > 0) reps <- rep(0, R)
-    pval <- 1
-    dims <- c(n, ncol(x), ncol(y), dst, R)
+    if (test == "limit") {
+      method <- "dCov test of independence using limit distribution"
+      if (!isTRUE(all.equal(index, 1.0))) {
+        x <- x^index
+        y <- y^index
+      }
+      A <- D_center(x)
+      B <- D_center(y)
+      H <- A * B / n
+      stat <- sum(H)
+      V <- sqrt(stat / n)
+      lambda <- svd(H, nu=0, nv=0)$d
+      ## informal check for convergence
+      err <- mean(tail(lambda, 3))
+      if (err > .Machine$double.eps^.2)
+        warning("sample size too small for limit method; use permutation test")
+      estimates <- lambda
+      replicates <- NA
+      pval <- NA
+      if (requireNamespace("CompQuadForm", quietly=TRUE)) {
+        pval <- CompQuadForm::imhof(V, lambda)$Qq
+      } else {
+        warning("package CompQuadForm required to compute probability")
+      }
+    }
 
-    # dcov = [dCov,dCor,dVar(x),dVar(y)]
-    a <- .C("dCOVtest",
-            x = as.double(t(x)),
-            y = as.double(t(y)),
-            byrow = as.integer(TRUE),
-            dims = as.integer(dims),
-            index = as.double(index),
-            reps = as.double(reps),
-            DCOV = as.double(dcov),
-            pval = as.double(pval),
-            PACKAGE = "energy")
-    # test statistic is n times the square of dCov statistic
-    stat <- n * a$DCOV[1]^2
-    dcorr <- a$DCOV
-    V <- dcorr[[1]]
+    if (test == "perm") {    
+      stat <- dcorr <- reps <- 0
+      dcov <- rep(0, 4)
+      if (R > 0) reps <- rep(0, R)
+      pval <- 1
+      dims <- c(n, ncol(x), ncol(y), dst, R)
+  
+      # dcov = [dCov,dCor,dVar(x),dVar(y)]
+      a <- .C("dCOVtest",
+              x = as.double(t(x)),
+              y = as.double(t(y)),
+              byrow = as.integer(TRUE),
+              dims = as.integer(dims),
+              index = as.double(index),
+              reps = as.double(reps),
+              DCOV = as.double(dcov),
+              pval = as.double(pval),
+              PACKAGE = "energy")
+      # test statistic is n times the square of dCov statistic
+      stat <- n * a$DCOV[1]^2
+      dcorr <- a$DCOV
+      V <- dcorr[[1]]
+      pval <- ifelse (R < 1, NA, a$pval)
+      estimates <- dcorr
+      replicates <- n* a$reps^2
+    }
+    
     names(stat) <- "nV^2"
     names(V) <- "dCov"
-    dataname <- paste("index ", index, ", replicates ", R, sep="")
-    pval <- ifelse (R < 1, NA, a$pval)
-    e <- list(
+    if (!isTRUE(all.equal(index, 1.0)))
+      dataname <- paste(dataname, "index=", index)
+    e <- list(call = match.call(),
         statistic = stat,
         method = method,
         estimate = V,
-        estimates = dcorr,
+        estimates = estimates,
         p.value = pval,
-        replicates = n* a$reps^2,
+        replicates = replicates,
         n = n,
         data.name = dataname)
     class(e) <- "htest"
@@ -65,6 +100,7 @@ dcor.test <-
   function(x, y, index=1.0, R) {
     # distance correlation test for multivariate independence
     # like dcov.test but using dcor as the test statistic
+    dataname <- paste(deparse(substitute(x)), "and", deparse(substitute(y)))
     if (is.null(R)) R <- 0
     R <- ifelse(R > 0, floor(R), 0)
     RESULT <- dcov.test(x, y, index=1.0, R) 
@@ -85,7 +121,6 @@ dcor.test <-
       p.value <- (1 + sum(DCORreps >= DCORteststat)) / (1 + R) else p.value <- NA
     
     names(DCORteststat) <- "dCor"
-    dataname <- paste("index ", index, ", replicates ", R, sep="")
     method <- ifelse(R > 0, "dCor test of independence", 
                      "Specify the number of replicates R>0 to perform the test of independence")
     e <- list(

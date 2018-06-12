@@ -8,7 +8,7 @@
  Distance covariance and distance correlation are
  multivariate measures of dependence.}
 \usage{
-dcov.test(x, y, index = 1.0, R = NULL)
+dcov.test(x, y, index = 1.0, R = NULL, test = c("perm", "limit"))
 dcor.test(x, y, index = 1.0, R)
 }
 \arguments{
@@ -16,11 +16,19 @@ dcor.test(x, y, index = 1.0, R)
   \item{y}{ data or distances of second sample}
   \item{R}{ number of replicates}
   \item{index}{ exponent on Euclidean distance, in (0,2]}
+  \item{test}{ method for computing test p-value}
 }
 \details{
  \code{dcov.test} and \code{dcor.test} are nonparametric
- tests of multivariate independence. The test decision is
+ tests of multivariate independence. If \code{test} is "perm"
+ then the test decision is
  obtained via permutation bootstrap, with \code{R} replicates.
+ If \code{test} is "limit", an estimate of the limit distribution
+ of \eqn{n V^2} under the null hypothesis is computed and used to 
+ compute the p-value. 
+ The "limit" method is only recommended for large samples,
+ at least size 100. If method is "auto" then based on the input
+ arguments, the fastest available method will be applied. 
 
  The sample sizes (number of rows) of the two samples must
  agree, and samples must not contain missing values. Arguments
@@ -70,7 +78,8 @@ theoretical properties of the test, including statistical consistency.
    \item{     method}{ description of test}
    \item{  statistic}{ observed value of the test statistic}
    \item{   estimate}{ dCov(x,y) or dCor(x,y)}
-   \item{  estimates}{ a vector: [dCov(x,y), dCor(x,y), dVar(x), dVar(y)]}
+   \item{  estimates}{ if test == perm: [dCov(x,y), dCor(x,y), dVar(x), dVar(y)]}
+   \item{  estimates}{ if test == limit: estimates of eigenvalues}
    \item{ replicates}{ replicates of the test statistic}
    \item{    p.value}{ approximate p-value of the test}
    \item{          n}{ sample size}
