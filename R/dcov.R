@@ -134,7 +134,7 @@ function(x, y, index=1.0) {
 
 dcov <-
 function(x, y, index=1.0) {
-    # distance correlation statistic for independence
+    # distance covariance statistic for independence
     return(.dcov(x, y, index)[1])
 }
 
@@ -143,7 +143,6 @@ function(x, y, index=1.0) {
     # distance correlation statistic for independence
     return(.dcov(x, y, index)[2])
 }
-
 
 
 DCOR <-
