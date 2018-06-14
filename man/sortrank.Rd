@@ -12,7 +12,7 @@ sortrank(x)
   \item{x}{ vector compatible with sort(x)}
 }
 \details{
-This utility exists to save a little time on large vectors when two or all three of the sort(), order(), rank() results are required. 
+This utility exists to save a little time on large vectors when two or all three of the sort(), order(), rank() results are required. In case of ties, the ranks component matches \code{rank(x, ties.method = "first")}. 
 }
 \value{
 A list with components 

@@ -6,10 +6,9 @@
 
 sortrank <- function(x) {
   ## sort and rank data with one call to order()
-  ## faster than sort(x, index.return=TRUE) because
-  ## x[order(x)] is faster than sort(x)
+  ## faster than calling sort and rank separately
   ## returns an object identical to:
-  ##   list(x=sort(x), ix=order(x), r=rank(x))
+  ##   list(x=sort(x), ix=order(x), r=rank(x, ties.method = "first"))
   o <- order(x)
   n <- length(o)
   N <- 1:n

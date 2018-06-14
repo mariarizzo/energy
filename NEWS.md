@@ -1,13 +1,13 @@
 # energy 1.7-5
 
 *  User level changes:
-     - misc. updates
+     - dcov.test() adds a test argument and new method 
      - sortrank() function added (a utility)
      
 *  Internal changes:
-     - distances.cpp: compute energy sums without storing dist
-     - B-tree.cpp: binary tree search for 2-way partial sums in dcov
-     - sortrank.cpp: some functions like sortrank() 
+     - distances.cpp (new): compute energy sums without storing dist
+     - B-tree.cpp (new): binary tree search for 2-way partial sums in dcov
+     - sortrank.cpp (new): some functions for sorting, ranking, etc.  
 
 # energy 1.7-4
 

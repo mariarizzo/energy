@@ -3,6 +3,7 @@ useDynLib(energy, .registration=TRUE)
 importFrom(Rcpp, evalCpp)
 importFrom("stats", "as.dist", "dist", "dnorm", "hclust", "model.matrix",
            "pnorm", "pt", "rnorm", "rpois", "var")
+importFrom("utils", "tail")
 importFrom(boot, boot)
 
 export(
@@ -19,6 +20,7 @@ export(
   dcovU,
   dcovU_stats,
   dcovU.test,
+  dcov_UV,
   dcovV.test,
   disco,
   disco.between,
@@ -46,3 +48,4 @@ export(
 )
 
 S3method(print, disco)
+S3method(print, dctest)
