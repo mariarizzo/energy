@@ -8,30 +8,19 @@
  Distance covariance and distance correlation are
  multivariate measures of dependence.}
 \usage{
-dcov.test(x, y, index = 1.0, R = NULL, test = c("perm", "limit"))
+dcov.test(x, y, index = 1.0, R = NULL)
 dcor.test(x, y, index = 1.0, R)
 }
 \arguments{
   \item{x}{ data or distances of first sample}
   \item{y}{ data or distances of second sample}
-  \item{R}{ number of replicates for permutation test}
+  \item{R}{ number of replicates}
   \item{index}{ exponent on Euclidean distance, in (0,2]}
-  \item{test}{ method for computing test p-value}
 }
 \details{
  \code{dcov.test} and \code{dcor.test} are nonparametric
- tests of multivariate independence. If \code{test} is "perm"
- then the test decision is
+ tests of multivariate independence. The test decision is
  obtained via permutation bootstrap, with \code{R} replicates.
- If \code{test} is "limit", an estimate of the limit distribution
- of \eqn{n V^2} under the null hypothesis is computed and used to 
- compute the p-value. The default test method is a permutation
- test.
- 
-The "limit" method is based on the asymptotic distribution of the
-test statistic (large n, constant dimension), and is only recommended for large samples. The estimate may not be accurate when n / d is not large. A
-warning is printed if the sum of estimated eigenvalues has not converged
-to within a tolerance factor. 
 
  The sample sizes (number of rows) of the two samples must
  agree, and samples must not contain missing values. Arguments
@@ -47,8 +36,6 @@ to within a tolerance factor.
 
 Similarly, the \code{dcor} test statistic is based on the normalized
 coefficient, the distance correlation. (See the manual page for \code{dcor}.)
-The denominator is invariant under permutations so the dcor 
-permutation test is essentially equivalent to the dcov permutation test.
 
 Distance correlation is a new measure of dependence between random
 vectors introduced by Szekely, Rizzo, and Bakirov (2007).
@@ -83,15 +70,11 @@ theoretical properties of the test, including statistical consistency.
    \item{     method}{ description of test}
    \item{  statistic}{ observed value of the test statistic}
    \item{   estimate}{ dCov(x,y) or dCor(x,y)}
-   \item{  estimates}{ [dCov(x,y), dCor(x,y), dVar(x), dVar(y)]}
+   \item{  estimates}{ a vector: [dCov(x,y), dCor(x,y), dVar(x), dVar(y)]}
    \item{ replicates}{ replicates of the test statistic}
    \item{    p.value}{ approximate p-value of the test}
    \item{          n}{ sample size}
    \item{  data.name}{ description of data}
-When \code{test == "limit"} also:
-   \item{eigenvalues}{ vector of estimated eigenvalues}
-   \item{        err}{ estimate of relative error of sum of eigenvalues}
-   \item{     abserr}{ estimate of absolute error of integration}
 }
 \note{For the dcov test of independence,
 the distance covariance test statistic is the V-statistic
@@ -117,8 +100,8 @@ the distance covariance test statistic is the V-statistic
  Szekely, G.J. and Rizzo, M.L. (2009),
  Rejoinder: Brownian Distance Covariance,
  \emph{Annals of Applied Statistics}, Vol. 3, No. 4, 1303-1308.
-  }
-  \author{ Maria L. Rizzo \email{mrizzo @ bgsu.edu} and
+}
+\author{ Maria L. Rizzo \email{mrizzo @ bgsu.edu} and
 Gabor J. Szekely
 }
 \examples{
@@ -128,16 +111,6 @@ Gabor J. Szekely
  dcor.test(dist(x), dist(y), R=199)
  set.seed(1)
  dcov.test(x, y, R=199)
-
- \donttest{
-  ## Example using estimated limit distribution
-  set.seed(2018)
-  data(Pima.tr, package = "MASS")
-  dcov.test(Pima.tr$glu, Pima.tr$ped, R = 999)
-  dc <- dcov.test(Pima.tr$glu, Pima.tr$ped, test = "limit")
-  dc
-  dc$err
- }
 }
 \keyword{ htest }
 \keyword{ multivariate }
