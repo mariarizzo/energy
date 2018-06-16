@@ -144,15 +144,6 @@ Gabor J. Szekely
   # should match statistic in edist method="discoB", above
   set.seed(1234)
   disco.between(d, factors=g, distance=TRUE, R=199)
-
- \dontshow{
-  eqdist.e(iris[,1:4], c(50,50,50))
-  x <- matrix(rnorm(200), nrow=40)
-  y <- matrix(rnorm(250, mean=5), nrow=50)
-  x <- rbind(x, y)
-  eqdist.etest(dist(x), sizes=c(40, 50), distance=TRUE, R = 19)
-  eqdist.e(dist(x), sizes=c(40, 50), distance=TRUE)
-}
 }
 \keyword{ multivariate }
 \keyword{ htest }

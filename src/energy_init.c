@@ -23,6 +23,12 @@ extern SEXP _energy_partial_dcov(SEXP, SEXP, SEXP);
 extern SEXP _energy_projection(SEXP, SEXP);
 extern SEXP _energy_U_center(SEXP);
 extern SEXP _energy_U_product(SEXP, SEXP);
+extern SEXP _energy_dcov_UV(SEXP, SEXP, SEXP);
+extern SEXP _energy_sum_paired_dist(SEXP, SEXP);
+extern SEXP _energy_sum_dist3(SEXP, SEXP);
+extern SEXP _energy_rowSums_dist(SEXP);
+extern SEXP _energy_Btree_sum(SEXP, SEXP);
+extern SEXP _energy_get_dcov_sums(SEXP, SEXP, SEXP);
 
 static const R_CMethodDef CEntries[] = {
   {"dCOV",         (DL_FUNC) &dCOV,         7},
@@ -36,14 +42,20 @@ static const R_CMethodDef CEntries[] = {
 };
 
 static const R_CallMethodDef CallEntries[] = {
-  {"_energy_D_center",     (DL_FUNC) &_energy_D_center,     1},
-  {"_energy_dcovU_stats",  (DL_FUNC) &_energy_dcovU_stats,  2},
-  {"_energy_mvnEstat",     (DL_FUNC) &_energy_mvnEstat,     1},
-  {"_energy_partial_dcor", (DL_FUNC) &_energy_partial_dcor, 3},
-  {"_energy_partial_dcov", (DL_FUNC) &_energy_partial_dcov, 3},
-  {"_energy_projection",   (DL_FUNC) &_energy_projection,   2},
-  {"_energy_U_center",     (DL_FUNC) &_energy_U_center,     1},
-  {"_energy_U_product",    (DL_FUNC) &_energy_U_product,    2},
+  {"_energy_D_center",       (DL_FUNC) &_energy_D_center,      1},
+  {"_energy_dcovU_stats",    (DL_FUNC) &_energy_dcovU_stats,   2},
+  {"_energy_mvnEstat",       (DL_FUNC) &_energy_mvnEstat,      1},
+  {"_energy_partial_dcor",   (DL_FUNC) &_energy_partial_dcor,  3},
+  {"_energy_partial_dcov",   (DL_FUNC) &_energy_partial_dcov,  3},
+  {"_energy_projection",     (DL_FUNC) &_energy_projection,    2},
+  {"_energy_U_center",       (DL_FUNC) &_energy_U_center,      1},
+  {"_energy_U_product",      (DL_FUNC) &_energy_U_product,     2},
+  {"_energy_dcov_UV",        (DL_FUNC) &_energy_dcov_UV,       3},
+  {"_energy_sum_paired_dist",(DL_FUNC) &_energy_sum_paired_dist,  2},
+  {"_energy_sum_dist3",      (DL_FUNC) &_energy_sum_dist3,     2},
+  {"_energy_rowSums_dist",   (DL_FUNC) &_energy_rowSums_dist,  1},
+  {"_energy_Btree_sum",      (DL_FUNC) &_energy_Btree_sum,     2},
+  {"_energy_get_dcov_sums",  (DL_FUNC) &_energy_get_dcov_sums, 3},
   {NULL, NULL, 0}
 };
 

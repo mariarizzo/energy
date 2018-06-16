@@ -13,7 +13,6 @@ List call_sortrank(NumericVector x, Function f);
 IntegerMatrix order_rank(NumericVector x);
 List sort_rank(NumericVector x);
     
-// [[Rcpp::export(.sort_rank)]]
 List sort_rank(NumericVector x) {
   // will not print a warning about ties, may differ from R order()
   // almost as fast as my sortrank() function in R
@@ -29,7 +28,6 @@ List sort_rank(NumericVector x) {
   return L;
 }
 
-// [[Rcpp::export(.order_rank)]]
 IntegerMatrix order_rank(NumericVector x) {
   // get the order(x) and rank(x) vectors
   // return in matrix [order, rank]
@@ -45,7 +43,6 @@ IntegerMatrix order_rank(NumericVector x) {
   return R;
 }    
 
-// [[Rcpp::export(.call_sortrank)]]
 List call_sortrank(NumericVector x, Function f) {
   return f(x);
 }

@@ -42,20 +42,7 @@ indep.etest(x, y, R)
 \author{ Maria L. Rizzo \email{mrizzo @ bgsu.edu} and
 Gabor J. Szekely
 }
-\examples{
- \dontrun{
- ## independent univariate data
- x <- sin(runif(30, 0, 2*pi) * 2)
- y <- sin(runif(30, 0, 2*pi) * 4)
- indep.etest(x, y, R = 99)
 
- ## dependent multivariate data
- Sigma <- matrix(c(1, .1, 0, 0 , 1, 0, 0 ,.1, 1), 3, 3)
- x <- mvrnorm(30, c(0, 0, 0), diag(3))
- y <- mvrnorm(30, c(0, 0, 0), Sigma) * x
- indep.etest(x, y, R = 99)
- }
-}
 \keyword{ htest }
 \keyword{ multivariate }
 \concept{ energy statistics }
