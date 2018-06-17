@@ -23,9 +23,6 @@ extern SEXP _energy_partial_dcov(SEXP, SEXP, SEXP);
 extern SEXP _energy_projection(SEXP, SEXP);
 extern SEXP _energy_U_center(SEXP);
 extern SEXP _energy_U_product(SEXP, SEXP);
-extern SEXP _energy_sum_paired_dist(SEXP, SEXP);
-extern SEXP _energy_sum_dist3(SEXP, SEXP);
-extern SEXP _energy_rowSums_dist(SEXP);
 extern SEXP _energy_Btree_sum(SEXP, SEXP);
 
 static const R_CMethodDef CEntries[] = {
@@ -48,9 +45,6 @@ static const R_CallMethodDef CallEntries[] = {
   {"_energy_projection",     (DL_FUNC) &_energy_projection,    2},
   {"_energy_U_center",       (DL_FUNC) &_energy_U_center,      1},
   {"_energy_U_product",      (DL_FUNC) &_energy_U_product,     2},
-  {"_energy_sum_paired_dist",(DL_FUNC) &_energy_sum_paired_dist,  2},
-  {"_energy_sum_dist3",      (DL_FUNC) &_energy_sum_dist3,     2},
-  {"_energy_rowSums_dist",   (DL_FUNC) &_energy_rowSums_dist,  1},
   {"_energy_Btree_sum",      (DL_FUNC) &_energy_Btree_sum,     2},
   {NULL, NULL, 0}
 };
