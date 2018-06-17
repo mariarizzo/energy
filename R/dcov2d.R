@@ -3,6 +3,7 @@ dcor2d<- function(x, y, type = c("V", "U")) {
   ## bivariate data only: (x,y) in R^2
   ## should be faster than direct calc. for big n
   type <- match.arg(type)
+  ## argument checking in dcov2d
   stat <- dcov2d(x, y, type, all.stats=TRUE)
   dvarX <- stat[2]
   dvarY <- stat[3]
@@ -15,7 +16,16 @@ dcor2d<- function(x, y, type = c("V", "U")) {
 dcov2d<- function(x, y, type=c("V", "U"), all.stats=FALSE) {
   ## O(n log n) computation of dcovU or dcov^2 (V^2) for (x, y) in R^2 only
   type <- match.arg(type)
+  if (!is.vector(x) || !is.vector(y)) {
+    if (NCOL(x) > 1 || NCOL(y) > 1)
+      stop("this method is only for univariate x and y")
+  }
+  x <- as.vector(x)
+  y <- as.vector(y)
   n <- length(x)
+  if (n != length(y))
+    stop("sample sizes must agree")
+  
   Sums <- .dcovSums2d(x, y, all.sums=all.stats)
   if (type =="V") {
     d1 <- n^2

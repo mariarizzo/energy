@@ -26,8 +26,7 @@ By default, \code{dcor2d} returns the V-statistic dCor_n^2(x, y), and if type="U
 
 By default, \code{dcov2} returns the V-statistic V_n^2 = dCov_n^2(x, y), and if type="U", it returns the U-statistic, unbiased for V^2(X, Y). The argument all.stats=TRUE is used internally when the function is called from \code{dcor2}. 
 
-For \code{dcov2d} and \code{dcor2d}, direct computation using the C++ function \code{dcovU_stats} may
-be somewhat faster up to samples sizes about 100 or 200, depending on the platform.
+For \code{dcov2d} and \code{dcor2d}, direct computation using the C++ function \code{dcovU_stats} may be somewhat faster on small samples, depending on the platform.
 
 \code{dcor2d} and \code{dcov2d} do not store the distance matrices so these functions are helpful when sample size is large, the data is bivariate, and we simply require the statistics. There is not an efficient way to do the nonparametric test by permutations without storing distances. For a test of independence on moderate size samples, use \code{dcov.test} or \code{dcor.test}.
 }
