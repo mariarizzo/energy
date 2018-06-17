@@ -21,9 +21,11 @@
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
+<!-- sticky kit -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
-<script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
 
 
@@ -32,6 +34,7 @@
 
 <meta property="og:description" content="Performs the E-statistic (energy) test of multivariate or univariate normality." />
 <meta name="twitter:card" content="summary" />
+
 
 
 <!-- mathjax -->
@@ -180,7 +183,7 @@
 #&gt; 	Energy test of multivariate normality: estimated parameters
 #&gt; 
 #&gt; data:  x, sample size 50, dimension 4, replicates 199
-#&gt; E-statistic = 1.2034, p-value = 0.05025
+#&gt; E-statistic = 1.2034, p-value = 0.01005
 #&gt; </div><div class='input'>
  <span class='co'>## test a univariate sample for normality</span>
  <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>runif</span>(<span class='fl'>50</span>, <span class='fl'>0</span>, <span class='fl'>10</span>)
@@ -188,7 +191,7 @@
 #&gt; 	Energy test of multivariate normality: estimated parameters
 #&gt; 
 #&gt; data:  x, sample size 50, dimension 1, replicates 199
-#&gt; E-statistic = 1.0374, p-value = 0.02513
+#&gt; E-statistic = 0.56115, p-value = 0.1658
 #&gt; </div><div class='input'> </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

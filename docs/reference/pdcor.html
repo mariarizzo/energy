@@ -21,9 +21,11 @@
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
+<!-- sticky kit -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
-<script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
 
 
@@ -32,6 +34,7 @@
 
 <meta property="og:description" content="Partial distance correlation pdcor, pdcov, and tests." />
 <meta name="twitter:card" content="summary" />
+
 
 
 <!-- mathjax -->
@@ -167,23 +170,23 @@ zero-diagonal dissimilarity matrices, use <code>as.dist</code> to convert to a
   <span class='no'>y</span> <span class='kw'>&lt;-</span> <span class='fu'>rnorm</span>(<span class='no'>n</span>)
   <span class='no'>z</span> <span class='kw'>&lt;-</span> <span class='fu'>rnorm</span>(<span class='no'>n</span>)
 
-  <span class='fu'>pdcor</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>z</span>)</div><div class='output co'>#&gt;      pdcor 
-#&gt; 0.07197152 </div><div class='input'>  <span class='fu'>pdcov</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>z</span>)</div><div class='output co'>#&gt; [1] 0.03034903</div><div class='input'>  <span class='fu'>pdcov.test</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>z</span>, <span class='kw'>R</span><span class='kw'>=</span><span class='no'>R</span>)</div><div class='output co'>#&gt; 
+  <span class='fu'>pdcor</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>z</span>)</div><div class='output co'>#&gt;       pdcor 
+#&gt; -0.01196053 </div><div class='input'>  <span class='fu'>pdcov</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>z</span>)</div><div class='output co'>#&gt; [1] -0.004278869</div><div class='input'>  <span class='fu'>pdcov.test</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>z</span>, <span class='kw'>R</span><span class='kw'>=</span><span class='no'>R</span>)</div><div class='output co'>#&gt; 
 #&gt; 	pdcov test
 #&gt; 
 #&gt; data:  replicates 199
-#&gt; n V^* = 0.91047, p-value = 0.12
+#&gt; n V^* = -0.12837, p-value = 0.515
 #&gt; sample estimates:
-#&gt;      pdcor 
-#&gt; 0.07197152 
+#&gt;       pdcor 
+#&gt; -0.01196053 
 #&gt; </div><div class='input'>  <span class='fu'>print</span>(<span class='fu'>pdcor.test</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>z</span>, <span class='kw'>R</span><span class='kw'>=</span><span class='no'>R</span>))</div><div class='output co'>#&gt; 
 #&gt; 	pdcor test
 #&gt; 
 #&gt; data:  
-#&gt; pdcor = 0.071972, p-value = 0.095
+#&gt; pdcor = -0.011961, p-value = 0.415
 #&gt; sample estimates:
-#&gt;      pdcor 
-#&gt; 0.07197152 
+#&gt;       pdcor 
+#&gt; -0.01196053 
 #&gt; </div><div class='input'>
 
 <span class='kw'>if</span> (<span class='fu'>require</span>(<span class='no'>MASS</span>)) {
@@ -198,23 +201,23 @@ zero-diagonal dissimilarity matrices, use <code>as.dist</code> to convert to a
   <span class='co'>## non-linear dependence</span>
   <span class='no'>y</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/MASS/topics/mvrnorm'>mvrnorm</a></span>(<span class='no'>n</span>, <span class='no'>mu</span>, <span class='no'>Sigma</span>) * <span class='no'>x</span>
   <span class='fu'>print</span>(<span class='fu'>pdcov.test</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>z</span>, <span class='kw'>R</span><span class='kw'>=</span><span class='no'>R</span>))
-  }</div><div class='output co'>#&gt; 
+  }</div><div class='output co'>#&gt; <span class='message'>Loading required package: MASS</span></div><div class='output co'>#&gt; 
 #&gt; 	pdcov test
 #&gt; 
 #&gt; data:  replicates 199
-#&gt; n V^* = 13.098, p-value = 0.005
+#&gt; n V^* = 8.1967, p-value = 0.005
 #&gt; sample estimates:
 #&gt;     pdcor 
-#&gt; 0.7000493 
+#&gt; 0.5452719 
 #&gt; 
 #&gt; 
 #&gt; 	pdcov test
 #&gt; 
 #&gt; data:  replicates 199
-#&gt; n V^* = 0.60749, p-value = 0.105
+#&gt; n V^* = 0.27802, p-value = 0.225
 #&gt; sample estimates:
 #&gt;     pdcor 
-#&gt; 0.0538379 
+#&gt; 0.0379431 
 #&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
