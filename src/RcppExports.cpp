@@ -5,6 +5,18 @@
 
 using namespace Rcpp;
 
+// Btree_sum
+NumericVector Btree_sum(IntegerVector y, NumericVector z);
+RcppExport SEXP _energy_Btree_sum(SEXP ySEXP, SEXP zSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< IntegerVector >::type y(ySEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type z(zSEXP);
+    rcpp_result_gen = Rcpp::wrap(Btree_sum(y, z));
+    return rcpp_result_gen;
+END_RCPP
+}
 // D_center
 NumericMatrix D_center(NumericMatrix Dx);
 RcppExport SEXP _energy_D_center(SEXP DxSEXP) {
