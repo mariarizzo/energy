@@ -140,6 +140,7 @@ dcov2d<- function(x, y, type=c("V", "U"), all.stats=FALSE) {
   ## for univariate samples, equivalent to rowSums(as.matrix(dist(x)))
   ## but much faster
   ## Sx is a sortrank object usually pre-computed here
+  ## x is the data vector, Sx$x is sort(x)
   if (is.null(Sx))
     Sx <- sortrank(x)
   n <- length(x)

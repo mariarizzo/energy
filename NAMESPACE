@@ -11,17 +11,16 @@ export(
   D_center,
   Dcenter,
   dcor,
+  dcor2d,
   DCOR,
   dcor.t,
   dcor.test,
   dcor.ttest,
   dcov,
   dcov.test,
+  dcov2d,
   dcovU,
   dcovU_stats,
-  dcovU.test,
-  dcov_UV,
-  dcovV.test,
   disco,
   disco.between,
   edist,
@@ -48,4 +47,3 @@ export(
 )
 
 S3method(print, disco)
-S3method(print, dctest)

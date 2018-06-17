@@ -1,13 +1,14 @@
 # energy 1.7-5
 
 *  User level changes:
-     - dcov.test() adds a test argument and new method 
+     - dcov2d and dcor2d: new O(n log n) methods to compute the
+       squared U or V statistics for real x and y 
      - sortrank() function added (a utility)
      
 *  Internal changes:
-     - distances.cpp (new): compute energy sums without storing dist
-     - B-tree.cpp (new): binary tree search for 2-way partial sums in dcov
-     - sortrank.cpp (new): some functions for sorting, ranking, etc.  
+     - B-tree.cpp: Btree_sum and other internal functions
+       implement binary tree search for faster O(n log n)
+       calculation of paired distances in dcov2d
 
 # energy 1.7-4
 
