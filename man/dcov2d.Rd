@@ -36,8 +36,7 @@ estimator of \eqn{\mathrm{dCov^2}}{dCov^2}. Since \code{dcovU} is an
 unbiased statistic, it can be negative and its square root would be 
 complex so the square root of the U-statistic is not applied.
 For the original distance covariance test of independence (SRB2007,
-SR2009), the sample distance covariance was defined by the square root
-of the V-statistic \eqn{\mathrm{n\, dCov_n^2} = \mathcal{V}_n^2}{n V_n^2}.
+SR2009), the test statistic was the V-statistic \eqn{\mathrm{n\, dCov_n^2} = n \mathcal{V}_n^2}{n V_n^2}.
 Similarly, \code{bcdcor} is bias-corrected, so we do not take the
 square root as with \eqn{dCor_n^2}{dCor_n^2}.
 }

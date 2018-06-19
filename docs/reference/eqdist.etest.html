@@ -256,11 +256,11 @@ computed by the <code>edist</code> function, which returns a <code>dist</code> o
 #&gt; 	2-sample E-test of equal distributions
 #&gt; 
 #&gt; data:  sample sizes 20 20, replicates 199
-#&gt; E-statistic = 2.8799, p-value = 0.41
+#&gt; E-statistic = 2.2492, p-value = 0.755
 #&gt; </div><div class='input'>
   <span class='co'># comparison with edist</span>
   <span class='fu'><a href='edist.html'>edist</a></span>(<span class='no'>d</span>, <span class='kw'>sizes</span><span class='kw'>=</span><span class='fu'>c</span>(<span class='fl'>20</span>, <span class='fl'>10</span>), <span class='kw'>distance</span><span class='kw'>=</span><span class='fl'>TRUE</span>)</div><div class='output co'>#&gt;          1
-#&gt; 2 2.357473</div><div class='input'>
+#&gt; 2 3.256045</div><div class='input'>
   <span class='co'># for comparison</span>
   <span class='no'>g</span> <span class='kw'>&lt;-</span> <span class='fu'>as.factor</span>(<span class='fu'>rep</span>(<span class='fl'>1</span>:<span class='fl'>2</span>, <span class='fu'>c</span>(<span class='fl'>20</span>, <span class='fl'>20</span>)))
   <span class='fu'>set.seed</span>(<span class='fl'>1234</span>)
@@ -268,16 +268,16 @@ computed by the <code>edist</code> function, which returns a <code>dist</code> o
 #&gt; 
 #&gt; Distance Components: index  1.00
 #&gt; Source                 Df   Sum Dist  Mean Dist    F-ratio    p-value
-#&gt; factors                 1    1.43996    1.43996      1.018       0.41
-#&gt; Within                 38   53.73983    1.41421
-#&gt; Total                  39   55.17979</div><div class='input'>
+#&gt; factors                 1    1.12460    1.12460      0.783      0.715
+#&gt; Within                 38   54.54480    1.43539
+#&gt; Total                  39   55.66939</div><div class='input'>
   <span class='co'># should match statistic in edist method="discoB", above</span>
   <span class='fu'>set.seed</span>(<span class='fl'>1234</span>)
   <span class='fu'><a href='disco.html'>disco.between</a></span>(<span class='no'>d</span>, <span class='kw'>factors</span><span class='kw'>=</span><span class='no'>g</span>, <span class='kw'>distance</span><span class='kw'>=</span><span class='fl'>TRUE</span>, <span class='kw'>R</span><span class='kw'>=</span><span class='fl'>199</span>)</div><div class='output co'>#&gt; 
 #&gt; 	DISCO (Between-sample)
 #&gt; 
 #&gt; data:  d
-#&gt; DISCO between statistic = 1.44, p-value = 0.407
+#&gt; DISCO between statistic = 1.1246, p-value = 0.7136
 #&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
