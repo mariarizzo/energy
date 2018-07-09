@@ -8,7 +8,6 @@
 /* .C calls */
 extern void dCOV(void *, void *, void *, void *, void *, void *, void *);
 extern void dCOVtest(void *, void *, void *, void *, void *, void *, void *, void *);
-extern void Emin_hclust(void *, void *, void *, void *, void *);
 extern void indepE(void *, void *, void *, void *, void *);
 extern void indepEtest(void *, void *, void *, void *, void *, void *, void *);
 extern void ksampleEtest(void *, void *, void *, void *, void *, void *, void *, void *, void *);
@@ -28,7 +27,6 @@ extern SEXP _energy_Btree_sum(SEXP, SEXP);
 static const R_CMethodDef CEntries[] = {
   {"dCOV",         (DL_FUNC) &dCOV,         7},
   {"dCOVtest",     (DL_FUNC) &dCOVtest,     8},
-  {"Emin_hclust",  (DL_FUNC) &Emin_hclust,  5},
   {"indepE",       (DL_FUNC) &indepE,       5},
   {"indepEtest",   (DL_FUNC) &indepEtest,   7},
   {"ksampleEtest", (DL_FUNC) &ksampleEtest, 9},

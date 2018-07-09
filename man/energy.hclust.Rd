@@ -66,9 +66,7 @@
 Currently \code{stats::hclust} implements Ward's method by \code{method="ward.D2"},
 which applies the squared distances. That method was previously \code{"ward"}. 
 Because both \code{hclust} and energy use the same type of Lance-Williams recursive formula to update cluster distances, now with the additional option \code{method="ward.D"} in \code{hclust}, the
-energy distance method is easily implemented by \code{hclust}. (Some "Ward" algorithms do not use Lance-Williams, however). Energy clustering (with \code{alpha=1}) and "ward.D" now return the same result, except that the cluster heights of {energy.hclust} with \code{alpha=1} are two times the heights from \code{hclust}.
-
-However, the implementation in the energy package is more than 100 times faster than \code{hclust}. in a recent benchmark.
+energy distance method is easily implemented by \code{hclust}. (Some "Ward" algorithms do not use Lance-Williams, however). Energy clustering (with \code{alpha=1}) and "ward.D" now return the same result, except that the cluster heights of energy hierarchical clustering with \code{alpha=1} are two times the heights from \code{hclust}. In order to ensure compatibility with hclust methods, \code{energy.hclust} now passes arguments through to \code{hclust} after possibly applying the optional exponent to distance.
 }
 \references{
      Szekely, G. J. and Rizzo, M. L. (2005) Hierarchical Clustering
@@ -94,7 +92,6 @@ However, the implementation in the energy package is more than 100 times faster 
    library(cluster)
    data(animals)
    plot(energy.hclust(dist(animals)))
-   }
 
    data(USArrests)
    ecl <- energy.hclust(dist(USArrests))
@@ -113,6 +110,7 @@ However, the implementation in the energy package is more than 100 times faster 
    w <- hclust(d^2, method="ward.D2")
    list("E" = table(cutree(e, k=2) == g), "Ward" = table(cutree(w, k=2) == g),
     "Avg" = table(cutree(a, k=2) == g))
+  }
  }
 \keyword{ multivariate }
 \keyword{ cluster }
