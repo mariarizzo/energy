@@ -180,8 +180,7 @@
     <p>Currently <code><a href='http://www.rdocumentation.org/packages/stats/topics/hclust'>stats::hclust</a></code> implements Ward's method by <code>method="ward.D2"</code>,
 which applies the squared distances. That method was previously <code>"ward"</code>. 
 Because both <code>hclust</code> and energy use the same type of Lance-Williams recursive formula to update cluster distances, now with the additional option <code>method="ward.D"</code> in <code>hclust</code>, the
-energy distance method is easily implemented by <code>hclust</code>. (Some "Ward" algorithms do not use Lance-Williams, however). Energy clustering (with <code>alpha=1</code>) and "ward.D" now return the same result, except that the cluster heights of energy.hclust with <code>alpha=1</code> are two times the heights from <code>hclust</code>.</p>
-<p>However, the implementation in the energy package is more than 100 times faster than <code>hclust</code>. in a recent benchmark.</p>
+energy distance method is easily implemented by <code>hclust</code>. (Some "Ward" algorithms do not use Lance-Williams, however). Energy clustering (with <code>alpha=1</code>) and "ward.D" now return the same result, except that the cluster heights of energy hierarchical clustering with <code>alpha=1</code> are two times the heights from <code>hclust</code>. In order to ensure compatibility with hclust methods, <code>energy.hclust</code> now passes arguments through to <code>hclust</code> after possibly applying the optional exponent to distance.</p>
     
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
@@ -202,22 +201,19 @@ energy distance method is easily implemented by <code>hclust</code>. (Some "Ward
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>   </div><span class='co'># NOT RUN {</span>
-   <span class='fu'>library</span>(<span class='no'>cluster</span>)
+    <pre class="examples"><div class='input'>   </div><div class='input'>   <span class='fu'>library</span>(<span class='no'>cluster</span>)
    <span class='fu'>data</span>(<span class='no'>animals</span>)
-   <span class='fu'>plot</span>(<span class='fu'>energy.hclust</span>(<span class='fu'>dist</span>(<span class='no'>animals</span>)))
-
-<span class='co'># }</span><div class='input'>
+   <span class='fu'>plot</span>(<span class='fu'>energy.hclust</span>(<span class='fu'>dist</span>(<span class='no'>animals</span>)))</div><div class='img'><img src='energy.hclust-1.png' alt='' width='700' height='433' /></div><div class='input'>
    <span class='fu'>data</span>(<span class='no'>USArrests</span>)
    <span class='no'>ecl</span> <span class='kw'>&lt;-</span> <span class='fu'>energy.hclust</span>(<span class='fu'>dist</span>(<span class='no'>USArrests</span>))
    <span class='fu'>print</span>(<span class='no'>ecl</span>)</div><div class='output co'>#&gt; 
 #&gt; Call:
-#&gt; energy.hclust(dst = dist(USArrests))
+#&gt; hclust(d = d, method = "ward.D")
 #&gt; 
-#&gt; Cluster method   : e-distance 
+#&gt; Cluster method   : ward.D 
 #&gt; Distance         : euclidean 
 #&gt; Number of objects: 50 
-#&gt; </div><div class='input'>   <span class='fu'>plot</span>(<span class='no'>ecl</span>)</div><div class='img'><img src='energy.hclust-1.png' alt='' width='700' height='433' /></div><div class='input'>   <span class='fu'>cutree</span>(<span class='no'>ecl</span>, <span class='kw'>k</span><span class='kw'>=</span><span class='fl'>3</span>)</div><div class='output co'>#&gt;        Alabama         Alaska        Arizona       Arkansas     California 
+#&gt; </div><div class='input'>   <span class='fu'>plot</span>(<span class='no'>ecl</span>)</div><div class='img'><img src='energy.hclust-2.png' alt='' width='700' height='433' /></div><div class='input'>   <span class='fu'>cutree</span>(<span class='no'>ecl</span>, <span class='kw'>k</span><span class='kw'>=</span><span class='fl'>3</span>)</div><div class='output co'>#&gt;        Alabama         Alaska        Arizona       Arkansas     California 
 #&gt;              1              1              1              2              1 
 #&gt;       Colorado    Connecticut       Delaware        Florida        Georgia 
 #&gt;              2              3              1              1              2 
@@ -237,25 +233,25 @@ energy distance method is easily implemented by <code>hclust</code>. (Some "Ward
 #&gt;              3              2              2              3              3 
 #&gt;       Virginia     Washington  West Virginia      Wisconsin        Wyoming 
 #&gt;              2              2              3              3              2 </div><div class='input'>   <span class='fu'>cutree</span>(<span class='no'>ecl</span>, <span class='kw'>h</span><span class='kw'>=</span><span class='fl'>150</span>)</div><div class='output co'>#&gt;        Alabama         Alaska        Arizona       Arkansas     California 
-#&gt;              1              2              3              4              3 
+#&gt;              1              2              2              3              2 
 #&gt;       Colorado    Connecticut       Delaware        Florida        Georgia 
-#&gt;              4              5              1              6              4 
+#&gt;              3              4              1              2              3 
 #&gt;         Hawaii          Idaho       Illinois        Indiana           Iowa 
-#&gt;              7              5              1              5              7 
+#&gt;              5              4              1              4              5 
 #&gt;         Kansas       Kentucky      Louisiana          Maine       Maryland 
-#&gt;              5              5              1              8              3 
+#&gt;              4              4              1              5              2 
 #&gt;  Massachusetts       Michigan      Minnesota    Mississippi       Missouri 
-#&gt;              9              1              7              2              4 
+#&gt;              6              1              5              2              3 
 #&gt;        Montana       Nebraska         Nevada  New Hampshire     New Jersey 
-#&gt;              5              5              1              7              9 
+#&gt;              4              4              1              5              6 
 #&gt;     New Mexico       New York North Carolina   North Dakota           Ohio 
-#&gt;              3              1              6              7              5 
+#&gt;              2              1              2              5              4 
 #&gt;       Oklahoma         Oregon   Pennsylvania   Rhode Island South Carolina 
-#&gt;              9              9              5              9              2 
+#&gt;              6              6              4              6              2 
 #&gt;   South Dakota      Tennessee          Texas           Utah        Vermont 
-#&gt;              8              4              4              5              7 
+#&gt;              5              3              3              4              5 
 #&gt;       Virginia     Washington  West Virginia      Wisconsin        Wyoming 
-#&gt;              9              9              8              7              9 </div><div class='input'>
+#&gt;              6              6              5              5              6 </div><div class='input'>
    <span class='co'>## compare performance of e-clustering, Ward's method, group average method</span>
    <span class='co'>## when sampled populations have equal means: n=200, d=5, two groups</span>
    <span class='no'>z</span> <span class='kw'>&lt;-</span> <span class='fu'>rbind</span>(<span class='fu'>matrix</span>(<span class='fu'>rnorm</span>(<span class='fl'>1000</span>), <span class='kw'>nrow</span><span class='kw'>=</span><span class='fl'>200</span>), <span class='fu'>matrix</span>(<span class='fu'>rnorm</span>(<span class='fl'>1000</span>, <span class='fl'>0</span>, <span class='fl'>5</span>), <span class='kw'>nrow</span><span class='kw'>=</span><span class='fl'>200</span>))
@@ -268,18 +264,18 @@ energy distance method is easily implemented by <code>hclust</code>. (Some "Ward
     <span class='st'>"Avg"</span> <span class='kw'>=</span> <span class='fu'>table</span>(<span class='fu'>cutree</span>(<span class='no'>a</span>, <span class='kw'>k</span><span class='kw'>=</span><span class='fl'>2</span>) <span class='kw'>==</span> <span class='no'>g</span>))</div><div class='output co'>#&gt; $E
 #&gt; 
 #&gt; FALSE  TRUE 
-#&gt;     7   393 
+#&gt;    11   389 
 #&gt; 
 #&gt; $Ward
 #&gt; 
 #&gt; FALSE  TRUE 
-#&gt;   149   251 
+#&gt;   142   258 
 #&gt; 
 #&gt; $Avg
 #&gt; 
 #&gt; FALSE  TRUE 
 #&gt;   199   201 
-#&gt; </div><div class='input'> </div></pre>
+#&gt; </div><div class='input'>  </div><div class='input'> </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

@@ -9,6 +9,10 @@
      - B-tree.cpp: Btree_sum and other internal functions
        implement binary tree search for faster O(n log n)
        calculation of paired distances in dcov2d
+     - energy.hclust implementation: replaced C++ code with call 
+       to stats::hclust; since R > 3.0.3 it is now equivalent for 
+       alpha = 1 with method = "ward.D". Input and return value 
+       unchanged except heights from hclust are half. 
 
 # energy 1.7-4
 
