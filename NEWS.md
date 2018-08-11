@@ -1,7 +1,10 @@
 # energy 1.7-5
 
 *  User level changes:
-     - dcov2d and dcor2d: new O(n log n) methods to compute the
+     - kgroups: (new) implements energy clustering for a specified 
+       number k classes by energy distance criterion, analogous to the k 
+       classes of the k-means algorithm.
+     - dcov2d and dcor2d: (new) O(n log n) methods to compute the
        squared U or V statistics for real x and y 
      - sortrank() function added (a utility)
      
@@ -9,6 +12,7 @@
      - B-tree.cpp: Btree_sum and other internal functions
        implement binary tree search for faster O(n log n)
        calculation of paired distances in dcov2d
+     - kgroups.cpp: Rcpp implementation of k-groups algorithm
      - energy.hclust implementation: replaced C++ code with call 
        to stats::hclust; since R > 3.0.3 it is now equivalent for 
        alpha = 1 with method = "ward.D". Input and return value 

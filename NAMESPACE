@@ -27,6 +27,7 @@ export(
   eqdist.e,
   eqdist.etest,
   indep.test,
+  kgroups,
   ksample.e,
   mvI,
   mvI.test,
@@ -46,3 +47,5 @@ export(
 )
 
 S3method(print, disco)
+S3method(print, kgroups)
+S3method(fitted, kgroups)
