@@ -3,7 +3,7 @@
    E-statistics and test for multivariate independence (coef. I_n)
    Distance covariance and distance correlation: see dcov.c
 
-   Author:   Maria Rizzo <mrizzo @ bgnet.bgsu.edu>
+   Author:   Maria Rizzo <mrizzo at bgsu.edu>
    Created:  June 15, 2004  (development)
    Last Modified:  April 5, 2008
 */

@@ -1,7 +1,7 @@
 /*
    energy.c: energy package
 
-   Author:  Maria Rizzo <mrizzo @ bgnet.bgsu.edu>
+   Author:  Maria Rizzo <mrizzo at bgsu.edu>
    Created: 4 Jan 2004
    Updated: 2 April 2008    some functions moved to utilities.c
    Updated: 25 August 2016  mvnEstat converted to c++ in mvnorm.cpp
