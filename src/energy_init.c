@@ -23,6 +23,7 @@ extern SEXP _energy_projection(SEXP, SEXP);
 extern SEXP _energy_U_center(SEXP);
 extern SEXP _energy_U_product(SEXP, SEXP);
 extern SEXP _energy_Btree_sum(SEXP, SEXP);
+extern SEXP _energy_kgroups_start(SEXP, SEXP, SEXP, SEXP, SEXP);
 
 static const R_CMethodDef CEntries[] = {
   {"dCOV",         (DL_FUNC) &dCOV,         7},
@@ -44,6 +45,7 @@ static const R_CallMethodDef CallEntries[] = {
   {"_energy_U_center",       (DL_FUNC) &_energy_U_center,      1},
   {"_energy_U_product",      (DL_FUNC) &_energy_U_product,     2},
   {"_energy_Btree_sum",      (DL_FUNC) &_energy_Btree_sum,     2},
+  {"_energy_kgroups_start",  (DL_FUNC) &_energy_kgroups_start, 5},
   {NULL, NULL, 0}
 };
 
