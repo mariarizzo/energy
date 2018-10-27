@@ -137,8 +137,8 @@ dcov2d<- function(x, y, type=c("V", "U"), all.stats=FALSE) {
   ranky1 <- SRy1$r     #rank(y1)
 
   ## the partial sums in the formula g_1
-  psumsy1 <- (cumsum(z1[iy1]) - z1[iy1])[ranky1]
-  psumsx1 <- cumsum(z1) - z1
+  psumsy1 <- (cumsum(as.numeric(z1[iy1])) - z1[iy1])[ranky1]
+  psumsx1 <- cumsum(as.numeric(z1)) - z1
 
   gamma1 <- Btree_sum(y=ranky1, z=z1)   #y1 replaced by rank(y1)
   g <- sum(z1) - z1 - 2 * psumsx1 - 2 * psumsy1 + 4 * gamma1
@@ -156,7 +156,7 @@ dcov2d<- function(x, y, type=c("V", "U"), all.stats=FALSE) {
   n <- length(x)
   r <- Sx$r  #ranks
   z <- Sx$x  #ordered sample x
-  psums1 <- (cumsum(z) - z)[r]
+  psums1 <- (cumsum(as.numeric(z)) - z)[r]
   (2*(r-1)-n)*x + sum(x) - 2*psums1
 }
 
