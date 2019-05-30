@@ -4,6 +4,7 @@ importFrom(Rcpp, evalCpp)
 importFrom("stats", "as.dist", "dist", "dnorm", "hclust", "model.matrix",
            "pnorm", "pt", "rnorm", "rpois", "var")
 importFrom(boot, boot)
+importFrom(CompQuadForm, imhof)
 
 export(
   bcdcor,
@@ -16,8 +17,10 @@ export(
   dcor.test,
   dcor.ttest,
   dcov,
-  dcov.test,
   dcov2d,
+  dcov.test,
+  dcor2d.test,
+  dcov2d.test,
   dcovU,
   dcovU_stats,
   disco,

@@ -29,29 +29,32 @@ The unbiased (squared) dcov is documented in \code{dcovU}, for multivariate data
 For details about inference with distance covariance see \code{dcov}, 
 \code{dcor}, \code{dcov.test} and \code{dcor.test}. 
 
-Note that dCor, as originally defined, is the square root of the V-statistic. That is, \eqn{V_n(x,y)=dCor(x,y)^2}{V_n(x,y)=dCor(x,y)^2}. The V-statistic and U-statistic correspond to squared dCor and bias-corrected squared dCor (bcdcor), respectively. The test statistic is \eqn{n V_n}{n V_n} or \eqn{n U_n}{n U_n}.
-
 The argument \code{m} specifies the number of eigenvalues estimated for computing the asymptotic null distribution of the test statistic. Use the permutation test \code{dcov.test} (or \code{dcor.test}) if n < 200.   
 }
 \value{
+By default, \code{dcov2d} returns the V-statistic \eqn{V_n = dCov_n^2(x, y)}{V_n = dCov_n^2(x, y)}, and if type="U", it returns the U-statistic, unbiased for \eqn{dCov^2(X, Y)}{dCov^2(X,Y)}. The argument all.stats=TRUE is used internally when the function is called from \code{dcor2d}. 
 
-By default, \code{dcov2} returns the V-statistic \eqn{V_n = dCov_n^2(x, y)}{V_n = dCov_n^2(x, y)}, and if type="U", it returns the U-statistic, unbiased for \eqn{\mathcal V(X, Y)}. The argument all.stats=TRUE is used internally when the function is called from \code{dcor2}. 
+By default, \code{dcor2d} returns \eqn{dCor_n^2(x, y)}{dCor_n^2(x, y)}, and if type="U", it returns a bias-corrected estimator of squared dcor equivalent to \code{bcdcor}.
 
-By default, \code{dcor2d} returns \eqn{dCor_n^2(x, y)}{dCor_n^2(x, y)}, and if type="U", it returns a bias-corrected estimator of squared dcor.
+\code{dcov2d.test} and \code{dcor2d.test} return a list with class \code{htest} containing
+   \item{     method}{ description of test}
+   \item{  statistic}{ observed value of the test statistic}
+   \item{   estimate}{ V_n, R_n (squared dcor) or U_n, R_n (bcdcor) }
+   \item{    p.value}{ approximate p-value of the test}
+   \item{  data.name}{ description of data}
 
-\code{dcor2d} and \code{dcov2d} do not store the distance matrices so these functions are helpful when sample size is large, the data is bivariate. 
+These functions do not store the distance matrices so they are helpful when sample size is large and the data is bivariate. 
 }
 \note{
-Unbiased distance covariance (SR2014) is equivalent to the U-statistic 
-estimator of \eqn{\mathrm{dCov^2}}{dCov^2}. Since \code{dcovU} is an
-unbiased statistic, it can be negative and its square root would be 
-complex so the square root of the U-statistic is not applied.
-For the original distance covariance test of independence (SRB2007,
-SR2009), the test statistic was the V-statistic \eqn{V_n}{V_n}.
-Similarly, \code{bcdcor} is bias-corrected, so we do not take the
-square root.
+The U-statistic \eqn{U_n}{U_n} can be negative in the lower tail so 
+the square root of the U-statistic is not applied.
+Similarly, \code{dcor2d(x, y, "U")} is bias-corrected and can be
+negative in the lower tail, so we do not take the
+square root. The original definitions of dCov and dCor 
+(SRB2007, SR2009) were based on V-statistics, which are non-negative,
+and defined using the square root of V-statistics.
 
-In Huo and Szekely (2016) an incorrect formula for "bias-corrected" distance correlation is suggested. That formula takes the root of \eqn{|U_n|}{|U_n|} before applying the sign, which introduces more bias than the original dCor definition, is not order-preserving, and should never be used.  
+It has been suggested that instead of taking the square root of the U-statistic, one could take the root of \eqn{|U_n|}{|U_n|} before applying the sign, but that introduces more bias than the original dCor, and should never be used. 
 }
 \author{ Maria L. Rizzo \email{mrizzo @ bgsu.edu} and
 Gabor J. Szekely
