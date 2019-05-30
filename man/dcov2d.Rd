@@ -56,6 +56,11 @@ distance covariance. Technometrics, 58(4), 435-447.
 \author{ Maria L. Rizzo \email{mrizzo @ bgsu.edu} and
 Gabor J. Szekely
 }
+\seealso{
+ \code{\link{dcov2d.test}} 
+ 
+ \code{\link{dcov}} \code{\link{dcov.test}}  \code{\link{dcor}} \code{\link{dcor.test}} (multivariate statistics and permutation test) 
+}
 \examples{
   \donttest{
     ## these are equivalent, but 2d is faster for n > 50
