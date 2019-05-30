@@ -47,6 +47,23 @@ dcov2d<- function(x, y, type=c("V", "U"), all.stats=FALSE) {
   return (rval)
 }
 
+
+dcor2d.test <- function(x, y, type=c("V", "U"), m=200) {
+  ## O(n log n) computation n*dcov^2 (n V) for (x, y) in R^2 only
+  ## this is a test for big N based on the limit distribution
+  ## m is the number of eigenvalues, m>=200 recommended
+  ## arguments are checked in dcov2d.test
+  ## 
+  m <- min(m, length(x))
+  if (m < 100) {
+    warning("sample size is too small; permutation test applied")
+    return(dcor.test(x, y, R=999))
+  }
+  dctest <- dcov2d.test(x, y, type, m)
+  dctest$method <- "dCor independence test"
+  return(dctest)
+}
+
 dcov2d.test <- function(x, y, type=c("V", "U"), m=200) {
   ## O(n log n) computation n*dcov^2 (n V) for (x, y) in R^2 only
   ## this is a test for big N based on the limit distribution
@@ -93,7 +110,6 @@ dcov2d.test <- function(x, y, type=c("V", "U"), m=200) {
   }
 
   e <- list(
-    call = match.call(),
     statistic = statistic,
     method = "dCov independence test",
     estimate = estimate,
