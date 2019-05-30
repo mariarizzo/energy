@@ -52,8 +52,6 @@ static const R_CallMethodDef CallEntries[] = {
   {"_energy_kgroups_start",  (DL_FUNC) &_energy_kgroups_start, 5},
   {"_energy_calc_dist",      (DL_FUNC) &_energy_calc_dist,     1},
   {"_energy_calcH2d",        (DL_FUNC) &_energy_calcH2d,       7},
-  {"_energy_dCov2",          (DL_FUNC) &_energy_dCov2,         3},
-  {"_energy_dCov2stats",     (DL_FUNC) &_energy_dCov2stats,    3},
   {NULL, NULL, 0}
 };
 
