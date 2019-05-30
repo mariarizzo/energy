@@ -47,11 +47,103 @@ dcov2d<- function(x, y, type=c("V", "U"), all.stats=FALSE) {
   return (rval)
 }
 
+dcov2d.test <- function(x, y, type=c("V", "U"), m=200) {
+  ## O(n log n) computation n*dcov^2 (n V) for (x, y) in R^2 only
+  ## this is a test for big N based on the limit distribution
+  ## m is the number of eigenvalues, m>=200 recommended
+  ## 
+  
+  if (!is.vector(x) || !is.vector(y)) {
+    if (NCOL(x) > 1 || NCOL(y) > 1)
+      stop("this method is only for univariate x and y")
+  }
+  x <- as.vector(x)
+  y <- as.vector(y)
+  n <- length(x)
+  if (n != length(y))
+    stop("sample sizes must agree")
+  m <- min(m, n)
+  if (m < 100) {
+    warning("sample size is too small; permutation test applied")
+    return(dcov.test(x, y, R=999))
+  }
+  
+  dataname <- paste("Bivariate sample size ", n)
+  type <- match.arg(type)
+  rval <- .dcov2d_eigen(x, y, m)
+  p.value <- rval$p.value
+  if (type == "U") {
+    stats <- dcov2d(x, y, "U", all.stats=TRUE)
+  } else {
+    stats <- dcov2d(x, y, "V", all.stats=TRUE)
+  }
+  stat <- stats[1]
+  statistic <- n * stat
+  denom <- stats[2] * stats[3]
+  R <- 0.0
+  if (denom > .Machine$double.eps ^ .25)
+    R <- stat / sqrt(denom)
+  estimate <- c(stat, R)
+  if (type != "U") {
+    names(statistic) <- "n V_n"
+    names(estimate) <- c("V-statistic", "R (dCor^2)")
+  } else {
+    names(statistic) <- "n U_n"
+    names(estimate) <- c("U-statistic", "R (bcdcor)")
+  }
+
+  e <- list(
+    call = match.call(),
+    statistic = statistic,
+    method = "dCov independence test",
+    estimate = estimate,
+    p.value = p.value,
+    n = n,
+    type = type, 
+    data.name = dataname)
+  class(e) <- "htest"
+  return(e)
+}
+
+.dcov2d_eigen<- function(x, y, m=200, tol=.Machine$double.eps^(.5)) {
+  ## return the p-value obtained by computing the kernel matrix and 
+  ## estimating eigenvalues for dcov V-statistic limit distribution
+  ## m is the number of eigenvalues and size of the subsample
+  n <- length(x)
+  I <- sample(n, m)
+
+  if (length(unique(x)) < n || length(unique(y) < n)) {
+    ## need ties.method="random" to handle discrete data
+    Fnx <- rank(x, ties.method="random") / n
+    Fny <- rank(y, ties.method="random") / n
+  } else {
+    Fnx <- rank(x) / n
+    Fny <- rank(y) / n
+  }
+  
+  Sums <- .dcovSums2d(Fnx, Fny, TRUE)
+  dCov2d <- Sums$S1/(n^2) - 2*Sums$S2/(n^3) + Sums$S3/(n^4)
+
+  meanA <- Sums$sumA / n^2
+  meanB <- Sums$sumB / n^2
+  rowmeansA <- Sums$rowsumsA / n
+  rowmeansB <- Sums$rowsumsB / n
+  H <- .calcH2d(Fnx, Fny, I, rowmeansA, rowmeansB, meanA, meanB)
+  ev <- eigen(H, symmetric=TRUE, only.values=TRUE)$values
+  ev <- ev[ev > .Machine$double.eps * 10]
+  V <- dCov2d
+  Q <- n * dCov2d
+  k <- (n-1)*(n-2)*(n-3)
+  U <- ((n^4)*V - (3*n-2)*Sums$S1 + 2*Sums$S2) / k
+  p <- CompQuadForm::imhof(Q, lambda=ev, epsabs=tol, epsrel=tol)$Qq  
+  return(list(V=V, U=U, p.value=p, H=H, lambda=ev))  
+}
+
 .dcovSums2d <- function(x, y, all.sums = FALSE) {
   ## compute the sums S1, S2, S3 of distances for dcov^2
   ## dCov^2 <- S1/d1 - 2 * S2/d2 + S3/d3  
   ## denominators differ for U-statistic, V-statisic
-  ## if all==TRUE, also return the sums needed for dVar
+  ## if all.sums==TRUE, also return sums for dVar and kernel 
   if (is.matrix(x) || is.matrix(y)) {
     if (ncol(x) > 1 || ncol(y) > 1)
       stop("Found multivariate (x,y) in .dcovSums2d, expecting bivariate")
@@ -79,14 +171,19 @@ dcov2d<- function(x, y, type=c("V", "U"), all.stats=FALSE) {
   S1 <- sum(x * y * g_1 + g_xy - x * g_y - y * g_x)
 
   L <- list(S1=S1, S2=S2, S3=S3, 
-            S1a=NA, S1b=NA, S2a=NA, S2b=NA, S3a=NA, S3b=NA)
+            S1a=NA, S1b=NA, S2a=NA, S2b=NA, S3a=NA, S3b=NA,
+            rowsumsA=NA, rowsumsB=NA, sumA=NA, sumB=NA)
   if (all.sums) {
     L$S1a <- 2 * n * (n-1) * var(x)
     L$S1b <- 2 * n * (n-1) * var(y)
-    L$S2a=sum(a.^2)
-    L$S2b=sum(b.^2)
-    L$S3a=a..^2
-    L$S3b=b..^2
+    L$S2a <- sum(a.^2)
+    L$S2b <- sum(b.^2)
+    L$S3a <- a..^2
+    L$S3b <- b..^2
+    L$rowsumsA <- a.
+    L$rowsumsB <- b.
+    L$sumA <- a..
+    L$sumB <- b..
   }
   return (L);
 }
@@ -152,11 +249,10 @@ dcov2d<- function(x, y, type=c("V", "U"), all.stats=FALSE) {
   ## Sx is a sortrank object usually pre-computed here
   ## x is the data vector, Sx$x is sort(x)
   if (is.null(Sx))
-    Sx <- sortrank(x)
+  Sx <- sortrank(x)
   n <- length(x)
   r <- Sx$r  #ranks
   z <- Sx$x  #ordered sample x
   psums1 <- (cumsum(as.numeric(z)) - z)[r]
   (2*(r-1)-n)*x + sum(x) - 2*psums1
 }
-
