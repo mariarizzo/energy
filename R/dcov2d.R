@@ -48,23 +48,23 @@ dcov2d<- function(x, y, type=c("V", "U"), all.stats=FALSE) {
 }
 
 
-dcor2d.test <- function(x, y, type=c("V", "U"), m=200) {
+dcor2d.test <- function(x, y, m=250) {
   ## O(n log n) computation n*dcov^2 (n V) for (x, y) in R^2 only
   ## this is a test for big N based on the limit distribution
-  ## m is the number of eigenvalues, m>=200 recommended
+  ## m is the number of eigenvalues, m>200 recommended
   ## arguments are checked in dcov2d.test
   ## 
   m <- min(m, length(x))
-  if (m < 100) {
+  if (m < 200) {
     warning("sample size is too small; permutation test applied")
     return(dcor.test(x, y, R=999))
   }
-  dctest <- dcov2d.test(x, y, type, m)
+  dctest <- dcov2d.test(x, y, m)
   dctest$method <- "dCor independence test"
   return(dctest)
 }
 
-dcov2d.test <- function(x, y, type=c("V", "U"), m=200) {
+dcov2d.test <- function(x, y, m=250) {
   ## O(n log n) computation n*dcov^2 (n V) for (x, y) in R^2 only
   ## this is a test for big N based on the limit distribution
   ## m is the number of eigenvalues, m>=200 recommended
@@ -80,20 +80,15 @@ dcov2d.test <- function(x, y, type=c("V", "U"), m=200) {
   if (n != length(y))
     stop("sample sizes must agree")
   m <- min(m, n)
-  if (m < 100) {
+  if (m < 200) {
     warning("sample size is too small; permutation test applied")
     return(dcov.test(x, y, R=999))
   }
   
   dataname <- paste("Bivariate sample size ", n)
-  type <- match.arg(type)
   rval <- .dcov2d_eigen(x, y, m)
   p.value <- rval$p.value
-  if (type == "U") {
-    stats <- dcov2d(x, y, "U", all.stats=TRUE)
-  } else {
-    stats <- dcov2d(x, y, "V", all.stats=TRUE)
-  }
+  stats <- dcov2d(x, y, "V", all.stats=TRUE)
   stat <- stats[1]
   statistic <- n * stat
   denom <- stats[2] * stats[3]
@@ -101,13 +96,8 @@ dcov2d.test <- function(x, y, type=c("V", "U"), m=200) {
   if (denom > .Machine$double.eps ^ .25)
     R <- stat / sqrt(denom)
   estimate <- c(stat, R)
-  if (type != "U") {
-    names(statistic) <- "n V_n"
-    names(estimate) <- c("V-statistic", "R (dCor^2)")
-  } else {
-    names(statistic) <- "n U_n"
-    names(estimate) <- c("U-statistic", "R (bcdcor)")
-  }
+  names(statistic) <- "n V_n"
+  names(estimate) <- c("V-statistic", "R (dCor^2)")
 
   e <- list(
     statistic = statistic,
@@ -115,44 +105,39 @@ dcov2d.test <- function(x, y, type=c("V", "U"), m=200) {
     estimate = estimate,
     p.value = p.value,
     n = n,
-    type = type, 
     data.name = dataname)
   class(e) <- "htest"
   return(e)
 }
 
-.dcov2d_eigen<- function(x, y, m=200, tol=.Machine$double.eps^(.5)) {
+.dcov2d_eigen<- function(x, y, m=250, tol=.Machine$double.eps^(.5)) {
   ## return the p-value obtained by computing the kernel matrix and 
   ## estimating eigenvalues for dcov V-statistic limit distribution
   ## m is the number of eigenvalues and size of the subsample
   n <- length(x)
-  I <- sample(n, m)
-
-  if (length(unique(x)) < n || length(unique(y) < n)) {
-    ## need ties.method="random" to handle discrete data
-    Fnx <- rank(x, ties.method="random") / n
-    Fny <- rank(y, ties.method="random") / n
+  if (m < n) {
+    I <- sample(n, m)
   } else {
-    Fnx <- rank(x) / n
-    Fny <- rank(y) / n
+    I <- 1:n
   }
   
-  Sums <- .dcovSums2d(Fnx, Fny, TRUE)
+  Sums <- .dcovSums2d(x, y, TRUE)
   dCov2d <- Sums$S1/(n^2) - 2*Sums$S2/(n^3) + Sums$S3/(n^4)
 
-  meanA <- Sums$sumA / n^2
-  meanB <- Sums$sumB / n^2
-  rowmeansA <- Sums$rowsumsA / n
-  rowmeansB <- Sums$rowsumsB / n
-  H <- .calcH2d(Fnx, Fny, I, rowmeansA, rowmeansB, meanA, meanB)
+  meanA <- Sums$sumA / (n*(n-1))
+  meanB <- Sums$sumB / (n*(n-1))
+  rowmeansA <- Sums$rowsumsA / (n-1)
+  rowmeansB <- Sums$rowsumsB / (n-1)
+
+  H <- .calcH2d(x, y, I, rowmeansA, rowmeansB, meanA, meanB) 
   ev <- eigen(H, symmetric=TRUE, only.values=TRUE)$values
   ev <- ev[ev > .Machine$double.eps * 10]
   V <- dCov2d
-  Q <- n * dCov2d
   k <- (n-1)*(n-2)*(n-3)
-  U <- ((n^4)*V - (3*n-2)*Sums$S1 + 2*Sums$S2) / k
-  p <- CompQuadForm::imhof(Q, lambda=ev, epsabs=tol, epsrel=tol)$Qq  
-  return(list(V=V, U=U, p.value=p, H=H, lambda=ev))  
+  #U <- ((n^4)*V - (3*n-2)*Sums$S1 + 2*Sums$S2) / k
+  Q <- n * dCov2d 
+  p <- CompQuadForm::imhof(Q, lambda=ev, epsabs=tol, epsrel=tol)$Qq
+  return(list(V=V, p.value=p, H=H, lambda=ev))  
 }
 
 .dcovSums2d <- function(x, y, all.sums = FALSE) {
