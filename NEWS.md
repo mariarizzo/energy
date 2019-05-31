@@ -2,8 +2,8 @@
 
 *  User level changes:
      - dcov2d.test() provides an O(n log n) test for the V-statistic 
-       or U-statistic of dcov2d() (for bivariate (x,y)).  
-     - dcor2d.test() provides an O(n log n) test for the statistics  
+       dcov2d() (for bivariate (x,y)).  
+     - dcor2d.test() provides an O(n log n) test for the V-statistic
        dcor2d() (for bivariate (x,y)).  
 
 *  Internal changes:
@@ -18,7 +18,7 @@
        number k classes by energy distance criterion, analogous to the k 
        classes of the k-means algorithm.
      - dcov2d and dcor2d: (new) O(n log n) methods to compute the
-       squared U or V statistics for real x and y 
+       U or V statistics for real x and y 
      - sortrank() function added (a utility)
      
 *  Internal changes:

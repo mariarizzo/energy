@@ -1,7 +1,7 @@
 Package: energy
 Title: E-Statistics: Multivariate Inference via the Energy of Data
 Version: 1.7-6
-Date: 2019-05-30
+Date: 2019-05-31
 Authors@R: c(
     person("Maria", "Rizzo", , "mrizzo@bgsu.edu", c("aut", "cre")),
     person("Gabor", "Szekely", , , "aut"))
