@@ -13,8 +13,8 @@ store the distance matrices, so they are suitable for large samples.
 \usage{
 dcor2d(x, y, type = c("V", "U"))
 dcov2d(x, y, type = c("V", "U"), all.stats = FALSE)
-dcov2d.test(x, y, type=c("V","U"), m=200)
-dcor2d.test(x, y, type=c("V","U"), m=200)
+dcov2d.test(x, y, m=250)
+dcor2d.test(x, y, m=250)
 }
 \arguments{
   \item{x}{ numeric vector}
@@ -29,7 +29,7 @@ The unbiased (squared) dcov is documented in \code{dcovU}, for multivariate data
 For details about inference with distance covariance see \code{dcov}, 
 \code{dcor}, \code{dcov.test} and \code{dcor.test}. 
 
-The argument \code{m} specifies the number of eigenvalues estimated for computing the asymptotic null distribution of the test statistic. Use the permutation test \code{dcov.test} (or \code{dcor.test}) if n < 200.   
+The argument \code{m} specifies the number of eigenvalues estimated for computing the asymptotic null distribution of the test statistic. Use the permutation test \code{dcov.test} (or \code{dcor.test}) if n < 200. Typically m = 250 is large enough for accurate upper tail probabilities.   
 }
 \value{
 By default, \code{dcov2d} returns the V-statistic \eqn{V_n = dCov_n^2(x, y)}{V_n = dCov_n^2(x, y)}, and if type="U", it returns the U-statistic, unbiased for \eqn{dCov^2(X, Y)}{dCov^2(X,Y)}. The argument all.stats=TRUE is used internally when the function is called from \code{dcor2d}. 
@@ -39,7 +39,7 @@ By default, \code{dcor2d} returns \eqn{dCor_n^2(x, y)}{dCor_n^2(x, y)}, and if t
 \code{dcov2d.test} and \code{dcor2d.test} return a list with class \code{htest} containing
    \item{     method}{ description of test}
    \item{  statistic}{ observed value of the test statistic}
-   \item{   estimate}{ V_n, R_n (squared dcor) or U_n, R_n (bcdcor) }
+   \item{   estimate}{ V_n, R_n (squared dcor)}
    \item{    p.value}{ approximate p-value of the test}
    \item{  data.name}{ description of data}
 
