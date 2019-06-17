@@ -1,6 +1,6 @@
 mvnorm.etest <- function(x, R) {
   # parametric bootstrap E-test for multivariate normality
-  if (is.vector(x)) {
+  if (is.vector(x) || NCOL(x)==1) {
     n <- length(x)
     d <- 1
     bootobj <- boot::boot(x, statistic = normal.e, R = R, sim = "parametric",
@@ -54,7 +54,7 @@ normal.e <- function(x) {
   n <- length(y)
   if (y[1] == y[n])
     return(NA)
-  y <- scale(y)
+  y <- (x - mean(x)) / sd(x)
   K <- seq(1 - n, n - 1, 2)
   return(2 * (sum(2 * y * pnorm(y) + 2 * dnorm(y)) -
                 n/sqrt(pi) - mean(K * y)))
