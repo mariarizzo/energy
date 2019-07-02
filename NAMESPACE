@@ -19,8 +19,6 @@ export(
   dcov,
   dcov2d,
   dcov.test,
-  dcor2d.test,
-  dcov2d.test,
   dcovU,
   dcovU_stats,
   disco,

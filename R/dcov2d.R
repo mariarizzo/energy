@@ -48,98 +48,6 @@ dcov2d<- function(x, y, type=c("V", "U"), all.stats=FALSE) {
 }
 
 
-dcor2d.test <- function(x, y, m=250) {
-  ## O(n log n) computation n*dcov^2 (n V) for (x, y) in R^2 only
-  ## this is a test for big N based on the limit distribution
-  ## m is the number of eigenvalues, m>200 recommended
-  ## arguments are checked in dcov2d.test
-  ## 
-  m <- min(m, length(x))
-  if (m < 200) {
-    warning("sample size is too small; permutation test applied")
-    return(dcor.test(x, y, R=999))
-  }
-  dctest <- dcov2d.test(x, y, m)
-  dctest$method <- "dCor independence test"
-  return(dctest)
-}
-
-dcov2d.test <- function(x, y, m=250) {
-  ## O(n log n) computation n*dcov^2 (n V) for (x, y) in R^2 only
-  ## this is a test for big N based on the limit distribution
-  ## m is the number of eigenvalues, m>=200 recommended
-  ## 
-  
-  if (!is.vector(x) || !is.vector(y)) {
-    if (NCOL(x) > 1 || NCOL(y) > 1)
-      stop("this method is only for univariate x and y")
-  }
-  x <- as.vector(x)
-  y <- as.vector(y)
-  n <- length(x)
-  if (n != length(y))
-    stop("sample sizes must agree")
-  m <- min(m, n)
-  if (m < 200) {
-    warning("sample size is too small; permutation test applied")
-    return(dcov.test(x, y, R=999))
-  }
-  
-  dataname <- paste("Bivariate sample size ", n)
-  rval <- .dcov2d_eigen(x, y, m)
-  p.value <- rval$p.value
-  stats <- dcov2d(x, y, "V", all.stats=TRUE)
-  stat <- stats[1]
-  statistic <- n * stat
-  denom <- stats[2] * stats[3]
-  R <- 0.0
-  if (denom > .Machine$double.eps ^ .25)
-    R <- stat / sqrt(denom)
-  estimate <- c(stat, R)
-  names(statistic) <- "n V_n"
-  names(estimate) <- c("V-statistic", "R (dCor^2)")
-
-  e <- list(
-    statistic = statistic,
-    method = "dCov independence test",
-    estimate = estimate,
-    p.value = p.value,
-    n = n,
-    data.name = dataname)
-  class(e) <- "htest"
-  return(e)
-}
-
-.dcov2d_eigen<- function(x, y, m=250, tol=.Machine$double.eps^(.5)) {
-  ## return the p-value obtained by computing the kernel matrix and 
-  ## estimating eigenvalues for dcov V-statistic limit distribution
-  ## m is the number of eigenvalues and size of the subsample
-  n <- length(x)
-  if (m < n) {
-    I <- sample(n, m)
-  } else {
-    I <- 1:n
-  }
-  
-  Sums <- .dcovSums2d(x, y, TRUE)
-  dCov2d <- Sums$S1/(n^2) - 2*Sums$S2/(n^3) + Sums$S3/(n^4)
-
-  meanA <- Sums$sumA / (n*(n-1))
-  meanB <- Sums$sumB / (n*(n-1))
-  rowmeansA <- Sums$rowsumsA / (n-1)
-  rowmeansB <- Sums$rowsumsB / (n-1)
-
-  H <- .calcH2d(x, y, I, rowmeansA, rowmeansB, meanA, meanB) 
-  ev <- eigen(H, symmetric=TRUE, only.values=TRUE)$values
-  ev <- ev[ev > .Machine$double.eps * 10]
-  V <- dCov2d
-  k <- (n-1)*(n-2)*(n-3)
-  #U <- ((n^4)*V - (3*n-2)*Sums$S1 + 2*Sums$S2) / k
-  Q <- n * dCov2d 
-  p <- CompQuadForm::imhof(Q, lambda=ev, epsabs=tol, epsrel=tol)$Qq
-  return(list(V=V, p.value=p, H=H, lambda=ev))  
-}
-
 .dcovSums2d <- function(x, y, all.sums = FALSE) {
   ## compute the sums S1, S2, S3 of distances for dcov^2
   ## dCov^2 <- S1/d1 - 2 * S2/d2 + S3/d3  
@@ -242,7 +150,6 @@ dcov2d.test <- function(x, y, m=250) {
   g <- sum(z1) - z1 - 2 * psumsx1 - 2 * psumsy1 + 4 * gamma1
   g <- g[rankx]
 }
-
 
 .rowSumsDist1 <- function(x, Sx = NULL) {
   ## for univariate samples, equivalent to rowSums(as.matrix(dist(x)))

@@ -1,19 +1,8 @@
-# energy 1.7-6
-
-*  User level changes:
-     - dcov2d.test() provides an O(n log n) test for the V-statistic 
-       dcov2d() (for bivariate (x,y)).  
-     - dcor2d.test() provides an O(n log n) test for the V-statistic
-       dcor2d() (for bivariate (x,y)).  
-
-*  Internal changes:
-     - imports(CompQuadForm, imhof) 
-     - internal functions added to support dcov2d.test implementation
-       using estimated eigenvalues of the limit distribution
-
 # energy 1.7-5
 
 *  User level changes:
+       dcov2d() (for bivariate (x,y)).  
+       dcor2d() (for bivariate (x,y)).  
      - kgroups: (new) implements energy clustering for a specified 
        number k classes by energy distance criterion, analogous to the k 
        classes of the k-means algorithm.

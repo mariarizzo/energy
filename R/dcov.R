@@ -1,12 +1,12 @@
 dcov.test <-
 function(x, y, index=1.0, R=NULL) {
     ## check for valid number of replicates R
-    method <- "Specify the number of replicates R (R > 0) to perform the test of independence"
+    method <- "Specify the number of replicates R (R > 0) for an independence test"
     if (! is.null(R)) {
       R <- floor(R)
       if (R < 1) R <- 0
       if (R > 0) 
-        method <- "dCov test of independence"
+        method <- "dCov independence test (permutation test)"
     } else {
       R <- 0
     }
@@ -74,6 +74,8 @@ dcor.test <-
     
     # RESULT$estimates = [dCov,dCor,dVar(x),dVar(y)]
     # dVar are invariant under permutation of sample indices
+    estimates = RESULT$estimates
+    names(estimates) <- c("dCov", "dCor", "dVar(X)", "dVar(Y)")
     
     DCORteststat <- RESULT$estimates[2]
     dvarX <- RESULT$estimates[3]
@@ -86,12 +88,12 @@ dcor.test <-
     
     names(DCORteststat) <- "dCor"
     dataname <- paste("index ", index, ", replicates ", R, sep="")
-    method <- ifelse(R > 0, "dCor test of independence", 
-                     "Specify the number of replicates R>0 to perform the test of independence")
+    method <- ifelse(R > 0, "dCor independence test (permutation test)", 
+                     "Specify the number of replicates R>0 for an independence test")
     e <- list(
       method = method,
       statistic = DCORteststat,
-      estimates = RESULT$estimates,
+      estimates = estimates,
       p.value = p.value,
       replicates = DCORreps,
       n = n,
