@@ -66,7 +66,7 @@ store the distance matrices, so they are suitable for large samples." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">energy</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.7.6</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.7.5</span>
       </span>
     </div>
 
@@ -120,9 +120,7 @@ store the distance matrices, so they are suitable for large samples.</p>
     </div>
 
     <pre class="usage"><span class='fu'>dcor2d</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"V"</span>, <span class='st'>"U"</span>))
-<span class='fu'>dcov2d</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"V"</span>, <span class='st'>"U"</span>), <span class='kw'>all.stats</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
-<span class='fu'>dcov2d.test</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='kw'>m</span><span class='kw'>=</span><span class='fl'>250</span>)
-<span class='fu'>dcor2d.test</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='kw'>m</span><span class='kw'>=</span><span class='fl'>250</span>)</pre>
+<span class='fu'>dcov2d</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"V"</span>, <span class='st'>"U"</span>), <span class='kw'>all.stats</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -143,32 +141,17 @@ store the distance matrices, so they are suitable for large samples.</p>
       <th>all.stats</th>
       <td><p>logical</p></td>
     </tr>
-    <tr>
-      <th>m</th>
-      <td><p>number of eigenvalues</p></td>
-    </tr>
     </table>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>The unbiased (squared) dcov is documented in <code>dcovU</code>, for multivariate data in arbitrary, not necessarily equal dimensions. <code>dcov2d</code> and <code>dcor2d</code> provide a faster O(n log n) algorithm for bivariate (x, y) only (X and Y are real-valued random vectors). The O(n log n) algorithm was proposed by Huo and Szekely (2016). The algorithm is faster above a certain sample size n. It does not store the distance matrix so the sample size can be very large. An O(n log n) test based on the asymptotic distribution of \(n V_n\) is provided by <code>dcov2d.test</code> and <code>dcor2d.test</code>.</p>
-<p>For details about inference with distance covariance see <code>dcov</code>, 
-<code>dcor</code>, <code>dcov.test</code> and <code>dcor.test</code>.</p>
-<p>The argument <code>m</code> specifies the number of eigenvalues estimated for computing the asymptotic null distribution of the test statistic. Use the permutation test <code>dcov.test</code> (or <code>dcor.test</code>) if n &lt; 200. Typically m = 250 is large enough for accurate upper tail probabilities.</p>
+    <p>The unbiased (squared) dcov is documented in <code>dcovU</code>, for multivariate data in arbitrary, not necessarily equal dimensions. <code>dcov2d</code> and <code>dcor2d</code> provide a faster O(n log n) algorithm for bivariate (x, y) only (X and Y are real-valued random vectors). The O(n log n) algorithm was proposed by Huo and Szekely (2016). The algorithm is faster above a certain sample size n. It does not store the distance matrix so the sample size can be very large.</p>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>By default, <code>dcov2d</code> returns the V-statistic \(V_n = dCov_n^2(x, y)\), and if type="U", it returns the U-statistic, unbiased for \(dCov^2(X, Y)\). The argument all.stats=TRUE is used internally when the function is called from <code>dcor2d</code>.</p>
 <p>By default, <code>dcor2d</code> returns \(dCor_n^2(x, y)\), and if type="U", it returns a bias-corrected estimator of squared dcor equivalent to <code>bcdcor</code>.</p>
-<p><code>dcov2d.test</code> and <code>dcor2d.test</code> return a list with class <code>htest</code> containing</p>
-<dt>     method</dt><dd><p>description of test</p></dd>
-   <dt>  statistic</dt><dd><p>observed value of the test statistic</p></dd>
-   <dt>   estimate</dt><dd><p>V_n, R_n (squared dcor)</p></dd>
-   <dt>    p.value</dt><dd><p>approximate p-value of the test</p></dd>
-   <dt>  data.name</dt><dd><p>description of data</p></dd>
-
-These functions do not store the distance matrices so they are helpful when sample size is large and the data is bivariate. 
-
+<p>These functions do not store the distance matrices so they are helpful when sample size is large and the data is bivariate.</p>
     
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
@@ -206,37 +189,22 @@ distance covariance. Technometrics, 58(4), 435-447.</p>
     <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/all.equal'>all.equal</a></span>(<span class='fu'><a href='dcov.html'>dcov</a></span>(<span class='no'>x</span>, <span class='no'>y</span>)^<span class='fl'>2</span>, <span class='fu'>dcov2d</span>(<span class='no'>x</span>, <span class='no'>y</span>), <span class='kw'>check.attributes</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'>    <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/all.equal'>all.equal</a></span>(<span class='fu'><a href='dcovu.html'>bcdcor</a></span>(<span class='no'>x</span>, <span class='no'>y</span>), <span class='fu'>dcor2d</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='st'>"U"</span>), <span class='kw'>check.attributes</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'>
     <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/Lognormal'>rlnorm</a></span>(<span class='fl'>400</span>)
     <span class='no'>y</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/Exponential'>rexp</a></span>(<span class='fl'>400</span>)
-    <span class='fu'><a href='dcov.test.html'>dcov.test</a></span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='kw'>R</span><span class='kw'>=</span><span class='fl'>199</span>)  <span class='co'>#permutation test</span></div><div class='output co'>#&gt; 
-#&gt; 	dCov test of independence
+    <span class='fu'><a href='dcov.test.html'>dcov.test</a></span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='kw'>R</span><span class='kw'>=</span><span class='fl'>199</span>)    <span class='co'>#permutation test</span></div><div class='output co'>#&gt; 
+#&gt; 	dCov independence test (permutation test)
 #&gt; 
 #&gt; data:  index 1, replicates 199
 #&gt; nV^2 = 1.1615, p-value = 0.635
 #&gt; sample estimates:
 #&gt;       dCov 
 #&gt; 0.05388702 
-#&gt; </div><div class='input'>    <span class='fu'>dcov2d.test</span>(<span class='no'>x</span>, <span class='no'>y</span>)       <span class='co'>#large sample test</span></div><div class='output co'>#&gt; 
-#&gt; 	dCov independence test
-#&gt; 
-#&gt; data:  Bivariate sample size  400
-#&gt; n V_n = 1.1615, p-value = 0.5648
-#&gt; sample estimates:
-#&gt; V-statistic  R (dCor^2) 
-#&gt; 0.002903811 0.005639541 
 #&gt; </div><div class='input'>    <span class='fu'><a href='dcov.test.html'>dcor.test</a></span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='kw'>R</span><span class='kw'>=</span><span class='fl'>199</span>)</div><div class='output co'>#&gt; 
-#&gt; 	dCor test of independence
+#&gt; 	dCor independence test (permutation test)
 #&gt; 
 #&gt; data:  index 1, replicates 199
-#&gt; dCor = 0.075097, p-value = 0.61
+#&gt; dCor = 0.075097, p-value = 0.7
 #&gt; sample estimates:
-#&gt; [1] 0.05388702 0.07509687 0.97307879 0.52914741
-#&gt; </div><div class='input'>    <span class='fu'>dcor2d.test</span>(<span class='no'>x</span>, <span class='no'>y</span>)</div><div class='output co'>#&gt; 
-#&gt; 	dCor independence test
-#&gt; 
-#&gt; data:  Bivariate sample size  400
-#&gt; n V_n = 1.1615, p-value = 0.5509
-#&gt; sample estimates:
-#&gt; V-statistic  R (dCor^2) 
-#&gt; 0.002903811 0.005639541 
+#&gt;       dCov       dCor    dVar(X)    dVar(Y) 
+#&gt; 0.05388702 0.07509687 0.97307879 0.52914741 
 #&gt; </div><div class='input'>    </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

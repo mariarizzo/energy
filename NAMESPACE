@@ -2,7 +2,7 @@ useDynLib(energy, .registration=TRUE)
 
 importFrom(Rcpp, evalCpp)
 importFrom("stats", "as.dist", "dist", "dnorm", "hclust", "model.matrix",
-           "pnorm", "pt", "rnorm", "rpois", "var")
+           "pnorm", "pt", "rnorm", "rpois", "sd", "var")
 importFrom(boot, boot)
 importFrom(CompQuadForm, imhof)
 
