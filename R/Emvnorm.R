@@ -27,8 +27,6 @@ mvnorm.etest <- function(x, R) {
   e
 }
 
-
-
 mvnorm.e <- function(x) {
   # E-statistic for multivariate normality
   if (is.vector(x))
@@ -49,13 +47,59 @@ mvnorm.e <- function(x) {
 }
 
 normal.e <- function(x) {
+  ## Case 4: unknown parameters
   x <- as.vector(x)
-  y <- sort(x)
-  n <- length(y)
+  n <- length(x)
+  y <- (x - mean(x)) / sd(x)
+  y <- sort(y)
+  K <- seq(1 - n, n - 1, 2)
   if (y[1] == y[n])
     return(NA)
-  y <- (x - mean(x)) / sd(x)
-  K <- seq(1 - n, n - 1, 2)
   return(2 * (sum(2 * y * pnorm(y) + 2 * dnorm(y)) -
                 n/sqrt(pi) - mean(K * y)))
 }
+
+
+normal.test <- function(x, method=c("mc", "limit"), R) {
+  ## implements the test for for d=1 
+  ## Case 4: composite hypothesis
+  method <- match.arg(method)
+  if (method == "mc") {
+    ## Monte Carlo approach
+    if (missing(R)) R <- 0
+    return(mvnorm.etest(x, R=R))
+  }
+  
+  ## implement test using asymptotic distribution for p-value
+  if (!is.numeric(x) || (!is.vector(x) && NCOL(x) > 1)) {
+    warning("x must be a numeric vector")
+    return (NA)
+  } else {
+    x <- as.vector(x, mode="numeric")
+  }
+
+  n <- length(x)
+  t0 <- normal.e(x)
+  names(t0) <- "statistic"
+  
+  ## load pre-computed eigenvalues
+  EVnormal <- NULL
+  load("./data/EVnormal.rda")
+  ev <- EVnormal[, "Case4"]
+
+  if (requireNamespace("CompQuadForm", quietly=TRUE)) {
+    p <- CompQuadForm::imhof(t0, ev)$Qq
+      } else {
+        warning("limit distribution method requires CompQuadForm package for p-value")
+        p <- NA
+      }
+  estimate <- c(mean(x), sd(x))
+  names(estimate) <- c("mean", "sd")
+  e <- list(statistic = t0, p.value = p,
+            method = paste("Energy test of normality: limit distribution"),
+            estimate = estimate,
+            data.name = "Case 4: composite hypothesis, estimated parameters")
+  class(e) <- "htest"
+  e
+}
+
