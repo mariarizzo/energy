@@ -1,3 +1,11 @@
+# energy 1.7-6
+
+*  User level changes:
+     - normality.test (new) implements the energy test of univariate 
+       normality based on the null limit distribution for the composite 
+       hypothesis (estimated parameters). 
+     - dataset EVnormal (new) of eigenvalues for energy test of normality.
+
 # energy 1.7-5
 
 *  User level changes:
