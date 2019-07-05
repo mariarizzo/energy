@@ -7,8 +7,9 @@
  Performs the E-statistic (energy) test of multivariate or univariate normality.
 }
 \usage{
- mvnorm.etest(x, R)
- mvnorm.e(x)
+mvnorm.test(x, R)
+mvnorm.etest(x, R)
+mvnorm.e(x)
 }
 \arguments{
   \item{x}{ data matrix of multivariate sample, or univariate data vector}

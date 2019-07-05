@@ -33,8 +33,7 @@
 <meta property="og:title" content="Energy Test of Univariate Normality — normal.test" />
 
 <meta property="og:description" content="Performs the energy test of univariate normality
- for the composite hypothesis Case 4, estimated parameters,
- based on the limit distribution." />
+ for the composite hypothesis Case 4, estimated parameters." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -112,12 +111,12 @@
     <div class="ref-description">
     
     <p>Performs the energy test of univariate normality
- for the composite hypothesis Case 4, estimated parameters,
- based on the limit distribution.</p>
+ for the composite hypothesis Case 4, estimated parameters.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>normal.test</span>(<span class='no'>x</span>, <span class='kw'>method</span><span class='kw'>=</span><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"mc"</span>,<span class='st'>"limit"</span>), <span class='no'>R</span>)</pre>
+    <pre class="usage"><span class='fu'>normal.test</span>(<span class='no'>x</span>, <span class='kw'>method</span><span class='kw'>=</span><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"mc"</span>,<span class='st'>"limit"</span>), <span class='no'>R</span>)
+<span class='fu'>normal.e</span>(<span class='no'>x</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -138,11 +137,11 @@
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>If <code>method="mc"</code> this test returns <code>mvrnorm.etest(x, R)</code>,
-which applies the Monte Carlo approach.</p>
+    <p>If <code>method="mc"</code> this test function applies the parametric
+bootstrap method implemented in <code><a href='mvnorm-etest.html'>mvnorm.test</a></code>.</p>
 <p>If <code>method="limit"</code>, the p-value of the test is computed from 
-the asymptotic distribution 
-of the test statistic under the null hypothesis. The asymptotic 
+the asymptotic distribution of the test statistic under the null 
+hypothesis. The asymptotic 
 distribution is a quadratic form of centered Gaussian random variables, 
 which has the form
 $$\sum_{k=1}^\infty \lambda_k Z_k^2,$$
@@ -154,17 +153,26 @@ A p-value is computed using Imhof's method as implemented in the
 <p>Note that the "limit" method is intended for moderately large
 samples because it applies the asymptotic distribution.</p>
 <p>The energy test of normality was proposed
- and implemented by Szekely and Rizzo (2005). See <code><a href='mvnorm-etest.html'>mvnorm.etest</a></code>
+ and implemented by Szekely and Rizzo (2005). 
+ See <code><a href='mvnorm-etest.html'>mvnorm.test</a></code>
  for more details.</p>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>normal.test</code> returns a list with class <code>htest</code> containing</p>
+    <p><code>normal.e</code> returns the energy goodness-of-fit statistic for
+a univariate sample.</p>
+<p><code>normal.test</code> returns a list with class <code>htest</code> containing</p>
 <dt>statistic</dt><dd><p>observed value of the test statistic</p></dd>
  <dt>p.value</dt><dd><p>p-value of the test</p></dd>
  <dt>estimate</dt><dd><p>sample estimates: mean, sd</p></dd>
  <dt>data.name</dt><dd><p>description of data</p></dd>
 
+    
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p><code><a href='mvnorm-etest.html'>mvnorm.test</a></code> and <code><a href='mvnorm-etest.html'>mvnorm.e</a></code> for the
+  energy test of multivariate normality and the test statistic
+  for multivariate samples.</p></div>
     
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
@@ -180,12 +188,16 @@ Normal Variables, <em>Biometrika</em>, Volume 48, Issue 3/4,
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>  </div><span class='co'># NOT RUN {</span>
-  <span class='co'>## test a univariate sample for normality</span>
-  <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/Normal'>rnorm</a></span>(<span class='fl'>100</span>, <span class='fl'>0</span>, <span class='fl'>1</span>)
-  <span class='fu'>normal.test</span>(<span class='no'>x</span>, <span class='kw'>method</span><span class='kw'>=</span><span class='st'>"limit"</span>)
-
-<span class='co'># }</span></pre>
+    <pre class="examples"><div class='input'>  <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='no'>iris</span>[<span class='fl'>1</span>:<span class='fl'>50</span>, <span class='fl'>1</span>]
+  <span class='fu'>normal.e</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] 0.4650295</div><div class='input'>  <span class='fu'>normal.test</span>(<span class='no'>x</span>, <span class='kw'>R</span><span class='kw'>=</span><span class='fl'>199</span>)</div><div class='output co'>#&gt; 
+#&gt; 	Energy test of normality: estimated parameters
+#&gt; 
+#&gt; data:  x, sample size 50, dimension 1, replicates 199
+#&gt; E-statistic = 0.46503, p-value = 0.3367
+#&gt; sample estimates:
+#&gt;      mean        sd 
+#&gt; 5.0060000 0.3524897 
+#&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -195,6 +207,8 @@ Normal Variables, <em>Biometrika</em>, Volume 48, Issue 3/4,
       <li><a href="#details">Details</a></li>
 
       <li><a href="#value">Value</a></li>
+
+      <li><a href="#see-also">See also</a></li>
 
       <li><a href="#references">References</a></li>
       

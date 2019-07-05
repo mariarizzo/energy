@@ -7,8 +7,8 @@
  for the composite hypothesis Case 4, estimated parameters.
 }
 \usage{
- normal.test(x, method=c("mc","limit"), R)
- normal.e(x)
+normal.test(x, method=c("mc","limit"), R)
+normal.e(x)
 }
 \arguments{
   \item{x}{ univariate data vector}
