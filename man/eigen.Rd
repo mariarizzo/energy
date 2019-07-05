@@ -16,6 +16,7 @@
 Case 4 eigenvalues are used in the test function \code{normal.test}
 when \code{method=="limit"}.
 }
+\usage{data(EVnormal)}
 \format{Numeric matrix with 125 rows and 5 columns;
   column 1 is the index, and columns 2-5 are 
   the eigenvalues of Cases 1-4.}

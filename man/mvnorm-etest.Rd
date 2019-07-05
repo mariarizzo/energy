@@ -1,7 +1,7 @@
-\name{mvnorm.etest}
+\name{mvnorm.test}
+\alias{mvnorm.test}
 \alias{mvnorm.etest}
 \alias{mvnorm.e}
-\alias{normal.e}
 \title{E-statistic (Energy) Test of Multivariate Normality}
 \description{
  Performs the E-statistic (energy) test of multivariate or univariate normality.
@@ -9,7 +9,6 @@
 \usage{
  mvnorm.etest(x, R)
  mvnorm.e(x)
- normal.e(x)
 }
 \arguments{
   \item{x}{ data matrix of multivariate sample, or univariate data vector}
@@ -19,9 +18,10 @@
  If \code{x} is a matrix, each row is a multivariate observation. The
  data will be standardized to zero mean and identity covariance matrix
  using the sample mean vector and sample covariance matrix. If \code{x}
- is a vector, the univariate statistic \code{normal.e(x)} is returned.
+ is a vector, \code{mvnorm.e} returns the univariate statistic 
+ \code{normal.e(x)}.
  If the data contains missing values or the sample covariance matrix is
- singular, NA is returned.
+ singular, \code{mvnorm.e} returns NA. 
 
  The \eqn{\mathcal{E}}{E}-test of multivariate normality was proposed
  and implemented by Szekely and Rizzo (2005). The test statistic for
@@ -36,22 +36,31 @@
 
    The \eqn{\mathcal{E}}{E}-test of multivariate (univariate) normality
   is implemented by parametric bootstrap with \code{R} replicates.
-  
-  If \code{R=0} the summary for the test gives the test statistic only (no p-value). 
 }
 \value{
- The value of the \eqn{\mathcal{E}}{E}-statistic for univariate
- normality is returned by \code{normal.e}.
  The value of the \eqn{\mathcal{E}}{E}-statistic for multivariate
  normality is returned by \code{mvnorm.e}.
 
- \code{mvnorm.etest} returns a list with class \code{htest} containing
+ \code{mvnorm.test} returns a list with class \code{htest} containing
  \item{method}{description of test}
  \item{statistic}{observed value of the test statistic}
  \item{p.value}{approximate p-value of the test}
  \item{data.name}{description of data}
+ 
+ \code{mvnorm.etest} is replaced by \code{mvnorm.test}. 
 }
+\seealso{
+\code{\link{normal.test}} for the energy test of univariate
+normality and \code{\link{normal.e}} for the statistic.
+}
+\note{If the data is univariate, the test statistic is formally
+the same as the multivariate case, but a more efficient computational
+formula is applied in \code{\link{normal.e}}.
 
+\code{\link{normal.test}} also provides an optional method for the
+test based on the asymptotic sampling distribution of the test
+statistic.
+}
 \references{
  Szekely, G. J. and Rizzo, M. L. (2005) A New Test for
  Multivariate Normality, \emph{Journal of Multivariate Analysis},
@@ -68,18 +77,15 @@
 Gabor J. Szekely
 }
 \examples{
- ## compute normality test statistics for iris Setosa data
+ ## compute normality test statistic for iris Setosa data
  data(iris)
  mvnorm.e(iris[1:50, 1:4])
- normal.e(iris[1:50, 1])
 
  ## test if the iris Setosa data has multivariate normal distribution
  mvnorm.etest(iris[1:50,1:4], R = 199)
-
- ## test a univariate sample for normality
- x <- runif(50, 0, 10)
- mvnorm.etest(x, R = 199)
- }
+}
 \keyword{ multivariate }
 \keyword{ htest }
+\concept{ goodness-of-fit}
+\concept{ normal distribution}
 \concept{ energy statistics }
