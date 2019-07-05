@@ -29,7 +29,7 @@ Available online Dec., 2015, \url{http://dx.doi.org/10.1002/wics.1375}.
 
 G. J. Szekely and M. L. Rizzo (2017). The Energy of Data. 
 \emph{The Annual Review of Statistics and Its Application} 
-4:447-79.  \url{10.1146/annurev-statistics-060116-054026}
+4:447-79.  \url{https://www.annualreviews.org/doi/abs/10.1146/annurev-statistics-060116-054026}
 }
 \keyword{ package }
 \keyword{ multivariate }

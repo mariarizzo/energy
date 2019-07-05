@@ -13,7 +13,7 @@ normal.e(x)
 \arguments{
   \item{x}{ univariate data vector}
   \item{method}{ method for p-value}
-  \item{R}{ number of replications if Monte Carlo method "mc"}
+  \item{R}{ number of replications if Monte Carlo method}
 }
 \details{
 If \code{method="mc"} this test function applies the parametric
