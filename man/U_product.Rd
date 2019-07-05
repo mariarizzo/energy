@@ -28,7 +28,6 @@ U_product(U, V)
   Szekely, G.J. and Rizzo, M.L. (2014),
  Partial Distance Correlation with Methods for Dissimilarities,
  \emph{Annals of Statistics}, Vol. 42, No. 6, pp. 2382-2412.
- DOI \url{dx.doi.org/10.1214/14-AOS1255}
  \cr \url{http://projecteuclid.org/euclid.aos/1413810731}
 }
 \author{ Maria L. Rizzo \email{mrizzo @ bgsu.edu} and
