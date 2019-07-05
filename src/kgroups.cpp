@@ -3,7 +3,7 @@ using namespace Rcpp;
 
 int kgroups_update(NumericMatrix x, int k, IntegerVector clus,
                    IntegerVector sizes, NumericVector within, bool distance);
-List kgroups_start(NumericMatrix x, int k, IntegerVector clus, 
+List kgroups_start(NumericMatrix x, int k, IntegerVector clus,
                    int iter_max, bool distance);
 
 int kgroups_update(NumericMatrix x, int k, IntegerVector clus,
@@ -45,7 +45,7 @@ int kgroups_update(NumericMatrix x, int k, IntegerVector clus,
           rowdst(J) += sqrt(dsum);
         }
       }
-      
+
       for (J = 0; J < k; J++) {
         nJ = sizes(J);
         e(J) = (2.0 / (double) nJ) * (rowdst(J) - w(J));
@@ -71,8 +71,8 @@ int kgroups_update(NumericMatrix x, int k, IntegerVector clus,
 
 
 
-// [[Rcpp::export(.kgroups_start)]]
-List kgroups_start(NumericMatrix x, int k, IntegerVector clus, 
+// [[Rcpp::export]]
+List kgroups_start(NumericMatrix x, int k, IntegerVector clus,
                    int iter_max, bool distance) {
   // k-groups clustering with initial clustering vector clus
   // up to iter_max iterations of n possible moves each

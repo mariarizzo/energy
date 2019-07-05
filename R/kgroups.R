@@ -1,6 +1,6 @@
 
 kgroups <- function(x, k, iter.max = 10, nstart = 1, cluster = NULL) {
-  distance <- (class(x) == "dist") 
+  distance <- (class(x) == "dist")
   x <- as.matrix(x)
   if (!is.numeric(x))
     stop("x must be numeric")
@@ -16,24 +16,24 @@ kgroups <- function(x, k, iter.max = 10, nstart = 1, cluster = NULL) {
     if(length(cluster) != n)
       stop("data and length of cluster vector must match")
   }
-  value <- .kgroups_start(x, k, cluster, iter.max, distance = distance)
-  
+  value <- kgroups_start(x, k, cluster, iter.max, distance = distance)
+
   if (nstart > 1) {
     objective <- rep(0, nstart)
     objective[1] <- value$W
     values <- vector("list", nstart)
     values[[1]] <- value
     for (j in 2:nstart) {
-      ## random initialization of cluster labels 
+      ## random initialization of cluster labels
       cluster <- sample(0:(k-1), size = n, replace = TRUE)
-      values[[j]] <- .kgroups_start(x, k, cluster, iter.max, distance = distance)
-      
+      values[[j]] <- kgroups_start(x, k, cluster, iter.max, distance = distance)
+
       objective[j] <- values[[j]]$W
     }
     best <- which.min(objective)
     value <- values[[best]]
   }
-  
+
   obj  <- structure(list(
     call = match.call(),
     cluster = value$cluster + 1,
@@ -61,7 +61,7 @@ fitted.kgroups <- function(object, method = c("labels", "groups"), ...) {
   if (method == "groups") {
     k <- object$k
     CList <- vector("list", k)
-    for (i in 1:k) 
+    for (i in 1:k)
       CList[[i]] <- which(object$cluster == i)
     return (CList)
   }

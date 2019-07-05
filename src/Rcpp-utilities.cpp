@@ -1,7 +1,7 @@
 #include <Rcpp.h>
 using namespace Rcpp;
 
-// [[Rcpp::export(.calc_dist)]]
+// [[Rcpp::export]]
 NumericMatrix calc_dist(NumericMatrix x) {
   int n = x.nrow(), d = x.ncol(), i, j, k;
   double dsum, dk;
@@ -9,7 +9,7 @@ NumericMatrix calc_dist(NumericMatrix x) {
   for (i = 0; i < n; i++) {
     for (j = i; j < n; j++) {
       if (i == j) {
-        Dx(i, i) = 0.0; 
+        Dx(i, i) = 0.0;
       } else {
         dsum = 0.0;
         for (k = 0; k < d; k++) {
