@@ -5,6 +5,8 @@
        normality based on the null limit distribution for the composite 
        hypothesis (estimated parameters). 
      - dataset EVnormal (new) of eigenvalues for energy test of normality.
+     - mvnorm.test replaces mvnorm.etest, and mvnorm.etest now is a
+       wrapper for mvnorm.test. 
 
 # energy 1.7-5
 

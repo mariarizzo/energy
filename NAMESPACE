@@ -33,6 +33,7 @@ export(
   mvI.test,
   mvnorm.e,
   mvnorm.etest,
+  mvnorm.test,
   normal.e,
   normal.test,
   pdcor,
