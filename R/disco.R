@@ -28,12 +28,12 @@ disco <- function(x, factors, distance = FALSE, index = 1, R,
 
   method <- match.arg(method)
   factors <- data.frame(factors)
-  if (class(x) == "dist") distance <- TRUE
+  if (inherits(x, "dist")) distance <- TRUE
   if (method == "discoB")
     return(disco.between(x, factors = factors, distance = distance,
                          index = index, R = R))
   nfactors <- NCOL(factors)
-  if (distance || (class(x) == "dist"))
+  if (distance || inherits(x, "dist"))
     dst <- as.matrix(x) else dst <- as.matrix(dist(x))
   N <- NROW(dst)
   if (NCOL(dst) != N)
@@ -98,7 +98,7 @@ disco.between <- function(x, factors, distance = FALSE, index = 1, R) {
   nfactors <- NCOL(factors)
   if (nfactors > 1)
     stop("More than one factor is not implemented in disco.between")
-  if (distance || (class(x) == "dist"))
+  if (distance || inherits(x, "dist"))
     dst <- as.matrix(x) else dst <- as.matrix(dist(x))
   N <- NROW(dst)
   if (NCOL(dst) != N)

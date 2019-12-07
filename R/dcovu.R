@@ -11,8 +11,8 @@ bcdcor <- function(x, y) {
 dcovU <-
   function(x, y) {
     ## unbiased dcov^2
-    if (!(class(x) == "dist")) x <- dist(x)
-    if (!(class(y) == "dist")) y <- dist(y)
+    if (!inherits(x, "dist")) x <- dist(x)
+    if (!inherits(y, "dist")) y <- dist(y)    
     x <- as.matrix(x)
     y <- as.matrix(y)
     n <- nrow(x)
@@ -28,8 +28,8 @@ dcovU <-
 dcorU <-
 function(x, y) {
   ## unbiased dcov^2
-  if (!(class(x) == "dist")) x <- dist(x)
-  if (!(class(y) == "dist")) y <- dist(y)
+  if (!inherits(x, "dist")) x <- dist(x)
+  if (!inherits(y, "dist")) y <- dist(y)
   x <- as.matrix(x)
   y <- as.matrix(y)
   n <- nrow(x)

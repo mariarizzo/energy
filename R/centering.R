@@ -3,7 +3,7 @@
 
 Dcenter <- function(x) {
   ## x is a dist object or data matrix
-  if (class(x) != "dist") x <- dist(x)
+  if (!inherits(x, "dist")) x <- dist(x)
   d <- as.matrix(x)
   n <- nrow(d)
   m <- rowSums(d)
@@ -16,7 +16,7 @@ Dcenter <- function(x) {
 
 Ucenter <- function(x) {
   ## x is a dist object or data matrix
-  if (class(x) != "dist") x <- dist(x)
+  if (!inherits(x, "dist")) x <- dist(x)
   d <- as.matrix(x)
   n <- nrow(d)
   m <- rowSums(d)

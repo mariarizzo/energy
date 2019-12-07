@@ -1,7 +1,7 @@
 
 energy.hclust <-
 function(dst, alpha = 1) {
-    if (!(class(dst) == "dist")) 
+    if (!inherits(dst, "dist"))
       stop("The first argument must be a dist object.")
     d <- dst
     n <- attr(d, "Size")

@@ -1,11 +1,13 @@
 ### dcorT.R
 ### implementation of the distance correlation t-test
+### for high dimension
 
 Astar <- function(d) {
   ## d is a distance matrix or distance object
   ## modified or corrected doubly centered distance matrices
   ## denoted A* (or B*) in JMVA t-test paper (2013)
-  d <- as.matrix(d)
+  if (inherits(d, "dist"))
+    d <- as.matrix(d)
   n <- nrow(d)
   if (n != ncol(d)) stop("Argument d should be distance")
   m <- rowMeans(d)
@@ -19,24 +21,21 @@ Astar <- function(d) {
   (n / (n-1)) * A
 }
 
-BCDCOR <- function(x, y, distance=FALSE) {
+BCDCOR <- function(x, y) {
   ## compute bias corrected distance correlation
-  ## attempt to check if distance flag is valid
-  if (length(distance) < 2)
-    distance <- rep(distance, 2)
-  if (class(x) == "dist") distance[1] <- TRUE
-  if (class(y) == "dist") distance[2] <- TRUE
-
-  if (distance[1] == FALSE) x <- dist(x)
-  if (distance[2] == FALSE) y <- dist(y)
-  x <- as.matrix(x)
-  y <- as.matrix(y)
-
-  if (distance[1] && !isSymmetric(x)) 
-    stop("distance==TRUE but x is not a dist object or a distance matrix")
-  if (distance[2] && !isSymmetric(y))  
-    stop("distance==TRUE but y is not a dist object or a distance matrix")
-
+  ## internal function not in NAMESPACE (external: use bcdcor) 
+  ## revised version from v. 1.7-7 
+  if (!inherits(x, "dist")) {
+    x <- as.matrix(dist(x))
+  } else {
+    x <- as.matrix(x)
+  }
+  if (!inherits(y, "dist")) {
+    y <- as.matrix(dist(y))
+  } else {
+    y <- as.matrix(y)
+  }
+  
   n <- NROW(x)
   AA <- Astar(x)
   BB <- Astar(y)
@@ -46,23 +45,24 @@ BCDCOR <- function(x, y, distance=FALSE) {
   list(bcR=XY / sqrt(XX*YY), XY=XY/n^2, XX=XX/n^2, YY=YY/n^2, n=n)
 }
 
-dcor.t <- function(x, y, distance=FALSE) {
+
+
+dcorT <- function(x, y) {
   # computes the t statistic for corrected high-dim dCor
   # should be approximately student T
-  # distance arg is checked in bcdcor
-  r <- BCDCOR(x, y, distance)
+  # x and y are observed samples or distance objects
+  r <- BCDCOR(x, y)
   Cn <- r$bcR
   n <- r$n
   M <- n*(n-3)/2
   sqrt(M-1) * Cn / sqrt(1-Cn^2)
 }
 
-dcor.ttest <- function(x, y, distance=FALSE) {
-  # x and y are observed samples or distance
-  # distance arg is checked in bcdcor
+dcorT.test <- function(x, y) {
+  # x and y are observed samples or distance objects
   dname <- paste(deparse(substitute(x)),"and",
-           deparse(substitute(y)))
-  stats <- BCDCOR(x, y, distance)
+                 deparse(substitute(y)))
+  stats <- BCDCOR(x, y)
   bcR <- stats$bcR
   n <- stats$n
   M <- n * (n-3) / 2
@@ -73,9 +73,10 @@ dcor.ttest <- function(x, y, distance=FALSE) {
   estimate <- bcR
   names(estimate) <- "Bias corrected dcor"
   pval <- 1 - pt(tstat, df=df)
-  method <- "dcor t-test of independence"
+  method <- "dcor t-test of independence for high dimension"
   rval <- list(statistic = tstat, parameter = df, p.value = pval,
-          estimate=estimate, method=method, data.name=dname)
+               estimate=estimate, method=method, data.name=dname)
   class(rval) <- "htest"
   return(rval)
 }
+

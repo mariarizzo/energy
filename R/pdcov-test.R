@@ -1,8 +1,9 @@
 pdcov.test <- function(x, y, z, R) {
   ## x, y, z must be dist. objects or data matrices (no dist matrix)
-  if (!(class(x) == "dist")) x <- dist(x)
-  if (!(class(y) == "dist")) y <- dist(y)
-  if (!(class(z) == "dist")) z <- dist(z)
+  if (missing(R)) R <- 0
+  if (!inherits(x, "dist")) x <- dist(x)
+  if (!inherits(y, "dist")) y <- dist(y)
+  if (!inherits(z, "dist")) z <- dist(z)
   Dx <- as.matrix(x)
   Dy <- as.matrix(y)
   Dz <- as.matrix(z)
@@ -25,15 +26,22 @@ pdcov.test <- function(x, y, z, R) {
     U_product(Pxz[i, i], Pyz)  #RcppExports
   }
 
-  reps <- replicate(R, expr= {
-    i <- sample(1:n)
-    bootfn(Pxz, i, Pyz=Pyz)
-  })
+  if (R > 0) {
+    reps <- replicate(R, expr= {
+      i <- sample(1:n)
+      bootfn(Pxz, i, Pyz=Pyz)
+    })
 
-  replicates <- n * reps
-  pval <- (1 + sum(replicates > teststat)) / (1 + R)
-  #df <- n * (n-3) / 2 - 2
+    replicates <- n * reps
+    pval <- (1 + sum(replicates > teststat)) / (1 + R)
+    #df <- n * (n-3) / 2 - 2
+  } else {
+    pval <- NA
+    replicates <- NA
+  }
   dataname <- paste("replicates ", R, sep="")
+  if (! R>0)
+    dataname <- "Specify R>0 replicates for a test"
 
   names(estimate) <- "pdcor"
   names(teststat) <- "n V^*"
@@ -54,7 +62,7 @@ pdcov.test <- function(x, y, z, R) {
 pdcor.test <- function(x, y, z, R) {
   ## x, y, z must be dist. objects or data matrices (no dist matrix)
   ## all required calc. done in pdcov.test
-
+  if (missing(R)) R <- 0
   result <- pdcov.test(x, y, z, R)
 
   reps <- result$replicates
@@ -69,7 +77,11 @@ pdcor.test <- function(x, y, z, R) {
   }
 
   names(estimate) <- names(teststat) <- "pdcor"
-  pval <- (1 + sum(pdcor_reps > teststat)) / (1 + R)
+  if (R > 0) {
+    pval <- (1 + sum(pdcor_reps > teststat)) / (1 + R) 
+  } else { 
+    pval <- NA
+  }
 
   e <- list(
     call = match.call(),
@@ -79,7 +91,7 @@ pdcor.test <- function(x, y, z, R) {
     p.value = pval,
     n = n,
     replicates = pdcor_reps,
-    data.name = result$dataname)
+    data.name = result$data.name)
   class(e) <- "htest"
   return(e)
 }

@@ -3,9 +3,9 @@
 ##
 
 pdcor <- function(x, y, z) {
-    if (!(class(x) == "dist")) x <- dist(x)
-    if (!(class(y) == "dist")) y <- dist(y)
-    if (!(class(z) == "dist")) z <- dist(z)
+    if (!inherits(x, "dist")) x <- dist(x)
+    if (!inherits(y, "dist")) y <- dist(y)
+    if (!inherits(z, "dist")) z <- dist(z)
     x <- as.matrix(x)
     y <- as.matrix(y)
     z <- as.matrix(z)
@@ -13,9 +13,9 @@ pdcor <- function(x, y, z) {
 }
 
 pdcov <- function(x, y, z) {
-    if (!(class(x) == "dist")) x <- dist(x)
-    if (!(class(y) == "dist")) y <- dist(y)
-    if (!(class(z) == "dist")) z <- dist(z)
+    if (!inherits(x, "dist")) x <- dist(x)
+    if (!inherits(y, "dist")) y <- dist(y)
+    if (!inherits(z, "dist")) z <- dist(z)
     x <- as.matrix(x)
     y <- as.matrix(y)
     z <- as.matrix(z)

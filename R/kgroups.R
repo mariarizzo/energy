@@ -1,6 +1,6 @@
 
 kgroups <- function(x, k, iter.max = 10, nstart = 1, cluster = NULL) {
-  distance <- (class(x) == "dist")
+  distance <- inherits(x, "dist")
   x <- as.matrix(x)
   if (!is.numeric(x))
     stop("x must be numeric")

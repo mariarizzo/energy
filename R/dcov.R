@@ -12,8 +12,8 @@ function(x, y, index=1.0, R=NULL) {
     }
 
     # distance covariance test for multivariate independence
-    if (!(class(x) == "dist")) x <- dist(x)
-    if (!(class(y) == "dist")) y <- dist(y)
+    if (!inherits(x, "dist")) x <- dist(x)
+    if (!inherits(y, "dist")) y <- dist(y)
     x <- as.matrix(x)
     y <- as.matrix(y)
     dst <- TRUE
@@ -65,7 +65,7 @@ dcor.test <-
   function(x, y, index=1.0, R) {
     # distance correlation test for multivariate independence
     # like dcov.test but using dcor as the test statistic
-    if (is.null(R)) R <- 0
+    if (missing(R)) R <- 0
     R <- ifelse(R > 0, floor(R), 0)
     RESULT <- dcov.test(x, y, index=1.0, R) 
     # this test statistic is n times the square of dCov statistic
@@ -81,10 +81,14 @@ dcor.test <-
     dvarX <- RESULT$estimates[3]
     dvarY <- RESULT$estimates[4]
     n <- RESULT$n
-    DCORreps <- sqrt(DCOVreplicates / n) / sqrt(dvarX * dvarY)
     
-    if (R > 0)
-      p.value <- (1 + sum(DCORreps >= DCORteststat)) / (1 + R) else p.value <- NA
+    if (R > 0) {
+      DCORreps <- sqrt(DCOVreplicates / n) / sqrt(dvarX * dvarY)
+      p.value <- (1 + sum(DCORreps >= DCORteststat)) / (1 + R)
+    } else {
+      p.value <- NA
+      DCORreps <- NA
+    }
     
     names(DCORteststat) <- "dCor"
     dataname <- paste("index ", index, ", replicates ", R, sep="")
@@ -109,8 +113,8 @@ function(x, y, index=1.0) {
     # dcov = [dCov,dCor,dVar(x),dVar(y)]   (vector)
     # this function provides the fast method for computing dCov
     # it is called by the dcov and dcor functions
-    if (!(class(x) == "dist")) x <- dist(x)
-    if (!(class(y) == "dist")) y <- dist(y)
+    if (!inherits(x, "dist")) x <- dist(x)
+    if (!inherits(y, "dist")) y <- dist(y)
     x <- as.matrix(x)
     y <- as.matrix(y)
     dst <- TRUE
@@ -153,8 +157,9 @@ function(x, y, index=1.0) {
     # distance covariance and correlation statistics
     # alternate method, implemented in R without .C call
     # this method is usually slower than the C version
-    if (!(class(x) == "dist")) x <- dist(x)
-    if (!(class(y) == "dist")) y <- dist(y)
+  
+    if (!inherits(x, "dist")) x <- dist(x)
+    if (!inherits(y, "dist")) y <- dist(y)
     x <- as.matrix(x)
     y <- as.matrix(y)
     n <- nrow(x)

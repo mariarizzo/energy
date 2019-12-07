@@ -5,6 +5,14 @@ Btree_sum <- function(y, z) {
     .Call(`_energy_Btree_sum`, y, z)
 }
 
+calc_dist <- function(x) {
+    .Call(`_energy_calc_dist`, x)
+}
+
+U_product <- function(U, V) {
+    .Call(`_energy_U_product`, U, V)
+}
+
 D_center <- function(Dx) {
     .Call(`_energy_D_center`, Dx)
 }
@@ -15,6 +23,10 @@ U_center <- function(Dx) {
 
 dcovU_stats <- function(Dx, Dy) {
     .Call(`_energy_dcovU_stats`, Dx, Dy)
+}
+
+kgroups_start <- function(x, k, clus, iter_max, distance) {
+    .Call(`_energy_kgroups_start`, x, k, clus, iter_max, distance)
 }
 
 mvnEstat <- function(y) {
@@ -31,9 +43,5 @@ partial_dcov <- function(Dx, Dy, Dz) {
 
 projection <- function(Dx, Dz) {
     .Call(`_energy_projection`, Dx, Dz)
-}
-
-U_product <- function(U, V) {
-    .Call(`_energy_U_product`, U, V)
 }
 

@@ -8,7 +8,7 @@ mvnorm.test <- function(x, R) {
   }
   
   if (is.vector(x) || NCOL(x)==1) {
-    n <- length(x)
+    n <- NROW(x)
     d <- 1
     bootobj <- boot::boot(x, statistic = normal.e, R = R, sim = "parametric",
                           ran.gen = function(x, y) {
@@ -40,7 +40,7 @@ mvnorm.etest <- function(x, R) {
 
 mvnorm.e <- function(x) {
   # E-statistic for multivariate normality
-  if (is.vector(x))
+  if (is.vector(x) || NCOL(x)==1)
     return(normal.e(x))
   n <- nrow(x)
   d <- ncol(x)
@@ -51,7 +51,9 @@ mvnorm.e <- function(x) {
   ev <- eigen(var(x), symmetric = TRUE)
   P <- ev$vectors
   lambda <- ev$values
-  y <- z %*% (P %*% diag(1/sqrt(lambda)) %*% t(P))
+  D <- diag(d)
+  diag(D) <- 1 / sqrt(lambda)
+  y <- z %*% (P %*% D %*% t(P))
   if (any(!is.finite(y)))
     return(NA)
   return(mvnEstat(y))
