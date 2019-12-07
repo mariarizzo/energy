@@ -1,3 +1,15 @@
+# energy 1.7-7
+
+*  User level changes:
+     - dcorT.test replaces dcor.ttest, now deprecated.
+     - dcorT replaces dcor.t, now deprecated.
+     - edist method "discoF" removed
+     
+*  Internal changes     
+     - BCDCOR function (used in the high dim. dcorT test) has been revised. 
+     - edist method "discoB" correction
+     - changes for compatibility with R 4.0.0
+
 # energy 1.7-6
 
 *  User level changes:
