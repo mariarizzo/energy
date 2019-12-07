@@ -6,8 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Inner product in the Hilbert space of U-centered
-distance matrices — U_product • energy</title>
+<title>Distance Correlation t-Test — dcorT • energy</title>
 
 
 <!-- jquery -->
@@ -36,11 +35,8 @@ distance matrices — U_product • energy</title>
 
 
 
-<meta property="og:title" content="Inner product in the Hilbert space of U-centered
-distance matrices — U_product" />
-<meta property="og:description" content="Stand-alone function to compute the inner product in the
- Hilbert space of U-centered distance matrices, as in the definition of
- partial distance covariance." />
+<meta property="og:title" content="Distance Correlation t-Test — dcorT" />
+<meta property="og:description" content="Distance correlation t-test of multivariate independence for high dimension." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -112,66 +108,94 @@ distance matrices — U_product" />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Inner product in the Hilbert space of U-centered
-distance matrices</h1>
+    <h1>Distance Correlation t-Test</h1>
     
-    <div class="hidden name"><code>U_product.Rd</code></div>
+    <div class="hidden name"><code>dcorT.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Stand-alone function to compute the inner product in the
- Hilbert space of U-centered distance matrices, as in the definition of
- partial distance covariance.</p>
+    <p>Distance correlation t-test of multivariate independence for high dimension.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>U_product</span>(<span class='no'>U</span>, <span class='no'>V</span>)</pre>
+    <pre class="usage"><span class='fu'>dcorT.test</span>(<span class='no'>x</span>, <span class='no'>y</span>)
+<span class='fu'>dcorT</span>(<span class='no'>x</span>, <span class='no'>y</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>U</th>
-      <td><p>U-centered distance matrix</p></td>
+      <th>x</th>
+      <td><p>data or distances of first sample</p></td>
     </tr>
     <tr>
-      <th>V</th>
-      <td><p>U-centered distance matrix</p></td>
+      <th>y</th>
+      <td><p>data or distances of second sample</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>Note that <code>pdcor</code>, etc. functions include the centering and
- projection operations, so that these stand alone versions are not
- needed except in case one wants to check the internal computations.</p>
-<p>Exported from U_product.cpp.</p>
+    <p><code>dcorT.test</code> performs a nonparametric t-test of
+ multivariate independence in high dimension (dimension is close to
+ or larger than sample size). As dimension goes to infinity, the
+ asymptotic distribution of the test statistic is approximately Student t with \(n(n-3)/2-1\) degrees of freedom and for \(n \geq 10\) the statistic is approximately distributed as standard normal.</p>
+<p>The sample sizes (number of rows) of the two samples must
+ agree, and samples must not contain missing values.</p>
+<p>The t statistic (dcorT) is a transformation of a bias corrected 
+ version of distance correlation (see SR 2013 for details).</p>
+<p>Large values (upper tail) of the dcorT statistic are significant.</p>
+    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
+
+    <p><code>dcor.t</code> and <code>dcor.ttest</code> are deprecated.</p>
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>U_product</code> returns the inner product, a scalar.</p>
+    <p><code>dcorT</code> returns the dcor t statistic, and
+<code>dcorT.test</code> returns a list with class <code>htest</code> containing</p>
+<dt>     method</dt><dd><p>description of test</p></dd>
+   <dt>  statistic</dt><dd><p>observed value of the test statistic</p></dd>
+   <dt>  parameter</dt><dd><p>degrees of freedom</p></dd>
+   <dt>   estimate</dt><dd><p>(bias corrected) squared dCor(x,y)</p></dd>
+   <dt>    p.value</dt><dd><p>p-value of the t-test</p></dd>
+   <dt>  data.name</dt><dd><p>description of data</p></dd>
+
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p><code><a href='dcovu.html'>bcdcor</a></code> <code><a href='dcov.test.html'>dcov.test</a></code> <code><a href='dcov.html'>dcor</a></code> <code><a href='dcov.html'>DCOR</a></code></p></div>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
-    <p>Szekely, G.J. and Rizzo, M.L. (2014),
- Partial Distance Correlation with Methods for Dissimilarities,
- <em>Annals of Statistics</em>, Vol. 42, No. 6, pp. 2382-2412.
- <br /> <a href='http://projecteuclid.org/euclid.aos/1413810731'>http://projecteuclid.org/euclid.aos/1413810731</a></p>
+    <p>Szekely, G.J. and Rizzo, M.L. (2013). The distance correlation t-test of  independence in high dimension. <em>Journal of Multivariate Analysis</em>,  Volume 117, pp. 193-213. <br />
+ <a href='http://dx.doi.org/10.1016/j.jmva.2013.02.012'>http://dx.doi.org/10.1016/j.jmva.2013.02.012</a></p>
+<p>Szekely, G.J., Rizzo, M.L., and Bakirov, N.K. (2007),
+ Measuring and Testing Dependence by Correlation of Distances,
+ <em>Annals of Statistics</em>, Vol. 35 No. 6, pp. 2769-2794.
+ <br /> <a href='http://dx.doi.org/10.1214/009053607000000505'>http://dx.doi.org/10.1214/009053607000000505</a></p>
+<p>Szekely, G.J. and Rizzo, M.L. (2009),
+ Brownian Distance Covariance,
+ <em>Annals of Applied Statistics</em>,
+ Vol. 3, No. 4, 1236-1265.
+ <br /> <a href='http://dx.doi.org/10.1214/09-AOAS312'>http://dx.doi.org/10.1214/09-AOAS312</a></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'> <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='no'>iris</span>[<span class='fl'>1</span>:<span class='fl'>10</span>, <span class='fl'>1</span>:<span class='fl'>4</span>]
- <span class='no'>y</span> <span class='kw'>&lt;-</span> <span class='no'>iris</span>[<span class='fl'>11</span>:<span class='fl'>20</span>, <span class='fl'>1</span>:<span class='fl'>4</span>]
- <span class='no'>M1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>as.matrix</a></span>(<span class='fu'><a href='https://rdrr.io/r/stats/dist.html'>dist</a></span>(<span class='no'>x</span>))
- <span class='no'>M2</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>as.matrix</a></span>(<span class='fu'><a href='https://rdrr.io/r/stats/dist.html'>dist</a></span>(<span class='no'>y</span>))
- <span class='no'>U</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='centering.html'>U_center</a></span>(<span class='no'>M1</span>)
- <span class='no'>V</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='centering.html'>U_center</a></span>(<span class='no'>M2</span>)
-
- <span class='fu'>U_product</span>(<span class='no'>U</span>, <span class='no'>V</span>)</div><div class='output co'>#&gt; [1] 0.01008021</div><div class='input'> <span class='fu'><a href='dcovU_stats.html'>dcovU_stats</a></span>(<span class='no'>M1</span>, <span class='no'>M2</span>)</div><div class='output co'>#&gt;      dCovU     bcdcor     dVarXU     dVarYU 
-#&gt; 0.01008021 0.15335234 0.03774546 0.11447062 </div><div class='input'> </div></pre>
+    <pre class="examples"><div class='input'> <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span>(<span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span>(<span class='fl'>100</span>), <span class='fl'>10</span>, <span class='fl'>10</span>)
+ <span class='no'>y</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span>(<span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span>(<span class='fl'>100</span>), <span class='fl'>10</span>, <span class='fl'>10</span>)
+ <span class='fu'>dcorT</span>(<span class='no'>x</span>, <span class='no'>y</span>)</div><div class='output co'>#&gt; [1] -1.281344</div><div class='input'> <span class='fu'>dcorT.test</span>(<span class='no'>x</span>, <span class='no'>y</span>)</div><div class='output co'>#&gt; 
+#&gt; 	dcor t-test of independence for high dimension
+#&gt; 
+#&gt; data:  x and y
+#&gt; T = -1.2813, df = 34, p-value = 0.8956
+#&gt; sample estimates:
+#&gt; Bias corrected dcor 
+#&gt;          -0.2146276 
+#&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       <li><a href="#details">Details</a></li>
+      <li><a href="#note">Note</a></li>
       <li><a href="#value">Value</a></li>
+      <li><a href="#see-also">See also</a></li>
       <li><a href="#references">References</a></li>
       <li><a href="#examples">Examples</a></li>
     </ul>
