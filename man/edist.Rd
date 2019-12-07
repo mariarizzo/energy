@@ -6,7 +6,7 @@
 }
 \usage{
  edist(x, sizes, distance = FALSE, ix = 1:sum(sizes), alpha = 1,
-        method = c("cluster","discoB","discoF"))
+        method = c("cluster","discoB"))
 }
 \arguments{
   \item{x}{ data matrix of pooled sample or Euclidean distances}
@@ -47,7 +47,7 @@
 
   The coefficient \eqn{\frac{n_i n_j}{n_i+n_j}}{(n_i n_j)(n_i+n_j)}
   is one-half of the harmonic mean of the sample sizes. The
-  \code{discoB} and \code{discoF} methods are related but
+  \code{discoB} method is related but with
   different ways of summarizing the pairwise differences between samples.
   The \code{disco} methods apply the coefficient
   \eqn{\frac{n_i n_j}{2N}}{(n_i n_j)/(2N)} where N is the total number
@@ -90,12 +90,12 @@ Gabor J. Szekely
  \code{\link{disco}}
  }
 \examples{
- ## compute cluster e-distances for 3 samples of iris data
- data(iris)
- edist(iris[,1:4], c(50,50,50))
-
- ## pairwise disco statistics
- edist(iris[,1:4], c(50,50,50), method="discoF")  #F ratios
+     ## compute cluster e-distances for 3 samples of iris data
+     data(iris)
+     edist(iris[,1:4], c(50,50,50))
+    
+     ## pairwise disco statistics
+     edist(iris[,1:4], c(50,50,50), method="discoB")  
 
      ## compute e-distances from a distance object
      data(iris)
@@ -106,22 +106,6 @@ Gabor J. Szekely
      d <- as.matrix(dist(iris[,1:4]))
      edist(d, c(50, 50, 50), distance=TRUE, alpha = 1)
 
-
-\dontshow{
-     ## compute e-distances from a distance object
-     data(iris)
-     edist(dist(iris[,1:4]), c(50, 50, 50), distance=TRUE, alpha = .5)
-
-     ## compute e-distances from a distance matrix
-     data(iris)
-     d <- as.matrix(dist(iris[,1:4]))
-     edist(d, c(50, 50, 50), distance=TRUE, alpha = .5)
-     }
-
- ## compute e-distances from vector of group labels
- d <- dist(matrix(rnorm(100), nrow=50))
- g <- cutree(energy.hclust(d), k=4)
- edist(d, sizes=table(g), ix=rank(g, ties.method="first"))
  }
 \keyword{ multivariate }
 \keyword{ cluster }
