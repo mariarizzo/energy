@@ -67,14 +67,15 @@ NumericMatrix U_center(NumericMatrix Dx) {
   }
   abar /= (double) ((n-1)*(n-2));
 
-  for (k=0; k<n; k++)
+  for (k=0; k<n; k++) {
     for (j=k; j<n; j++) {
       A(k, j) = Dx(k, j) - akbar(k) - akbar(j) + abar;
       A(j, k) = A(k, j);
     }
-    /* diagonal is zero */
-    for (k=0; k<n; k++)
-      A(k, k) = 0.0;
+  }
+  /* diagonal is zero */
+  for (k=0; k<n; k++)
+    A(k, k) = 0.0;
 
   return A;
 }

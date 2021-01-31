@@ -26,10 +26,11 @@ NumericMatrix projection(NumericMatrix Dx, NumericMatrix Dz) {
   // if (C,C)==0 then C==0 so c1=(A,C)=0
   if (fabs(CC) > eps)
     c1 = AC / CC;
-  for (i=0; i<n; i++)
+  for (i=0; i<n; i++) {
     for (j=0; j<n; j++) {
       P(i, j) = A(i, j) - c1 * C(i, j);
     }
-    return P;
+  }
+  return P;
 }
 

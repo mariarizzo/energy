@@ -43,12 +43,13 @@ double mvnEstat(NumericMatrix y)  {
           log(2*kd+1) - log(2*kd+2);
         loggk = lg1 + R::lgammafn(kd+1.5) - R::lgammafn(kd+D/2+1);
         term = exp(logak + loggk);
-        if (k % 2 == 0)
+        if (k % 2 == 0) {
           sum += term;
-          else
-            sum -= term;
-            delta = fabs(sum - sum0);
-            k++;
+        } else {
+          sum -= term;
+        }
+        delta = fabs(sum - sum0);
+        k++;
       }
   if (delta < eps)
         meanyz += meanzz/M_SQRT2 + M_SQRT_2dPI * sum;

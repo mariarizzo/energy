@@ -87,12 +87,13 @@ double partial_dcov(NumericMatrix Dx, NumericMatrix Dy, NumericMatrix Dz) {
     c2 = BC / CC;
   }
 
-  for (i=0; i<n; i++)
+  for (i=0; i<n; i++) {
     for (j=0; j<n; j++) {
       Pxz(i, j) = A(i, j) - c1 * C(i, j);
       Pyz(i, j) = B(i, j) - c2 * C(i, j);
     }
+  }
 
-    return U_product(Pxz, Pyz);
+  return U_product(Pxz, Pyz);
 }
 
