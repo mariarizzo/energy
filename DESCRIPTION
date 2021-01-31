@@ -1,7 +1,7 @@
 Package: energy
 Title: E-Statistics: Multivariate Inference via the Energy of Data
-Version: 1.7-7
-Date: 2019-12-05
+Version: 1.7-8
+Date: 2021-01-30
 Authors@R: c(
     person("Maria", "Rizzo", , "mrizzo@bgsu.edu", c("aut", "cre")),
     person("Gabor", "Szekely", , , "aut"))
@@ -18,5 +18,6 @@ Suggests: MASS, CompQuadForm
 Depends: R (>= 2.10)
 URL: https://github.com/mariarizzo/energy
 License: GPL (>= 2)
+LazyData: true
 NeedsCompilation: yes
 Repository: CRAN

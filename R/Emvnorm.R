@@ -106,7 +106,6 @@ normal.test <- function(x, method=c("mc", "limit"), R) {
   
   ## load pre-computed eigenvalues
   EVnormal <- NULL
-  load("./data/EVnormal.rda")
   ev <- EVnormal[, "Case4"]
 
   if (requireNamespace("CompQuadForm", quietly=TRUE)) {
