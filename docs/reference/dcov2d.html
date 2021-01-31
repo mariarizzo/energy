@@ -10,23 +10,27 @@
 
 
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous" />
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
 <!-- headroom.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -40,7 +44,6 @@
 correlation and distance covariance statistics. The U-statistic for dcov^2 is unbiased; 
 the V-statistic is the original definition in SRB 2007. These algorithms do not
 store the distance matrices, so they are suitable for large samples." />
-<meta name="twitter:card" content="summary" />
 
 
 
@@ -58,7 +61,7 @@ store the distance matrices, so they are suitable for large samples." />
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -72,7 +75,7 @@ store the distance matrices, so they are suitable for large samples." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">energy</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.7.7</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.7-8</span>
       </span>
     </div>
 
@@ -80,7 +83,7 @@ store the distance matrices, so they are suitable for large samples." />
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -93,8 +96,8 @@ store the distance matrices, so they are suitable for large samples." />
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/mariarizzo/energy">
-    <span class="fab fa fab fa-github fa-lg"></span>
+  <a href="https://github.com/mariarizzo/energy/">
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -123,8 +126,8 @@ the V-statistic is the original definition in SRB 2007. These algorithms do not
 store the distance matrices, so they are suitable for large samples.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>dcor2d</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"V"</span>, <span class='st'>"U"</span>))
-<span class='fu'>dcov2d</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"V"</span>, <span class='st'>"U"</span>), <span class='kw'>all.stats</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>dcor2d</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span>, type <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"V"</span>, <span class='st'>"U"</span><span class='op'>)</span><span class='op'>)</span>
+<span class='fu'>dcov2d</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span>, type <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"V"</span>, <span class='st'>"U"</span><span class='op'>)</span>, all.stats <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -165,9 +168,13 @@ square root. The original definitions of dCov and dCor
 (SRB2007, SR2009) were based on V-statistics, which are non-negative,
 and defined using the square root of V-statistics.</p>
 <p>It has been suggested that instead of taking the square root of the U-statistic, one could take the root of \(|U_n|\) before applying the sign, but that introduces more bias than the original dCor, and should never be used.</p>
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>Maria L. Rizzo <a href='mailto:mrizzo @ bgsu.edu'>mrizzo @ bgsu.edu</a> and
+Gabor J. Szekely</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='dcov.html'>dcov</a></code> <code><a href='dcov.test.html'>dcov.test</a></code>  <code><a href='dcov.html'>dcor</a></code> <code><a href='dcov.test.html'>dcor.test</a></code> (multivariate statistics and permutation test)</p></div>
+    <div class='dont-index'><p><code><a href='distance correlation.html'>dcov</a></code> <code><a href='dcov.test.html'>dcov.test</a></code>  <code><a href='distance correlation.html'>dcor</a></code> <code><a href='dcov.test.html'>dcor.test</a></code> (multivariate statistics and permutation test)</p></div>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>Huo, X. and Szekely, G.J. (2016). Fast computing for 
@@ -183,13 +190,16 @@ distance covariance. Technometrics, 58(4), 435-447.</p>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>  <span class='co'># \donttest{</span>
     <span class='co'>## these are equivalent, but 2d is faster for n &gt; 50</span>
-    <span class='no'>n</span> <span class='kw'>&lt;-</span> <span class='fl'>100</span>
-    <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span>(<span class='fl'>100</span>)
-    <span class='no'>y</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span>(<span class='fl'>100</span>)
-    <span class='fu'><a href='https://rdrr.io/r/base/all.equal.html'>all.equal</a></span>(<span class='fu'><a href='dcov.html'>dcov</a></span>(<span class='no'>x</span>, <span class='no'>y</span>)^<span class='fl'>2</span>, <span class='fu'>dcov2d</span>(<span class='no'>x</span>, <span class='no'>y</span>), <span class='kw'>check.attributes</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'>    <span class='fu'><a href='https://rdrr.io/r/base/all.equal.html'>all.equal</a></span>(<span class='fu'><a href='dcovu.html'>bcdcor</a></span>(<span class='no'>x</span>, <span class='no'>y</span>), <span class='fu'>dcor2d</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='st'>"U"</span>), <span class='kw'>check.attributes</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'>
-    <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/Lognormal.html'>rlnorm</a></span>(<span class='fl'>400</span>)
-    <span class='no'>y</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/Exponential.html'>rexp</a></span>(<span class='fl'>400</span>)
-    <span class='fu'><a href='dcov.test.html'>dcov.test</a></span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='kw'>R</span><span class='kw'>=</span><span class='fl'>199</span>)    <span class='co'>#permutation test</span></div><div class='output co'>#&gt; 
+    <span class='va'>n</span> <span class='op'>&lt;-</span> <span class='fl'>100</span>
+    <span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span><span class='fl'>100</span><span class='op'>)</span>
+    <span class='va'>y</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span><span class='fl'>100</span><span class='op'>)</span>
+    <span class='fu'><a href='https://rdrr.io/r/base/all.equal.html'>all.equal</a></span><span class='op'>(</span><span class='fu'><a href='distance correlation.html'>dcov</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span><span class='op'>)</span><span class='op'>^</span><span class='fl'>2</span>, <span class='fu'>dcov2d</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span><span class='op'>)</span>, check.attributes <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'>    <span class='fu'><a href='https://rdrr.io/r/base/all.equal.html'>all.equal</a></span><span class='op'>(</span><span class='fu'><a href='Unbiased distance covariance.html'>bcdcor</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span><span class='op'>)</span>, <span class='fu'>dcor2d</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span>, <span class='st'>"U"</span><span class='op'>)</span>, check.attributes <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'>
+    <span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/Lognormal.html'>rlnorm</a></span><span class='op'>(</span><span class='fl'>400</span><span class='op'>)</span>
+    <span class='va'>y</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/Exponential.html'>rexp</a></span><span class='op'>(</span><span class='fl'>400</span><span class='op'>)</span>
+    <span class='fu'><a href='dcov.test.html'>dcov.test</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span>, R<span class='op'>=</span><span class='fl'>199</span><span class='op'>)</span>    <span class='co'>#permutation test</span>
+</div><div class='output co'>#&gt; 
 #&gt; 	dCov independence test (permutation test)
 #&gt; 
 #&gt; data:  index 1, replicates 199
@@ -197,7 +207,8 @@ distance covariance. Technometrics, 58(4), 435-447.</p>
 #&gt; sample estimates:
 #&gt;       dCov 
 #&gt; 0.05904902 
-#&gt; </div><div class='input'>    <span class='fu'><a href='dcov.test.html'>dcor.test</a></span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='kw'>R</span><span class='kw'>=</span><span class='fl'>199</span>)</div><div class='output co'>#&gt; 
+#&gt; </div><div class='input'>    <span class='fu'><a href='dcov.test.html'>dcor.test</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span>, R<span class='op'>=</span><span class='fl'>199</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; 
 #&gt; 	dCor independence test (permutation test)
 #&gt; 
 #&gt; data:  index 1, replicates 199
@@ -205,24 +216,13 @@ distance covariance. Technometrics, 58(4), 435-447.</p>
 #&gt; sample estimates:
 #&gt;       dCov       dCor    dVar(X)    dVar(Y) 
 #&gt; 0.05904902 0.08433776 0.82428775 0.59470610 
-#&gt; </div><div class='input'>    # }  
+#&gt; </div><div class='input'>    <span class='co'># }  </span>
 </div></pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#details">Details</a></li>
-      <li><a href="#value">Value</a></li>
-      <li><a href="#note">Note</a></li>
-      <li><a href="#see-also">See also</a></li>
-      <li><a href="#references">References</a></li>
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
-    <h2>Author</h2>
-    <p>Maria L. Rizzo <a href='mailto:mrizzo @ bgsu.edu'>mrizzo @ bgsu.edu</a> and
-Gabor J. Szekely</p>
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
 
@@ -233,7 +233,7 @@ Gabor J. Szekely</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
