@@ -2,7 +2,7 @@ useDynLib(energy, .registration=TRUE)
 
 importFrom(Rcpp, evalCpp)
 importFrom("stats", "as.dist", "dist", "dnorm", "hclust", "model.matrix",
-           "pnorm", "pt", "rnorm", "rpois", "sd", "var")
+           "pnorm", "ppois", "pt", "rnorm", "rpois", "sd", "var")
 importFrom(boot, boot)
 
 export(
@@ -42,7 +42,9 @@ export(
   pdcor.test,
   pdcov,
   pdcov.test,
+  poisson.e,
   poisson.m,
+  poissonGOF.test,
   poisson.mtest,
   sortrank,
   U_center,
