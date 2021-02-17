@@ -44,8 +44,10 @@ mvnorm.e <- function(x) {
     return(normal.e(x))
   n <- nrow(x)
   d <- ncol(x)
-  if (n < 2)
-    return(normal.e(x))
+  if (n < 2) {
+    warning("sample size must be at least 2")
+    return(NA)
+  }
   # subtract column means and compute S^(-1/2)
   z <- scale(x, scale = FALSE)
   ev <- eigen(var(x), symmetric = TRUE)
@@ -54,24 +56,40 @@ mvnorm.e <- function(x) {
   D <- diag(d)
   diag(D) <- 1 / sqrt(lambda)
   y <- z %*% (P %*% D %*% t(P))
-  if (any(!is.finite(y)))
+  if (any(!is.finite(y))) {
+    warning("missing or non-finite y")
     return(NA)
-  return(mvnEstat(y))
+  }
+  
+  if (requireNamespace("gsl", quietly=TRUE)) {
+    const <- exp(lgamma((d+1)/2) - lgamma(d/2))
+    mean2 <- 2*const
+    ysq <- rowSums(y^2)
+    mean1 <- sqrt(2) * const * 
+               mean(gsl::hyperg_1F1(-1/2, d/2, -ysq/2))
+    mean3 <- 2*sum(dist(y)) / n^2
+    E <- n * (2*mean1 - mean2 - mean3)
+  } else {
+    E <- mvnEstat(y)  #Rcpp 
+  }
+  return(E)  
 }
 
 normal.e <- function(x) {
   ## Case 4: unknown parameters
   x <- as.vector(x)
   n <- length(x)
+  s <- sd(x)
+  if (!is.finite(s) || !(s > 0)) {
+    warning("sd(x)>0 required")
+    return(NA)
+  }
   y <- (x - mean(x)) / sd(x)
   y <- sort(y)
   K <- seq(1 - n, n - 1, 2)
-  if (y[1] == y[n])
-    return(NA)
   return(2 * (sum(2 * y * pnorm(y) + 2 * dnorm(y)) -
                 n/sqrt(pi) - mean(K * y)))
 }
-
 
 normal.test <- function(x, method=c("mc", "limit"), R) {
   ## implements the test for for d=1 

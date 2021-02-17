@@ -14,7 +14,7 @@ function(x, R) {
   lambda <- mean(x)
   if (missing(R)) {
     R <- 0
-    warning("Specify R > 0 replicates for MC test")
+    message("Specify R > 0 replicates for MC test")
   }
     
   bootobj <- boot::boot(x, statistic = stat, R = R, 
@@ -99,14 +99,7 @@ function(x) {
       warning("sample must be non-negative integers")
       return(NULL)
     }
-    n <- length(x)
-    stat <- 0
-    e <- .C("poisMstat",
-            x = as.integer(x),
-            nx = as.integer(n),
-            stat = as.double(stat),
-            PACKAGE = "energy")$stat
-    e
+  return (.poisMstat(x))
 }
 
 poisson.e <-

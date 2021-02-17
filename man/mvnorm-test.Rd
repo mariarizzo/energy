@@ -60,19 +60,20 @@ formula is applied in \code{\link{normal.e}}.
 
 \code{\link{normal.test}} also provides an optional method for the
 test based on the asymptotic sampling distribution of the test
-statistic.
+statistic. 
 }
 \references{
  Szekely, G. J. and Rizzo, M. L. (2005) A New Test for
  Multivariate Normality, \emph{Journal of Multivariate Analysis},
  93/1, 58-80,
  \url{http://dx.doi.org/10.1016/j.jmva.2003.12.002}.
+ 
+Mori, T. F., Szekely, G. J. and Rizzo, M. L. "On energy tests of normality." Journal of Statistical Planning and Inference 213 (2021): 1-15. 
 
- Rizzo, M. L. (2002). A New Rotation Invariant Goodness-of-Fit Test,
- Ph.D. dissertation, Bowling Green State University.
+ Rizzo, M. L. (2002). A New Rotation Invariant Goodness-of-Fit Test, Ph.D. dissertation, Bowling Green State University.
 
- Szekely, G. J. (1989) Potential and Kinetic Energy in Statistics,
- Lecture Notes, Budapest Institute of Technology (Technical University).
+Szekely, G. J. (1989) Potential and Kinetic Energy in Statistics,
+Lecture Notes, Budapest Institute of Technology (Technical University).
 }
 \author{ Maria L. Rizzo \email{mrizzo @ bgsu.edu} and
 Gabor J. Szekely
@@ -83,7 +84,7 @@ Gabor J. Szekely
  mvnorm.e(iris[1:50, 1:4])
 
  ## test if the iris Setosa data has multivariate normal distribution
- mvnorm.etest(iris[1:50,1:4], R = 199)
+ mvnorm.test(iris[1:50,1:4], R = 199)
 }
 \keyword{ multivariate }
 \keyword{ htest }
