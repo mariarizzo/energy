@@ -4,6 +4,7 @@ importFrom(Rcpp, evalCpp)
 importFrom("stats", "as.dist", "dist", "dnorm", "hclust", "model.matrix",
            "pnorm", "ppois", "pt", "rnorm", "rpois", "sd", "var")
 importFrom(boot, boot)
+importFrom(gsl, hyperg_1F1)
 
 export(
   bcdcor,
@@ -43,10 +44,12 @@ export(
   pdcov,
   pdcov.test,
   poisson.e,
+  poisson.etest,
   poisson.m,
-  poissonGOF.test,
   poisson.mtest,
+  poisson.tests,
   sortrank,
+  sumdistance,
   U_center,
   U_product,
   Ucenter
