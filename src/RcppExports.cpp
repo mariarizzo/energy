@@ -17,6 +17,29 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// calc_dist
+NumericMatrix calc_dist(NumericMatrix x);
+RcppExport SEXP _energy_calc_dist(SEXP xSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericMatrix >::type x(xSEXP);
+    rcpp_result_gen = Rcpp::wrap(calc_dist(x));
+    return rcpp_result_gen;
+END_RCPP
+}
+// U_product
+double U_product(NumericMatrix U, NumericMatrix V);
+RcppExport SEXP _energy_U_product(SEXP USEXP, SEXP VSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericMatrix >::type U(USEXP);
+    Rcpp::traits::input_parameter< NumericMatrix >::type V(VSEXP);
+    rcpp_result_gen = Rcpp::wrap(U_product(U, V));
+    return rcpp_result_gen;
+END_RCPP
+}
 // D_center
 NumericMatrix D_center(NumericMatrix Dx);
 RcppExport SEXP _energy_D_center(SEXP DxSEXP) {
@@ -51,14 +74,18 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
-// mvnEstat
-double mvnEstat(NumericMatrix y);
-RcppExport SEXP _energy_mvnEstat(SEXP ySEXP) {
+// kgroups_start
+List kgroups_start(NumericMatrix x, int k, IntegerVector clus, int iter_max, bool distance);
+RcppExport SEXP _energy_kgroups_start(SEXP xSEXP, SEXP kSEXP, SEXP clusSEXP, SEXP iter_maxSEXP, SEXP distanceSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< NumericMatrix >::type y(ySEXP);
-    rcpp_result_gen = Rcpp::wrap(mvnEstat(y));
+    Rcpp::traits::input_parameter< NumericMatrix >::type x(xSEXP);
+    Rcpp::traits::input_parameter< int >::type k(kSEXP);
+    Rcpp::traits::input_parameter< IntegerVector >::type clus(clusSEXP);
+    Rcpp::traits::input_parameter< int >::type iter_max(iter_maxSEXP);
+    Rcpp::traits::input_parameter< bool >::type distance(distanceSEXP);
+    rcpp_result_gen = Rcpp::wrap(kgroups_start(x, k, clus, iter_max, distance));
     return rcpp_result_gen;
 END_RCPP
 }
@@ -88,6 +115,17 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// poisMstat
+NumericVector poisMstat(IntegerVector x);
+RcppExport SEXP _energy_poisMstat(SEXP xSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< IntegerVector >::type x(xSEXP);
+    rcpp_result_gen = Rcpp::wrap(poisMstat(x));
+    return rcpp_result_gen;
+END_RCPP
+}
 // projection
 NumericMatrix projection(NumericMatrix Dx, NumericMatrix Dz);
 RcppExport SEXP _energy_projection(SEXP DxSEXP, SEXP DzSEXP) {
@@ -97,18 +135,6 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< NumericMatrix >::type Dx(DxSEXP);
     Rcpp::traits::input_parameter< NumericMatrix >::type Dz(DzSEXP);
     rcpp_result_gen = Rcpp::wrap(projection(Dx, Dz));
-    return rcpp_result_gen;
-END_RCPP
-}
-// U_product
-double U_product(NumericMatrix U, NumericMatrix V);
-RcppExport SEXP _energy_U_product(SEXP USEXP, SEXP VSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< NumericMatrix >::type U(USEXP);
-    Rcpp::traits::input_parameter< NumericMatrix >::type V(VSEXP);
-    rcpp_result_gen = Rcpp::wrap(U_product(U, V));
     return rcpp_result_gen;
 END_RCPP
 }

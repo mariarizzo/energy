@@ -61,18 +61,14 @@ mvnorm.e <- function(x) {
     return(NA)
   }
   
-  if (requireNamespace("gsl", quietly=TRUE)) {
-    const <- exp(lgamma((d+1)/2) - lgamma(d/2))
-    mean2 <- 2*const
-    ysq <- rowSums(y^2)
-    mean1 <- sqrt(2) * const * 
-               mean(gsl::hyperg_1F1(-1/2, d/2, -ysq/2))
-    mean3 <- 2*sum(dist(y)) / n^2
-    E <- n * (2*mean1 - mean2 - mean3)
-  } else {
-    E <- mvnEstat(y)  #Rcpp 
-  }
-  return(E)  
+  stopifnot(requireNamespace("gsl", quietly=TRUE))
+  const <- exp(lgamma((d+1)/2) - lgamma(d/2))
+  mean2 <- 2*const
+  ysq <- rowSums(y^2)
+  mean1 <- sqrt(2) * const * 
+             mean(gsl::hyperg_1F1(-1/2, d/2, -ysq/2))
+  mean3 <- 2*sum(dist(y)) / n^2
+  return(n * (2*mean1 - mean2 - mean3))  
 }
 
 normal.e <- function(x) {

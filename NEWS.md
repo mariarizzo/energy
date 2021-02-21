@@ -1,6 +1,13 @@
 # energy 1.7-8
 
-  * EVnormal (data) issue fixed.
+*  User level changes:
+     - Poisson goodness-of-fit tests
+     - EVnormal (data) issue fixed
+     - gsl package required
+     
+*  Internal changes
+     - mvnorm.e: use gsl::hyperg_1F1  
+     - poisMstat in energy.c moved to Rcpp poisMstat.cpp
   
 # energy 1.7-7
 

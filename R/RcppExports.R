@@ -29,16 +29,16 @@ kgroups_start <- function(x, k, clus, iter_max, distance) {
     .Call(`_energy_kgroups_start`, x, k, clus, iter_max, distance)
 }
 
-mvnEstat <- function(y) {
-    .Call(`_energy_mvnEstat`, y)
-}
-
 partial_dcor <- function(Dx, Dy, Dz) {
     .Call(`_energy_partial_dcor`, Dx, Dy, Dz)
 }
 
 partial_dcov <- function(Dx, Dy, Dz) {
     .Call(`_energy_partial_dcov`, Dx, Dy, Dz)
+}
+
+.poisMstat <- function(x) {
+    .Call(`_energy_poisMstat`, x)
 }
 
 projection <- function(Dx, Dz) {

@@ -49,7 +49,6 @@ export(
   poisson.mtest,
   poisson.tests,
   sortrank,
-  sumdistance,
   U_center,
   U_product,
   Ucenter
