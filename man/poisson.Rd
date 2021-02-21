@@ -1,9 +1,9 @@
 \name{Poisson Tests}
-\alias{poisson.m}
-\alias{poisson.mtest}
+\alias{poisson.tests}
 \alias{poisson.e}
 \alias{poisson.etest}
-\alias{poisson.tests}
+\alias{poisson.m}
+\alias{poisson.mtest}
 \title{ Goodness-of-Fit Tests for Poisson Distribution}
 \description{
 Performs the mean distance goodness-of-fit test and the energy goodness-of-fit test of Poisson distribution with unknown parameter.
@@ -22,11 +22,13 @@ poisson.tests(x, R, test="all")
 }
 \details{
 Two distance-based tests of Poissonity are applied in \code{poisson.tests}, "M" and "E". The default is to 
-do both tests and return results in a data frame. 
+do all tests and return results in a data frame. 
 Valid choices for \code{test} are "M", "E", or "all" with 
-default "all".
+default "all". 
 
-If "all" tests, both tests are performed by a single parametric bootstrap computing both test statistics on each sample. Otherwise the "M-test" or "E-test" is performed.  
+If "all" tests, all tests are performed by a single parametric bootstrap computing all test statistics on each sample. 
+
+The "M" choice is two tests, one based on a Cramer-von Mises  distance and the other an Anderson-Darling distance. The "E" choice is the energy goodness-of-fit test. 
 
 \code{R} must be a positive integer for a test. If \code{R} is missing or 0, a warning is printed but test statistics are computed (without testing). 
 
@@ -38,7 +40,11 @@ The mean distance test of Poissonity (M-test) is based on the result that the se
  M-estimates replacing the usual EDF estimates of the CDF:
   \deqn{M_n = n\sum_{j=0}^\infty (\hat F(j) - F(j\;; \hat \lambda))^2
  f(j\;; \hat \lambda).}{M_n = n sum [j>=0] (\hat F(j) - F(j; \hat \lambda))^2
- f(j; \hat \lambda).} The test is implemented by parametric bootstrap with
+ f(j; \hat \lambda).} 
+ 
+In \code{poisson.tests}, an Anderson-Darling type of weight is also applied when \code{test="M"} or \code{test="all"}.
+ 
+The tests are implemented by parametric bootstrap with
  \code{R} replicates.
  
 An energy goodness-of-fit test (E) is based on the test statistic
@@ -47,7 +53,7 @@ An energy goodness-of-fit test (E) is based on the test statistic
  |x_i-x_j|),}
 where X and X' are iid with the hypothesized null distribution. For a test of H: X ~ Poisson(\eqn{\lambda}), we can express E|X-X'| in terms of Bessel functions, and E|x_i - X| in terms of the CDF of Poisson(\eqn{\lambda}).
 
-If test=="all" or not specified, the two tests are run with a single parametric bootstrap. \code{poisson.mtest} implements only the Poisson M-test. \code{poisson.etest} implements only the Poisson energy test.  
+If test=="all" or not specified, all tests are run with a single parametric bootstrap. \code{poisson.mtest} implements only the Poisson M-test with Cramer-von Mises type distance. \code{poisson.etest} implements only the Poisson energy test.
 }
 \value{
 The functions \code{poisson.m} and \code{poisson.e} return the test statistics. The function
@@ -58,14 +64,14 @@ The functions \code{poisson.m} and \code{poisson.e} return the test statistics. 
  \item{data.name}{replicates R}
  \item{estimate}{sample mean}
  
-\code{poisson.tests} returns both the "M-test" and "E-test"  results in a data frame with columns 
+\code{poisson.tests} returns "M-CvM test", "M-AD test" and "Energy test" results in a data frame with columns 
  \item{estimate}{sample mean}
  \item{statistic}{observed value of the test statistic}
  \item{p.value}{approximate p-value of the test}
  \item{method}{Description of test}
 which can be coerced to a \code{tibble}.
 }
-\note{The running time of the M-test is much faster than the E-test.}
+\note{The running time of the M test is much faster than the E-test.}
 \references{
 Szekely, G. J. and Rizzo, M. L. (2004) Mean Distance Test of Poisson Distribution, \emph{Statistics and Probability Letters},
 67/3, 241-247. \url{http://dx.doi.org/10.1016/j.spl.2004.01.005}.
@@ -83,6 +89,8 @@ Gabor J. Szekely
  poisson.m(x)
  poisson.e(x)
  \donttest{
+ poisson.etest(x, R=199)
+ poisson.mtest(x, R=199)
  poisson.tests(x, R=199)
  }
 }

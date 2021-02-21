@@ -17,11 +17,14 @@ function(x, R, test="all") {
                  "e" = poisson.e,
                  poisson.stats)
   
-  method <- switch(test, m="M", e="E", c("M","E"))
-  method <- paste(method, "-test", sep="")
+  method <- switch(test, 
+                   m=c("M-CvM","M-AD"), 
+                   e="Energy", 
+                   c("M-CvM","M-AD","Energy"))
+  method <- paste(method, " test", sep="")
   n <- length(x)
   lambda <- mean(x)
-  if (missing(R)) {
+  if (missing(R) || is.null(R)) {
     R <- 0
     message("Specify R > 0 replicates for MC test")
   }
@@ -50,14 +53,14 @@ function(x, R=NULL) {
   if (is.null(R)) R <- 0
   rval <- poisson.tests(x, R, test="M")
   DNAME <- paste(deparse1(substitute(x)), "replicates: ", R)
-  stat <- rval$statistic
-  names(stat) <- "M"
+  stat <- rval$statistic[1]
+  names(stat) <- "M-CvM"
     e <- list(
       method = paste("Poisson M-test", sep = ""),
       statistic = stat,
-      p.value = rval$p.value,
+      p.value = rval$p.value[1],
       data.name = DNAME,
-      estimate = rval$estimate)
+      estimate = rval$estimate[1])
     class(e) <- "htest"
     e
 }
@@ -86,7 +89,9 @@ function(x) {
       warning("sample must be non-negative integers")
       return(NULL)
     }
-  return (.poisMstat(x))
+  stats <- .poisMstat(x)
+  names(stats) <- c("M-CvM", "M-AD")
+  return(stats)
 }
 
 poisson.e <-
@@ -112,8 +117,9 @@ function(x) {
   K <- seq(1 - n, n - 1, 2)
   y <- sort(x)
   meanxx <- 2 * sum(K * y) / n^2
-  
-  n * (2 * mean(meanvec) - EXX - meanxx)
+  stat <- n * (2 * mean(meanvec) - EXX - meanxx)
+  names(stat) <- "E"
+  return(stat)
 }
 
 

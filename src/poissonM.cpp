@@ -3,13 +3,14 @@ using namespace Rcpp;
 
 
 // [[Rcpp::export(.poisMstat)]]
-double poisMstat(IntegerVector x)
+NumericVector poisMstat(IntegerVector x)
 {
   /* computes the Poisson mean distance statistic */
   int i, j, k, n=x.size();
   double eps=1.0e-10;
-  double cvm, d, lambda, m, q;
+  double ad, cvm, d, lambda, m, q;
   double Mcdf1, Mcdf0, Mpdf1, cdf1, cdf0;
+  NumericVector stats(2);
 
   lambda = mean(x);
   q = R::qpois(1.0-eps, lambda, TRUE, FALSE) + 1;
@@ -22,7 +23,8 @@ double poisMstat(IntegerVector x)
   cdf0 = exp(-lambda);                 /* MLE of F(0) */
   d = Mcdf0 - cdf0;
   cvm = d * d * cdf0;   /* von Mises type of distance */
-
+  ad = d * d * cdf0 / (cdf0 * (1-cdf0));  /* A-D weight */
+    
   for (i=1; i<q; i++) {
     m = 0;
     k = i + 1;
@@ -38,10 +40,14 @@ double poisMstat(IntegerVector x)
   cdf1 = R::ppois(i, lambda, TRUE, FALSE); /* MLE of F(i) */
   d = Mcdf1 - cdf1;
   cvm += d * d * (cdf1 - cdf0);
-
+  ad += d * d * (cdf1 - cdf0) / (cdf1 * (1-cdf1));
+  
   cdf0 = cdf1;
   Mcdf0 = Mcdf1;
   }
   cvm *= n;
-  return cvm;
+  ad *= n;
+  stats(0) = cvm;
+  stats(1) = ad;
+  return stats;
 }
