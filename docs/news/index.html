@@ -119,7 +119,20 @@
 <a href="#energy-17-8" class="anchor"></a>energy 1.7-8<small> Unreleased </small>
 </h1>
 <ul>
-<li>EVnormal (data) issue fixed.</li>
+<li>User level changes:
+<ul>
+<li>Poisson goodness-of-fit tests</li>
+<li>EVnormal (data) issue fixed</li>
+<li>gsl package required</li>
+</ul>
+</li>
+<li>Internal changes
+<ul>
+<li>mvnorm.e: use gsl::hyperg_1F1<br>
+</li>
+<li>poisMstat in energy.c moved to Rcpp poisMstat.cpp</li>
+</ul>
+</li>
 </ul>
 </div>
     <div id="energy-17-7" class="section level1">
