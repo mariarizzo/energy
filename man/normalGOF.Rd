@@ -59,7 +59,9 @@ a univariate sample.
  Szekely, G. J. and Rizzo, M. L. (2005) A New Test for
  Multivariate Normality, \emph{Journal of Multivariate Analysis},
  93/1, 58-80,
- \url{http://dx.doi.org/10.1016/j.jmva.2003.12.002}.
+ \doi{10.1016/j.jmva.2003.12.002}.
+
+Mori, T. F., Szekely, G. J. and Rizzo, M. L. "On energy tests of normality." Journal of Statistical Planning and Inference 213 (2021): 1-15. 
 
  Rizzo, M. L. (2002). A New Rotation Invariant Goodness-of-Fit Test,
  Ph.D. dissertation, Bowling Green State University.

@@ -64,13 +64,13 @@
  Szekely, G. J. and Rizzo, M. L. (2005) Hierarchical Clustering
  via Joint Between-Within Distances: Extending Ward's Minimum
  Variance Method, \emph{Journal of Classification} 22(2) 151-183.
- \cr \url{http://dx.doi.org/10.1007/s00357-005-0012-9}
+ \cr \doi{10.1007/s00357-005-0012-9}
 
 M. L. Rizzo and G. J. Szekely (2010).
 DISCO Analysis: A Nonparametric Extension of
 Analysis of Variance, Annals of Applied Statistics,
 Vol. 4, No. 2, 1034-1055.
- \cr \url{http://dx.doi.org/10.1214/09-AOAS245}
+ \cr \doi{10.1214/09-AOAS245}
 
  Szekely, G. J. and Rizzo, M. L. (2004) Testing for Equal
  Distributions in High Dimension, InterStat, November (5).

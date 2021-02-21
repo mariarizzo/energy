@@ -56,7 +56,7 @@ distance covariance. Technometrics, 58(4), 435-447.
  Szekely, G.J., Rizzo, M.L., and Bakirov, N.K. (2007),
  Measuring and Testing Dependence by Correlation of Distances,
  \emph{Annals of Statistics}, Vol. 35 No. 6, pp. 2769-2794.
- \cr \url{http://dx.doi.org/10.1214/009053607000000505}
+ \cr \doi{10.1214/009053607000000505}
 }
 \examples{
   \donttest{

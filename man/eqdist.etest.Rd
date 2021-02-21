@@ -100,7 +100,7 @@ computed by the \code{edist} function, which returns a \code{dist} object.
  DISCO Analysis: A Nonparametric Extension of
  Analysis of Variance, Annals of Applied Statistics,
  Vol. 4, No. 2, 1034-1055.
-\cr \url{http://dx.doi.org/10.1214/09-AOAS245}
+\cr \doi{10.1214/09-AOAS245}
 
  Szekely, G. J. (2000) Technical Report 03-05:
  \eqn{\mathcal{E}}{E}-statistics: Energy of

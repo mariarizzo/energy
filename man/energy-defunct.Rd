@@ -36,9 +36,8 @@ indep.etest(x, y, R)
 \references{
  Bakirov, N.K., Rizzo, M.L., and Szekely, G.J. (2006), A Multivariate
  Nonparametric Test of Independence, \emph{Journal of Multivariate Analysis}
- 93/1, 58-80,
- \cr \url{http://dx.doi.org/10.1016/j.jmva.2005.10.005}
- }
+ 93/1, 58-80
+}
 \author{ Maria L. Rizzo \email{mrizzo @ bgsu.edu} and
 Gabor J. Szekely
 }

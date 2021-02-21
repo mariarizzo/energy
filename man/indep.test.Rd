@@ -75,29 +75,29 @@ The original \code{indep.etest} applied the independence coefficient
   Brownian Distance Covariance,
  \emph{Annals of Applied Statistics}, Vol. 3 No. 4, pp.
  1236-1265. (Also see discussion and rejoinder.)
- \cr \url{http://dx.doi.org/10.1214/09-AOAS312}
+ \cr \doi{10.1214/09-AOAS312}
 
   Szekely, G.J., Rizzo, M.L., and Bakirov, N.K. (2007),
   Measuring and Testing Dependence by Correlation of Distances,
  \emph{Annals of Statistics}, Vol. 35 No. 6, pp. 2769-2794.
- \cr \url{http://dx.doi.org/10.1214/009053607000000505}
+ \cr \doi{10.1214/009053607000000505}
 
  Bakirov, N.K., Rizzo, M.L., and Szekely, G.J. (2006), A Multivariate
  Nonparametric Test of Independence, \emph{Journal of Multivariate Analysis}
  93/1, 58-80, \cr
- \url{http://dx.doi.org/10.1016/j.jmva.2005.10.005}
+ \doi{10.1016/j.jmva.2005.10.005}
  }
 \author{ Maria L. Rizzo \email{mrizzo @ bgsu.edu} and
 Gabor J. Szekely
 }
 \examples{
+\donttest{
  ## independent multivariate data
  x <- matrix(rnorm(60), nrow=20, ncol=3)
  y <- matrix(rnorm(40), nrow=20, ncol=2)
  indep.test(x, y, method = "dcov", R = 99)
  indep.test(x, y, method = "mvI", R = 99)
 
- \dontrun{
  ## dependent multivariate data
  if (require(MASS)) {
    Sigma <- matrix(c(1, .1, 0, 0 , 1, 0, 0 ,.1, 1), 3, 3)
@@ -105,18 +105,8 @@ Gabor J. Szekely
    y <- mvrnorm(30, c(0, 0, 0), Sigma) * x
    indep.test(x, y, R = 99)    #dcov method
    indep.test(x, y, method = "mvI", R = 99)
+    }
   }
- }
-
- \dontrun{
- ## compare the computing time
- x <- mvrnorm(50, c(0, 0, 0), diag(3))
- y <- mvrnorm(50, c(0, 0, 0), Sigma) * x
- set.seed(123)
- system.time(indep.test(x, y, method = "dcov", R = 1000))
- set.seed(123)
- system.time(indep.test(x, y, method = "mvI", R = 1000))
- }
 }
 
 \keyword{ htest }

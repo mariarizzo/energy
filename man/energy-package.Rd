@@ -21,11 +21,11 @@ Maria L. Rizzo and Gabor J. Szekely
 G. J. Szekely and M. L. Rizzo (2013). Energy statistics:
 A class of statistics based on distances, \emph{Journal of
 Statistical Planning and Inference},
-\url{http://dx.doi.org/10.1016/j.jspi.2013.03.018}
+\doi{10.1016/j.jspi.2013.03.018}
 
 M. L. Rizzo and G. J. Szekely (2016). Energy Distance,
 \emph{WIRES Computational Statistics}, Wiley, Volume 8 Issue 1, 27-38.
-Available online Dec., 2015, \url{http://dx.doi.org/10.1002/wics.1375}.
+Available online Dec., 2015, \doi{10.1002/wics.1375}.
 
 G. J. Szekely and M. L. Rizzo (2017). The Energy of Data. 
 \emph{The Annual Review of Statistics and Its Application} 

@@ -25,5 +25,5 @@ when \code{method=="limit"}.
   Szekely, G. J. and Rizzo, M. L. (2005) A New Test for
   Multivariate Normality, \emph{Journal of Multivariate Analysis},
   93/1, 58-80,
-  \url{http://dx.doi.org/10.1016/j.jmva.2003.12.002}.
+  \doi{10.1016/j.jmva.2003.12.002}.
 }

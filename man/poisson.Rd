@@ -74,12 +74,12 @@ which can be coerced to a \code{tibble}.
 \note{The running time of the M test is much faster than the E-test.}
 \references{
 Szekely, G. J. and Rizzo, M. L. (2004) Mean Distance Test of Poisson Distribution, \emph{Statistics and Probability Letters},
-67/3, 241-247. \url{http://dx.doi.org/10.1016/j.spl.2004.01.005}.
+67/3, 241-247. \doi{10.1016/j.spl.2004.01.005}.
 
 Szekely, G. J. and Rizzo, M. L. (2005) A New Test for
  Multivariate Normality, \emph{Journal of Multivariate Analysis},
  93/1, 58-80,
- \url{http://dx.doi.org/10.1016/j.jmva.2003.12.002}.
+ \doi{10.1016/j.jmva.2003.12.002}.
 }
 \author{ Maria L. Rizzo \email{mrizzo @ bgsu.edu} and
 Gabor J. Szekely

@@ -130,13 +130,13 @@ For this reason, \code{DCOR} computes and returns all four statistics.
  Szekely, G.J., Rizzo, M.L., and Bakirov, N.K. (2007),
  Measuring and Testing Dependence by Correlation of Distances,
  \emph{Annals of Statistics}, Vol. 35 No. 6, pp. 2769-2794.
- \cr \url{http://dx.doi.org/10.1214/009053607000000505}
+ \cr \doi{10.1214/009053607000000505}
 
  Szekely, G.J. and Rizzo, M.L. (2009),
  Brownian Distance Covariance,
  \emph{Annals of Applied Statistics},
  Vol. 3, No. 4, 1236-1265.
- \cr \url{http://dx.doi.org/10.1214/09-AOAS312}
+ \cr \doi{10.1214/09-AOAS312}
 
  Szekely, G.J. and Rizzo, M.L. (2009),
  Rejoinder: Brownian Distance Covariance,
