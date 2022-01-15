@@ -77,6 +77,7 @@ Gabor J. Szekely
   x <- iris[1:50, 1]
   normal.e(x)
   normal.test(x, R=199)
+  normal.test(x, method="limit")
 }
 \keyword{ htest }
 \concept{ goodness-of-fit}

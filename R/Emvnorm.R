@@ -123,8 +123,7 @@ normal.test <- function(x, method=c("mc", "limit"), R) {
   names(t0) <- "statistic"
   
   ## load pre-computed eigenvalues
-  EVnormal <- NULL
-  ev <- EVnormal[, "Case4"]
+  ev <- energy::EVnormal[, "Case4"]
 
   if (requireNamespace("CompQuadForm", quietly=TRUE)) {
     p <- CompQuadForm::imhof(t0, ev)$Qq

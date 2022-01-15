@@ -5,6 +5,11 @@
 
 using namespace Rcpp;
 
+#ifdef RCPP_USE_GLOBAL_ROSTREAM
+Rcpp::Rostream<true>&  Rcpp::Rcout = Rcpp::Rcpp_cout_get();
+Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
+#endif
+
 // Btree_sum
 NumericVector Btree_sum(IntegerVector y, NumericVector z);
 RcppExport SEXP _energy_Btree_sum(SEXP ySEXP, SEXP zSEXP) {

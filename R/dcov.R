@@ -67,7 +67,7 @@ dcor.test <-
     # like dcov.test but using dcor as the test statistic
     if (missing(R)) R <- 0
     R <- ifelse(R > 0, floor(R), 0)
-    RESULT <- dcov.test(x, y, index=1.0, R) 
+    RESULT <- dcov.test(x, y, index=index, R) 
     # this test statistic is n times the square of dCov statistic
     DCOVteststat <- RESULT$statistic
     DCOVreplicates <- RESULT$replicates

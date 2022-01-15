@@ -1,3 +1,7 @@
+# energy 1.7-9
+
+*  bug fix in normal.test
+
 # energy 1.7-8
 
 *  User level changes:
