@@ -26,7 +26,9 @@ pdcov.test <- function(x, y, z, R) {
     U_product(Pxz[i, i], Pyz)  #RcppExports
   }
 
-  if (R > 0) {
+  dotest <- FALSE
+  if (R > 0 && den > 0.0) {
+    dotest <- TRUE
     reps <- replicate(R, expr= {
       i <- sample(1:n)
       bootfn(Pxz, i, Pyz=Pyz)
@@ -53,6 +55,7 @@ pdcov.test <- function(x, y, z, R) {
     p.value = pval,
     n = n,
     replicates = replicates,
+    condition = dotest,
     data.name = dataname)
   class(e) <- "htest"
   return(e)
@@ -65,19 +68,18 @@ pdcor.test <- function(x, y, z, R) {
   if (missing(R)) R <- 0
   result <- pdcov.test(x, y, z, R)
 
-  reps <- result$replicates
   teststat <- result$estimate
   estimate <- result$estimate
   n <- result$n
-  if (estimate > 0.0) {
+  pdcor_reps <- NA
+  dotest <- result$condition
+  if (dotest && estimate > 0.0) {
     nRootV <- result$statistic / result$estimate
-    pdcor_reps <- reps / nRootV
-  } else {
-    pdcor_reps <- reps
+    pdcor_reps <- result$reps / nRootV
   }
 
   names(estimate) <- names(teststat) <- "pdcor"
-  if (R > 0) {
+  if (dotest && R > 0) {
     pval <- (1 + sum(pdcor_reps > teststat)) / (1 + R) 
   } else { 
     pval <- NA
@@ -91,6 +93,7 @@ pdcor.test <- function(x, y, z, R) {
     p.value = pval,
     n = n,
     replicates = pdcor_reps,
+    condition = dotest,
     data.name = result$data.name)
   class(e) <- "htest"
   return(e)
