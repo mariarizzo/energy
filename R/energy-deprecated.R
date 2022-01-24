@@ -26,3 +26,20 @@ dcor.t <- function(x, y, distance=FALSE) {
   return(dcorT(x, y))
 }
 
+
+DCOR <-
+  function(x, y, index=1.0) {
+    ## deprecated from energy 1.7-9 
+    # distance covariance and correlation statistics
+    # originally: alternate method, implemented in R
+    
+    .Deprecated(new = "dcor", package = "energy",
+                msg = "DCOR is deprecated, replaced by dcor")
+    aa <- dcov(x, x, index=1.0)
+    bb <- dcov(y, y, index=1.0)
+    ab <- dcov(x, y, index=1.0)
+    if (aa*ab > 0.0)
+      r <- c(ab/sqrt(aa*ab), ab, aa, bb) else r <- 0.0
+    return(r)
+  }
+

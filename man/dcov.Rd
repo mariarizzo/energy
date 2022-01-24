@@ -1,7 +1,6 @@
 \name{distance correlation}
 \alias{dcor}
 \alias{dcov}
-\alias{DCOR}
 \title{ Distance Correlation and Covariance Statistics}
 \description{
  Computes distance covariance and distance correlation statistics,
@@ -10,7 +9,6 @@
 \usage{
 dcov(x, y, index = 1.0)
 dcor(x, y, index = 1.0)
-DCOR(x, y, index = 1.0)
 }
 \arguments{
   \item{x}{ data or distances of first sample}
@@ -18,11 +16,8 @@ DCOR(x, y, index = 1.0)
   \item{index}{ exponent on Euclidean distance, in (0,2]}
 }
 \details{
- \code{dcov} and \code{dcor} or \code{DCOR} compute distance
+ \code{dcov} and \code{dcor} compute distance
  covariance and distance correlation statistics.
- \code{DCOR} is a self-contained R function returning a list of
- statistics. \code{dcor} execution is faster than \code{DCOR}
- (see examples).
 
   The sample sizes (number of rows) of the two samples must
   agree, and samples must not contain missing values. Arguments
@@ -100,15 +95,9 @@ based on the distance covariance statistic.
 \value{
 \code{dcov} returns the sample distance covariance and
 \code{dcor} returns the sample distance correlation.
-\code{DCOR} returns a list with elements
-   \item{dCov}{sample distance covariance}
-   \item{dCor}{sample distance correlation}
-   \item{dVarX}{distance variance of x sample}
-   \item{dVarY}{distance variance of y sample}
 }
 \note{
-Two methods of computing the statistics are provided. \code{DCOR}
-is a stand-alone R function that returns a list of statistics.
+Two methods of computing the statistics are provided. 
 \code{dcov} and \code{dcor} provide R interfaces to the C
 implementation, which is usually faster. \code{dcov} and \code{dcor}
 call an internal function \code{.dcov}.
@@ -120,7 +109,6 @@ square root of
 
 because the individual
 calls to \code{dcov} involve unnecessary repetition of calculations.
-For this reason, \code{DCOR} computes and returns all four statistics.
 }
 \seealso{
 \code{\link{bcdcor}}  \code{\link{dcovU}}  \code{\link{pdcor}}
@@ -154,9 +142,6 @@ Gabor J. Szekely
  ## C implementation
  dcov(x, y, 1.5)
  dcor(x, y, 1.5)
-
- ## R implementation
- DCOR(x, y, 1.5)
 }
 \keyword{ multivariate }
 \concept{ independence }
