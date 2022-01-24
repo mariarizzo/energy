@@ -24,14 +24,14 @@ mvnorm.test <- function(x, R) {
   }
   if (R > 0)
     p <- 1 - mean(bootobj$t < bootobj$t0) else p <- NA
-
-  names(bootobj$t0) <- "E-statistic"
-  e <- list(statistic = bootobj$t0, p.value = p,
-            method = method,
-            data.name = paste("x, sample size ", n, ", dimension ", d, ", replicates ",
-                              R, sep = ""))
-  class(e) <- "htest"
-  e
+    
+    names(bootobj$t0) <- "E-statistic"
+    e <- list(statistic = bootobj$t0, p.value = p,
+              method = method,
+              data.name = paste("x, sample size ", n, ", dimension ", d, ", replicates ",
+                                R, sep = ""))
+    class(e) <- "htest"
+    e
 }
 
 mvnorm.etest <- function(x, R) {
@@ -66,7 +66,7 @@ mvnorm.e <- function(x) {
     mean2 <- 2*const
     ysq <- rowSums(y^2)
     mean1 <- sqrt(2) * const * 
-               mean(gsl::hyperg_1F1(-1/2, d/2, -ysq/2))
+      mean(gsl::hyperg_1F1(-1/2, d/2, -ysq/2))
     mean3 <- 2*sum(dist(y)) / n^2
     return(n * (2*mean1 - mean2 - mean3))  
   } else {
@@ -104,8 +104,8 @@ normal.test <- function(x, method=c("mc", "limit"), R) {
     e <- energy::mvnorm.etest(x, R=R)
     e$method <- "Energy test of normality"
     e$method <- ifelse(R > 0,
-      paste0(e$method,": estimated parameters"),
-        paste0(e$method, "  (Specify R > 0 for MC test)"))
+                       paste0(e$method,": estimated parameters"),
+                       paste0(e$method, "  (Specify R > 0 for MC test)"))
     e$estimate <- estimate
     return(e)
   }
@@ -117,20 +117,20 @@ normal.test <- function(x, method=c("mc", "limit"), R) {
   } else {
     x <- as.vector(x, mode="numeric")
   }
-
+  
   n <- length(x)
   t0 <- normal.e(x)
   names(t0) <- "statistic"
   
   ## load pre-computed eigenvalues
   ev <- energy::EVnormal[, "Case4"]
-
+  
   if (requireNamespace("CompQuadForm", quietly=TRUE)) {
     p <- CompQuadForm::imhof(t0, ev)$Qq
-      } else {
-        warning("limit distribution method requires CompQuadForm package for p-value")
-        p <- NA
-      }
+  } else {
+    warning("limit distribution method requires CompQuadForm package for p-value")
+    p <- NA
+  }
   estimate <- c(mean(x), sd(x))
   names(estimate) <- c("mean", "sd")
   e <- list(statistic = t0, p.value = p,
@@ -140,4 +140,3 @@ normal.test <- function(x, method=c("mc", "limit"), R) {
   class(e) <- "htest"
   e
 }
-

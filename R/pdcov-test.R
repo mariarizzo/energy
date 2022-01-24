@@ -26,9 +26,7 @@ pdcov.test <- function(x, y, z, R) {
     U_product(Pxz[i, i], Pyz)  #RcppExports
   }
 
-  dotest <- FALSE
   if (R > 0 && den > 0.0) {
-    dotest <- TRUE
     reps <- replicate(R, expr= {
       i <- sample(1:n)
       bootfn(Pxz, i, Pyz=Pyz)
@@ -41,10 +39,11 @@ pdcov.test <- function(x, y, z, R) {
     pval <- NA
     replicates <- NA
   }
+  
   dataname <- paste("replicates ", R, sep="")
   if (! R>0)
     dataname <- "Specify R>0 replicates for a test"
-
+  condition <- (den > 0.0)
   names(estimate) <- "pdcor"
   names(teststat) <- "n V^*"
   e <- list(
@@ -55,7 +54,7 @@ pdcov.test <- function(x, y, z, R) {
     p.value = pval,
     n = n,
     replicates = replicates,
-    condition = dotest,
+    condition = condition,
     data.name = dataname)
   class(e) <- "htest"
   return(e)
@@ -66,34 +65,23 @@ pdcor.test <- function(x, y, z, R) {
   ## x, y, z must be dist. objects or data matrices (no dist matrix)
   ## all required calc. done in pdcov.test
   if (missing(R)) R <- 0
-  result <- pdcov.test(x, y, z, R)
+  result <- pdcov.test(x, y, z, R=R)
 
-  teststat <- result$estimate
-  estimate <- result$estimate
-  n <- result$n
-  pdcor_reps <- NA
-  dotest <- result$condition
-  if (dotest && estimate > 0.0) {
+  if (result$condition) {
+    ## if (A*A)(B*B) > 0
     nRootV <- result$statistic / result$estimate
-    pdcor_reps <- result$reps / nRootV
-  }
-
-  names(estimate) <- names(teststat) <- "pdcor"
-  if (dotest && R > 0) {
-    pval <- (1 + sum(pdcor_reps > teststat)) / (1 + R) 
-  } else { 
-    pval <- NA
-  }
-
+    pdcor_reps <- result$replicates / nRootV
+  } else pdcor_reps <- NA
+  
   e <- list(
     call = match.call(),
     method = paste("pdcor test", sep = ""),
-    statistic = teststat,
-    estimate = estimate,
-    p.value = pval,
-    n = n,
+    statistic = result$estimate,
+    estimate = result$estimate,
+    p.value = result$p.value,
+    n = result$n,
     replicates = pdcor_reps,
-    condition = dotest,
+    condition = result$condition,
     data.name = result$data.name)
   class(e) <- "htest"
   return(e)

@@ -71,6 +71,7 @@ theoretical properties of the test, including statistical consistency.
    \item{  statistic}{ observed value of the test statistic}
    \item{   estimate}{ dCov(x,y) or dCor(x,y)}
    \item{  estimates}{ a vector: [dCov(x,y), dCor(x,y), dVar(x), dVar(y)]}
+   \item{  condition}{ logical, permutation test applied}
    \item{ replicates}{ replicates of the test statistic}
    \item{    p.value}{ approximate p-value of the test}
    \item{          n}{ sample size}
@@ -81,7 +82,7 @@ the distance covariance test statistic is the V-statistic
 \eqn{\mathrm{n\, dCov^2} = n \mathcal{V}_n^2}{n V_n^2} (not dCov). 
 }
 \seealso{
- \code{\link{dcov} } \code{\link{dcor} } \code{\link{DCOR}}
+ \code{\link{dcov} } \code{\link{dcor} } 
  \code{\link{dcor.ttest}}
  }
 
