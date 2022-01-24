@@ -24,14 +24,9 @@ Partial distance correlation and covariance
 correlation and partial distance covariance, respectively,
 of x and y removing z.
 
-A test for zero partial distance correlation (or zero partial distance covariance)
-is implemented in \code{pdcor.test}, and \code{pdcov.test}.
+A test for zero partial distance correlation (or zero partial distance covariance) is implemented in \code{pdcor.test}, and \code{pdcov.test}.
 
-If the argument is a matrix, it is treated as a data matrix and distances
-are computed (observations in rows). If the arguments are distances or
-dissimilarities, they must be distance (\code{dist}) objects. For symmetric,
-zero-diagonal dissimilarity matrices, use \code{as.dist} to convert to a
-\code{dist} object.
+If the argument is a matrix, it is treated as a data matrix and distances are computed (observations in rows). If the arguments are distances or dissimilarities, they must be distance (\code{dist}) objects. For symmetric, zero-diagonal dissimilarity matrices, use \code{as.dist} to convert to a \code{dist} object.
 }
 \value{
 Each test returns an object of class \code{htest}.
@@ -55,22 +50,25 @@ Szekely, G.J. and Rizzo, M.L. (2014),
 
   pdcor(x, y, z)
   pdcov(x, y, z)
+  set.seed(1)
   pdcov.test(x, y, z, R=R)
-  print(pdcor.test(x, y, z, R=R))
+  set.seed(1)
+  pdcor.test(x, y, z, R=R)
 
-
-if (require(MASS)) {
-  p = 4
-  mu <- rep(0, p)
-  Sigma <- diag(p)
-
-  ## linear dependence
-  y <- mvrnorm(n, mu, Sigma) + x
-  print(pdcov.test(x, y, z, R=R))
-
-  ## non-linear dependence
-  y <- mvrnorm(n, mu, Sigma) * x
-  print(pdcov.test(x, y, z, R=R))
+\donttest{
+  if (require(MASS)) {
+    p = 4
+    mu <- rep(0, p)
+    Sigma <- diag(p)
+  
+    ## linear dependence
+    y <- mvrnorm(n, mu, Sigma) + x
+    print(pdcov.test(x, y, z, R=R))
+  
+    ## non-linear dependence
+    y <- mvrnorm(n, mu, Sigma) * x
+    print(pdcov.test(x, y, z, R=R))
+    }
   }
 }
 \keyword{ htest }
