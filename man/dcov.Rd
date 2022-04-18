@@ -130,7 +130,7 @@ calls to \code{dcov} involve unnecessary repetition of calculations.
  Rejoinder: Brownian Distance Covariance,
  \emph{Annals of Applied Statistics}, Vol. 3, No. 4, 1303-1308.
   }
-\author{ Maria L. Rizzo \email{mrizzo @ bgsu.edu} and
+\author{ Maria L. Rizzo \email{mrizzo@bgsu.edu} and
 Gabor J. Szekely
 }
 \examples{

@@ -56,7 +56,7 @@ be faster. R versions are retained for historical reasons.
  \emph{Annals of Statistics}, Vol. 42, No. 6, pp. 2382-2412.
  \cr \url{https://projecteuclid.org/euclid.aos/1413810731}
 }
-\author{ Maria L. Rizzo \email{mrizzo @ bgsu.edu} and
+\author{ Maria L. Rizzo \email{mrizzo@bgsu.edu} and
 Gabor J. Szekely
 }
 \examples{

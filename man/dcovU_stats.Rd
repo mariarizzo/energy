@@ -51,7 +51,7 @@ square root as with dCor.
  Vol. 3, No. 4, 1236-1265.
  \cr \doi{10.1214/09-AOAS312}
   }
-  \author{ Maria L. Rizzo \email{mrizzo @ bgsu.edu} and
+  \author{ Maria L. Rizzo \email{mrizzo@bgsu.edu} and
 Gabor J. Szekely
 }
 \examples{

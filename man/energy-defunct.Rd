@@ -38,7 +38,7 @@ indep.etest(x, y, R)
  Nonparametric Test of Independence, \emph{Journal of Multivariate Analysis}
  93/1, 58-80
 }
-\author{ Maria L. Rizzo \email{mrizzo @ bgsu.edu} and
+\author{ Maria L. Rizzo \email{mrizzo@bgsu.edu} and
 Gabor J. Szekely
 }
 

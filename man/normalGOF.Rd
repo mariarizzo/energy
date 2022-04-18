@@ -70,7 +70,7 @@ J. P. Imhof (1961). Computing the Distribution of Quadratic Forms in
 Normal Variables, \emph{Biometrika}, Volume 48, Issue 3/4,
 419-426.
 }
-\author{ Maria L. Rizzo \email{mrizzo @ bgsu.edu} and
+\author{ Maria L. Rizzo \email{mrizzo@bgsu.edu} and
 Gabor J. Szekely
 }
 \examples{

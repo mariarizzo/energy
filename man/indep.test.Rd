@@ -87,7 +87,7 @@ The original \code{indep.etest} applied the independence coefficient
  93/1, 58-80, \cr
  \doi{10.1016/j.jmva.2005.10.005}
  }
-\author{ Maria L. Rizzo \email{mrizzo @ bgsu.edu} and
+\author{ Maria L. Rizzo \email{mrizzo@bgsu.edu} and
 Gabor J. Szekely
 }
 \examples{

@@ -75,7 +75,7 @@ Mori, T. F., Szekely, G. J. and Rizzo, M. L. "On energy tests of normality." Jou
 Szekely, G. J. (1989) Potential and Kinetic Energy in Statistics,
 Lecture Notes, Budapest Institute of Technology (Technical University).
 }
-\author{ Maria L. Rizzo \email{mrizzo @ bgsu.edu} and
+\author{ Maria L. Rizzo \email{mrizzo@bgsu.edu} and
 Gabor J. Szekely
 }
 \examples{

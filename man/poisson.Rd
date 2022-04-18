@@ -81,7 +81,7 @@ Szekely, G. J. and Rizzo, M. L. (2005) A New Test for
  93/1, 58-80,
  \doi{10.1016/j.jmva.2003.12.002}.
 }
-\author{ Maria L. Rizzo \email{mrizzo @ bgsu.edu} and
+\author{ Maria L. Rizzo \email{mrizzo@bgsu.edu} and
 Gabor J. Szekely
 }
 \examples{

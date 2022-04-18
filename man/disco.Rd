@@ -85,7 +85,7 @@ function \code{edist}, and energy tests for equality of distribution
  \code{ \link{eqdist.etest} }
  \code{ \link{ksample.e} }
  }
- \author{ Maria L. Rizzo \email{mrizzo @ bgsu.edu} and Gabor J. Szekely
+ \author{ Maria L. Rizzo \email{mrizzo@bgsu.edu} and Gabor J. Szekely
  }
 \examples{
       ## warpbreaks one-way decompositions

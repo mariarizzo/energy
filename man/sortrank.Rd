@@ -29,6 +29,6 @@ sortrank(rnorm(5))
 \references{
 See \code{\link{sort}}.
 }
-\author{ Maria L. Rizzo \email{mrizzo @ bgsu.edu}
+\author{ Maria L. Rizzo \email{mrizzo@bgsu.edu}
 }
 

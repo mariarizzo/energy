@@ -49,7 +49,7 @@
  \code{mvI.test}. Both methods are based on a population independence coefficient
  that characterizes independence and both tests are statistically consistent.
  }
-\author{ Maria L. Rizzo \email{mrizzo @ bgsu.edu} and
+\author{ Maria L. Rizzo \email{mrizzo@bgsu.edu} and
 Gabor J. Szekely
 }
  \seealso{

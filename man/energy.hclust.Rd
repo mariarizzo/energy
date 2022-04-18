@@ -82,7 +82,7 @@ energy distance method is easily implemented by \code{hclust}. (Some "Ward" algo
  Statistical Samples, Department of Mathematics and Statistics, Bowling
  Green State University.
 }
-\author{ Maria L. Rizzo \email{mrizzo @ bgsu.edu} and
+\author{ Maria L. Rizzo \email{mrizzo@bgsu.edu} and
   Gabor J. Szekely
   }
 \seealso{

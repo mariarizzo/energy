@@ -31,7 +31,7 @@ If the argument is a matrix, it is treated as a data matrix and distances are co
 \value{
 Each test returns an object of class \code{htest}.
 }
-\author{ Maria L. Rizzo \email{mrizzo @ bgsu.edu} and
+\author{ Maria L. Rizzo \email{mrizzo@bgsu.edu} and
 Gabor J. Szekely
 }
 \references{

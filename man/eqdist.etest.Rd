@@ -107,7 +107,7 @@ computed by the \code{edist} function, which returns a \code{dist} object.
  Statistical Samples, Department of Mathematics and Statistics, Bowling
  Green State University.
 }
-\author{ Maria L. Rizzo \email{mrizzo @ bgsu.edu} and
+\author{ Maria L. Rizzo \email{mrizzo@bgsu.edu} and
 Gabor J. Szekely
 }
 \seealso{

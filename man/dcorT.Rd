@@ -59,7 +59,7 @@ Szekely, G.J., Rizzo, M.L., and Bakirov, N.K. (2007),
  \cr \doi{10.1214/09-AOAS312}
 }
 \author{
-Maria L. Rizzo \email{mrizzo @ bgsu.edu} and
+Maria L. Rizzo \email{mrizzo@bgsu.edu} and
 Gabor J. Szekely
 }
 \examples{

@@ -39,7 +39,7 @@ and defined using the square root of V-statistics.
 
 It has been suggested that instead of taking the square root of the U-statistic, one could take the root of \eqn{|U_n|}{|U_n|} before applying the sign, but that introduces more bias than the original dCor, and should never be used. 
 }
-\author{ Maria L. Rizzo \email{mrizzo @ bgsu.edu} and
+\author{ Maria L. Rizzo \email{mrizzo@bgsu.edu} and
 Gabor J. Szekely
 }
 \seealso{
