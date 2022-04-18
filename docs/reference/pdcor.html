@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">energy</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7-9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7-10</span>
       </span>
     </div>
 
@@ -105,20 +105,20 @@ Gabor J. Szekely</p>
 <span class="r-in">  <span class="va">z</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span></span>
 <span class="r-in"></span>
 <span class="r-in">  <span class="fu">pdcor</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, <span class="va">z</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     pdcor </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.1550543 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       pdcor </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -0.02177608 </span>
 <span class="r-in">  <span class="fu">pdcov</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, <span class="va">z</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.07958858</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] -0.007100451</span>
 <span class="r-in">  <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
 <span class="r-in">  <span class="fu">pdcov.test</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, <span class="va">z</span>, R<span class="op">=</span><span class="va">R</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 	pdcov test</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> data:  replicates 199</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> n V^* = 2.3877, p-value = 0.02</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> n V^* = -0.21301, p-value = 0.645</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> sample estimates:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     pdcor </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.1550543 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       pdcor </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -0.02177608 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in">  <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
 <span class="r-in">  <span class="fu">pdcor.test</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, <span class="va">z</span>, R<span class="op">=</span><span class="va">R</span><span class="op">)</span></span>
@@ -126,10 +126,10 @@ Gabor J. Szekely</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 	pdcor test</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> data:  replicates 199</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> pdcor = 0.15505, p-value = 0.02</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> pdcor = -0.021776, p-value = 0.645</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> sample estimates:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     pdcor </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.1550543 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       pdcor </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -0.02177608 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># \donttest{</span></span>
@@ -150,19 +150,19 @@ Gabor J. Szekely</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 	pdcov test</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> data:  replicates 199</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> n V^* = 12.934, p-value = 0.005</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> n V^* = 18.446, p-value = 0.005</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> sample estimates:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     pdcor </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.6411337 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.7541113 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 	pdcov test</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> data:  replicates 199</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> n V^* = 0.59727, p-value = 0.125</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> n V^* = 2.5979, p-value = 0.01</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> sample estimates:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      pdcor </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.05074763 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    pdcor </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.194891 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in">  <span class="co"># }</span></span>
 </code></pre></div>
