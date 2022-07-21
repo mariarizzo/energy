@@ -11,31 +11,29 @@ function(x, y, index=1.0, R=NULL) {
       R <- 0
     }
 
-    # distance covariance test for multivariate independence
-    if (!inherits(x, "dist")) x <- dist(x)
-    if (!inherits(y, "dist")) y <- dist(y)
-    x <- as.matrix(x)
-    y <- as.matrix(y)
-    dst <- TRUE
-    n <- nrow(x)
-    m <- nrow(y)
-    if (n != m) stop("Sample sizes must agree")
-    if (! (all(is.finite(c(x, y)))))
-        stop("Data contains missing or infinite values")
+    Dx <- .arg2dist.matrix(x)
+    Dy <- .arg2dist.matrix(y)
+    if (!isTRUE(all.equal(index, 1.0))) {
+      Dx <- Dx^index
+      Dy <- Dy^index
+    }
     
+    n <- nrow(Dx)
+    m <- nrow(Dy)
+    if (n != m) stop("Sample sizes must agree")
+
     stat <- dcorr <- reps <- 0
     dcov <- rep(0, 4)
     if (R > 0) reps <- rep(0, R)
     pval <- 1
-    dims <- c(n, ncol(x), ncol(y), dst, R)
+    dims <- c(n, ncol(Dx), ncol(Dy), R)
 
     # dcov = [dCov,dCor,dVar(x),dVar(y)]
     a <- .C("dCOVtest",
-            x = as.double(t(x)),
-            y = as.double(t(y)),
-            byrow = as.integer(TRUE),
-            dims = as.integer(dims),
-            index = as.double(index),
+            x = as.double(t(Dx)),
+            y = as.double(t(Dy)),
+            nrow = as.integer(nrow(Dx)),
+            nreps = as.integer(R),
             reps = as.double(reps),
             DCOV = as.double(dcov),
             pval = as.double(pval),
@@ -113,26 +111,24 @@ function(x, y, index=1.0) {
     # dcov = [dCov,dCor,dVar(x),dVar(y)]   (vector)
     # this function provides the fast method for computing dCov
     # it is called by the dcov and dcor functions
-    if (!inherits(x, "dist")) x <- dist(x)
-    if (!inherits(y, "dist")) y <- dist(y)
-    x <- as.matrix(x)
-    y <- as.matrix(y)
-    dst <- TRUE
-    n <- nrow(x)
-    m <- nrow(y)
-    if (n != m) stop("Sample sizes must agree")
-    if (! (all(is.finite(c(x, y)))))
-        stop("Data contains missing or infinite values")
-    dims <- c(n, NCOL(x), NCOL(y), dst)
+  
+  Dx <- .arg2dist.matrix(x)
+  Dy <- .arg2dist.matrix(y)
+  if (!isTRUE(all.equal(index, 1.0))) {
+    Dx <- Dx^index
+    Dy <- Dy^index
+  }
+  
+  n <- nrow(Dx)
+  m <- nrow(Dy)
+  if (n != m) stop("Sample sizes must agree")
+  dims <- c(n, ncol(Dx), ncol(Dy))
     idx <- 1:dims[1]
     DCOV <- numeric(4)
     a <- .C("dCOV",
-            x = as.double(t(x)),
-            y = as.double(t(y)),
-            byrow = as.integer(TRUE),
-            dims = as.integer(dims),
-            index = as.double(index),
-            idx = as.double(idx),
+            x = as.double(t(Dx)),
+            y = as.double(t(Dy)),
+            nrow = as.integer(n),
             DCOV = as.double(DCOV),
             PACKAGE = "energy")
     return(a$DCOV)
@@ -149,4 +145,3 @@ function(x, y, index=1.0) {
     # distance correlation statistic for independence
     return(.dcov(x, y, index)[2])
 }
-

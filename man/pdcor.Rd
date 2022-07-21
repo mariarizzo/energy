@@ -14,9 +14,9 @@ Partial distance correlation and covariance
   pdcov(x, y, z)
 }
 \arguments{
-\item{x}{ data matrix or dist object of first sample}
-\item{y}{ data matrix or dist object of second sample}
-\item{z}{ data matrix or dist object of third sample}
+\item{x}{ data or dist object of first sample}
+\item{y}{ data or dist object of second sample}
+\item{z}{ data or dist object of third sample}
 \item{R}{ replicates for permutation test}
 }
 \details{
@@ -26,7 +26,7 @@ of x and y removing z.
 
 A test for zero partial distance correlation (or zero partial distance covariance) is implemented in \code{pdcor.test}, and \code{pdcov.test}.
 
-If the argument is a matrix, it is treated as a data matrix and distances are computed (observations in rows). If the arguments are distances or dissimilarities, they must be distance (\code{dist}) objects. For symmetric, zero-diagonal dissimilarity matrices, use \code{as.dist} to convert to a \code{dist} object.
+Argument types supported are numeric data matrix, data.frame, tibble, numeric vector, class "dist" object, or factor. For unordered factors a 0-1 distance matrix is computed. 
 }
 \value{
 Each test returns an object of class \code{htest}.

@@ -1,12 +1,9 @@
 pdcov.test <- function(x, y, z, R) {
-  ## x, y, z must be dist. objects or data matrices (no dist matrix)
   if (missing(R)) R <- 0
-  if (!inherits(x, "dist")) x <- dist(x)
-  if (!inherits(y, "dist")) y <- dist(y)
-  if (!inherits(z, "dist")) z <- dist(z)
-  Dx <- as.matrix(x)
-  Dy <- as.matrix(y)
-  Dz <- as.matrix(z)
+  
+  Dx <- .arg2dist.matrix(x)
+  Dy <- .arg2dist.matrix(y)
+  Dz <- .arg2dist.matrix(z)
   n <- nrow(Dx)
   Pxz <- projection(Dx, Dz)  #U-center and compute projections
   Pyz <- projection(Dy, Dz)

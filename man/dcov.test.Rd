@@ -23,9 +23,19 @@ dcor.test(x, y, index = 1.0, R)
  obtained via permutation bootstrap, with \code{R} replicates.
 
  The sample sizes (number of rows) of the two samples must
- agree, and samples must not contain missing values. Arguments
- \code{x}, \code{y} can optionally be \code{\link{dist}} objects;
- otherwise these arguments are treated as data.
+ agree, and samples must not contain missing values. 
+ 
+ The \code{index} is an optional exponent on Euclidean distance.
+Valid exponents for energy are in (0, 2) excluding 2. 
+
+Argument types supported are 
+numeric data matrix, data.frame, or tibble, with observations in rows;
+numeric vector; ordered or unordered factors. In case of unordered factors
+a 0-1 distance matrix is computed.
+
+Optionally pre-computed distances can be input as class "dist" objects or as distance matrices. 
+For data types of arguments,
+distance matrices are computed internally. 
 
  The \code{dcov} test statistic is
  \eqn{n \mathcal V_n^2}{nV_n^2} where
@@ -83,6 +93,7 @@ the distance covariance test statistic is the V-statistic
 }
 \seealso{
  \code{\link{dcov} } \code{\link{dcor} } 
+ \code{\link{pdcov.test}} \code{\link{pdcor.test}} 
  \code{\link{dcor.ttest}}
  }
 

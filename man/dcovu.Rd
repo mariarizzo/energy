@@ -20,9 +20,12 @@ dcovU(x, y)
  dCov, in the Hilbert space of U-centered distance matrices.
 
  The sample sizes (number of rows) of the two samples must
- agree, and samples must not contain missing values. Arguments
- \code{x}, \code{y} can optionally be \code{\link{dist}} objects;
- otherwise these arguments are treated as data.
+ agree, and samples must not contain missing values. 
+ 
+Argument types supported are 
+numeric data matrix, data.frame, or tibble, with observations in rows;
+numeric vector; ordered or unordered factors. In case of unordered factors
+a 0-1 distance matrix is computed.
 }
 \value{
 \code{dcovU} returns the unbiased estimator of squared dcov.

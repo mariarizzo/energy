@@ -28,10 +28,8 @@ dcovU <-
 dcorU <-
 function(x, y) {
   ## unbiased dcov^2
-  if (!inherits(x, "dist")) x <- dist(x)
-  if (!inherits(y, "dist")) y <- dist(y)
-  x <- as.matrix(x)
-  y <- as.matrix(y)
+  x <- .arg2dist.matrix(x)
+  y <- .arg2dist.matrix(y)
   n <- nrow(x)
   m <- nrow(y)
   if (n != m) stop("sample sizes must agree")

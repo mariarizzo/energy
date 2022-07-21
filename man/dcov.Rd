@@ -20,9 +20,18 @@ dcor(x, y, index = 1.0)
  covariance and distance correlation statistics.
 
   The sample sizes (number of rows) of the two samples must
-  agree, and samples must not contain missing values. Arguments
-  \code{x}, \code{y} can optionally be \code{\link{dist}} objects;
- otherwise these arguments are treated as data.
+  agree, and samples must not contain missing values. 
+  
+The \code{index} is an optional exponent on Euclidean distance.
+Valid exponents for energy are in (0, 2) excluding 2. 
+
+Argument types supported are 
+numeric data matrix, data.frame, or tibble, with observations in rows;
+numeric vector; ordered or unordered factors. In case of unordered factors
+a 0-1 distance matrix is computed.
+
+Optionally pre-computed distances can be input as class "dist" objects or as distance matrices. 
+ For data types of arguments, distance matrices are computed internally. 
 
 Distance correlation is a new measure of dependence between random
 vectors introduced by Szekely, Rizzo, and Bakirov (2007).
@@ -90,18 +99,13 @@ the square root of
  V^2_n(X,Y) / sqrt(V^2_n (X) V^2_n(Y)).
 }
 See \code{\link{dcov.test}} for a test of multivariate independence
-based on the distance covariance statistic.
+based on the distance covariance statistic. 
 }
 \value{
 \code{dcov} returns the sample distance covariance and
 \code{dcor} returns the sample distance correlation.
 }
 \note{
-Two methods of computing the statistics are provided. 
-\code{dcov} and \code{dcor} provide R interfaces to the C
-implementation, which is usually faster. \code{dcov} and \code{dcor}
-call an internal function \code{.dcov}.
-
 Note that it is inefficient to compute dCor by:
 
 square root of
@@ -111,8 +115,9 @@ because the individual
 calls to \code{dcov} involve unnecessary repetition of calculations.
 }
 \seealso{
+\code{\link{dcov2d}} \code{\link{dcor2d}} 
 \code{\link{bcdcor}}  \code{\link{dcovU}}  \code{\link{pdcor}}
-\code{\link{dcov.test}} \code{\link{dcor.ttest}}  \code{\link{pdcor.test}}
+\code{\link{dcov.test}} \code{\link{dcor.test}}  \code{\link{pdcor.test}}
 }
 \references{
  Szekely, G.J., Rizzo, M.L., and Bakirov, N.K. (2007),
@@ -138,10 +143,6 @@ Gabor J. Szekely
  y <- iris[51:100, 1:4]
  dcov(x, y)
  dcov(dist(x), dist(y))  #same thing
-
- ## C implementation
- dcov(x, y, 1.5)
- dcor(x, y, 1.5)
 }
 \keyword{ multivariate }
 \concept{ independence }
