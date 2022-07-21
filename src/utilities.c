@@ -2,8 +2,7 @@
    utilities.c: some utilities for the energy package
 
    Author: Maria L. Rizzo
-   (see energy package on CRAN
-   or at personal.bgsu.edu/~mrizzo)
+   github.com/mariarizzo/energy
 
    alloc_matrix, alloc_int_matrix, free_matrix, free_int_matrix:
      use R (Calloc, Free) instead of C (calloc, free) for memory management
@@ -84,8 +83,8 @@ void permute(int *J, int n)
 {
     /*
        permute the first n integers of J
-       if n is length(J), equivalent to R:
-            J <- rev(sample(J, length(J), replace=FALSE))
+       if n is length(J), returns a permutation vector
+       equal to rev(Rcpp::sample(n, n, false))
     */
     int i, j, j0, m=n;
     for (i=0; i<n-1; i++) {
@@ -100,8 +99,8 @@ void permute(int *J, int n)
 void permute_check(int *J, int *N)
 {
     /*
-	the permute function can be called from R using this
-	wrapper - the purpose is to check on a reported bug
+	  the permute function can be called from R using this wrapper
+    for debugging purposes 
     */
 	int n = *N;
 	permute(J, n);

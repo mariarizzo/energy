@@ -1,7 +1,10 @@
 #include <Rcpp.h>
 using namespace Rcpp;
 
-
+//  Author: Maria L. Rizzo
+//  energy package
+//  github.com/mariarizzo/energy
+  
 // compute partial sum using binary search algorithm like AVL
 // pre-compute powers of two to save repeated calculations
 

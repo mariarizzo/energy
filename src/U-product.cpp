@@ -1,6 +1,13 @@
 #include <Rcpp.h>
 using namespace Rcpp;
 
+/*
+ Author: Maria L. Rizzo
+ energy package
+ github.com/mariarizzo/energy
+ */
+
+
 // [[Rcpp::export]]
 double U_product(NumericMatrix U, NumericMatrix V) {
   // U and V are U-centered dissimilarity matrices of the two samples

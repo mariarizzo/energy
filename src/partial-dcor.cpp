@@ -1,6 +1,13 @@
 #include <Rcpp.h>
 using namespace Rcpp;
 
+/*
+ Author: Maria L. Rizzo
+ energy package
+ github.com/mariarizzo/energy
+ */
+
+
 NumericVector partial_dcor(NumericMatrix Dx, NumericMatrix Dy, NumericMatrix Dz);
 double        partial_dcov(NumericMatrix Dx, NumericMatrix Dy, NumericMatrix Dz);
 

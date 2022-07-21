@@ -1,8 +1,9 @@
 // double centering utilities for the energy package
 //
-// Maria L. Rizzo <mrizzo@bgsu.edu>
-// August, 2016
 
+//  Author: Maria L. Rizzo
+//  energy package
+//  github.com/mariarizzo/energy
 
 
 #include <Rcpp.h>

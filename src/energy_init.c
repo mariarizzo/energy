@@ -3,14 +3,21 @@
 #include <stdlib.h> // for NULL
 #include <R_ext/Rdynload.h>
 
+/*
+  Author: Maria L. Rizzo
+  energy package
+  github.com/mariarizzo/energy
+*/
+
 /* declarations to register native routines in this package */ 
 
 /* .C calls */
-extern void dCOV(void *, void *, void *, void *, void *, void *, void *);
-extern void dCOVtest(void *, void *, void *, void *, void *, void *, void *, void *);
+extern void dCOV(void *, void *, void *, void *);
+extern void dCOVtest(void *, void *, void *, void *, void *, void *, void *);
 extern void indepE(void *, void *, void *, void *, void *);
 extern void indepEtest(void *, void *, void *, void *, void *, void *, void *);
 extern void ksampleEtest(void *, void *, void *, void *, void *, void *, void *, void *, void *);
+extern void permute_check(void *, void *);
 
 /* .Call calls */
 extern SEXP _energy_D_center(SEXP);
@@ -28,11 +35,12 @@ extern SEXP _energy_dCov2(SEXP, SEXP, SEXP);
 extern SEXP _energy_dCov2stats(SEXP, SEXP, SEXP);
 
 static const R_CMethodDef CEntries[] = {
-  {"dCOV",         (DL_FUNC) &dCOV,         7},
-  {"dCOVtest",     (DL_FUNC) &dCOVtest,     8},
+  {"dCOV",         (DL_FUNC) &dCOV,         4},
+  {"dCOVtest",     (DL_FUNC) &dCOVtest,     7},
   {"indepE",       (DL_FUNC) &indepE,       5},
   {"indepEtest",   (DL_FUNC) &indepEtest,   7},
   {"ksampleEtest", (DL_FUNC) &ksampleEtest, 9},
+  {"permute_check",(DL_FUNC) &permute_check,2},
   {NULL, NULL, 0}
 };
 

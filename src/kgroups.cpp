@@ -1,6 +1,13 @@
 #include <Rcpp.h>
 using namespace Rcpp;
 
+/*
+ Author: Maria L. Rizzo
+ energy package
+ github.com/mariarizzo/energy
+ */
+
+
 int kgroups_update(NumericMatrix x, int k, IntegerVector clus,
                    IntegerVector sizes, NumericVector within, bool distance);
 List kgroups_start(NumericMatrix x, int k, IntegerVector clus,

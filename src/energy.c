@@ -1,15 +1,9 @@
 /*
-   energy.c: energy package
-
-   Author:  Maria Rizzo <mrizzo at bgsu.edu>
-   Created: 4 Jan 2004
-   Updated: 2 April 2008    some functions moved to utilities.c
-   Updated: 25 August 2016  mvnEstat converted to c++ in mvnorm.cpp
-   Updated: 16 February 2021  poisMstat ported to Rcpp in poissonM.cpp
-
-   ksampleEtest() performs the multivariate E-test for equal distributions,
-                  complete version, from data matrix
-   E2sample()     computes the 2-sample E-statistic without creating distance
+ energy.c: energy package
+ 
+ Author: Maria L. Rizzo
+ github.com/mariarizzo/energy
+ 
 */
 
 #include <R.h>

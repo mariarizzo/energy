@@ -1,6 +1,12 @@
 #include <Rcpp.h>
 using namespace Rcpp;
 
+/*
+ Author: Maria L. Rizzo
+ energy package
+ github.com/mariarizzo/energy
+ */
+
 
 // [[Rcpp::export(.poisMstat)]]
 NumericVector poisMstat(IntegerVector x)

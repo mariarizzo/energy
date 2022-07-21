@@ -1,6 +1,13 @@
 #include <Rcpp.h>
 using namespace Rcpp;
 
+/*
+ Author: Maria L. Rizzo
+ energy package
+ github.com/mariarizzo/energy
+ */
+
+
 NumericMatrix U_center(NumericMatrix);
 double        U_product(NumericMatrix, NumericMatrix);
 

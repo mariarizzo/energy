@@ -1,6 +1,13 @@
 #include <Rcpp.h>
 using namespace Rcpp;
 
+/*
+ Author: Maria L. Rizzo
+ energy package
+ github.com/mariarizzo/energy
+ */
+
+
 // [[Rcpp::export]]
 NumericMatrix calc_dist(NumericMatrix x) {
   int n = x.nrow(), d = x.ncol(), i, j, k;
@@ -17,10 +24,11 @@ NumericMatrix calc_dist(NumericMatrix x) {
           dsum += dk * dk;
         }
         Dx(i, j) = sqrt(dsum);
-        Dx(j, i) = sqrt(dsum);
+        Dx(j, i) = Dx(i, j);
       }
     }
   }
   return Dx;
 }
+
 
