@@ -4,11 +4,11 @@ function(x, R, test="all") {
   # poisson.e is the energy GOF statistic
   # poisson.m is the mean distance statistic
   # (not related to the test stats::poisson.test)
-  if (any(!is.integer(x)) || any(x < 0)) {
+  if (!is.integer(x) || any(x < 0)) {
     warning("sample must be non-negative integers")
     return(NULL)
   }
-  test <- casefold(test)
+  test <- tolower(test)
   poisson.stats <- function(x) {
     c(poisson.m(x), poisson.e(x))
   }
