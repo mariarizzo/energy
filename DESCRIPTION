@@ -1,7 +1,7 @@
 Package: energy
 Title: E-Statistics: Multivariate Inference via the Energy of Data
-Version: 1.7-10
-Date: 2022-04-18
+Version: 1.7-11
+Date: 2022-07-21
 Authors@R: c(
     person("Maria", "Rizzo", , "mrizzo@bgsu.edu", c("aut", "cre")),
     person("Gabor", "Szekely", , , "aut"))
@@ -15,10 +15,10 @@ Description: E-statistics (energy) tests and statistics for multivariate and uni
 Imports: Rcpp (>= 0.12.6), stats, boot, gsl
 LinkingTo: Rcpp
 Suggests: MASS, CompQuadForm
-Depends: R (>= 2.10)
+Depends: R (>= 3.1)
 URL: https://github.com/mariarizzo/energy
 License: GPL (>= 2)
 LazyData: true
 NeedsCompilation: yes
 Repository: CRAN
-RoxygenNote: 7.1.2
+

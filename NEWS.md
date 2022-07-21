@@ -1,3 +1,16 @@
+# energy 1.7-11
+
+*  User level changes
+     - more argument types supported in dcov, dcor, pdcov, pdcor functions and tests
+
+*  Internal changes
+     - C functions dCOVtest() and dCOV() simplified, now expect distance matrices, exponent handled in R
+     - unused C function dCovtest() removed
+  
+# energy 1.7-10
+
+  * update email address in docs
+  
 # energy 1.7-9
 
   *  bug fix in normal.test

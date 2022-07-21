@@ -32,6 +32,7 @@ export(
   indep.test,
   kgroups,
   ksample.e,
+  mutualIndep.test,
   mvI,
   mvI.test,
   mvnorm.e,
