@@ -157,7 +157,7 @@ dcov2d<- function(x, y, type=c("V", "U"), all.stats=FALSE) {
   ## Sx is a sortrank object usually pre-computed here
   ## x is the data vector, Sx$x is sort(x)
   if (is.null(Sx))
-  Sx <- sortrank(x)
+    Sx <- sortrank(x)
   n <- length(x)
   r <- Sx$r  #ranks
   z <- Sx$x  #ordered sample x

@@ -30,6 +30,9 @@ Available online Dec., 2015, \doi{10.1002/wics.1375}.
 G. J. Szekely and M. L. Rizzo (2017). The Energy of Data. 
 \emph{The Annual Review of Statistics and Its Application} 
 4:447-79.  \url{https://www.annualreviews.org/doi/abs/10.1146/annurev-statistics-060116-054026}
+
+G. J. Szekely and M. L. Rizzo (2022). \emph{The Energy of Data and Distance Correlation}. Chapman & Hall/CRC Monographs on Statistics and Applied Probability. ISBN 9781482242744. 
+\url{https://www.routledge.com/The-Energy-of-Data-and-Distance-Correlation/Szekely-Rizzo/p/book/9781482242744}.
 }
 \keyword{ package }
 \keyword{ multivariate }
