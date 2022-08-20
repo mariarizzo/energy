@@ -4,10 +4,6 @@
  ### Extension of Analysis of Variance, Annals of Applied Statistics
  ###  Vol. 4, No. 2, 1034-1055.
  ###
- ### Sept 2010 parts of disco package merged into energy package
- ### this release supports one way models
- ### this version does not use the C library
- ###
  ### disco: computes the decomposition and test using F ratio
  ### disco.between: statistic and test using between component
  ### .disco1: internal computations for one factor
@@ -184,5 +180,4 @@ print.disco <- function(x, ...) {
               md2))
   cat(sprintf("%-20s %4d %10.5f\n", "Total", x$N - 1, x$total))
 }
-
 

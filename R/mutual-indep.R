@@ -1,7 +1,7 @@
 mutualIndep.test <-
 function(x, R) {
-  if (is.vector(x)) {
-    stop("Expecting dim > 1")
+  if (NCOL(x) < 2) {
+    stop("Expecting two or more samples")
     }
   bootfn <- function(x, i) { 
     d <- ncol(x)
