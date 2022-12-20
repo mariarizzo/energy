@@ -50,7 +50,7 @@
   return(NA)
 }
 
-is.dmatrix <- function(x, tol = .Machine$double.eps^.5) {
+is.dmatrix <- function(x, tol = 100 * .Machine$double.eps) {
   ## check if zero diagonal, symmetric, non-negative square matrix
   ## i.e., distance matrix or dissimilarity matrix
   value <- FALSE
