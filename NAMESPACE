@@ -8,6 +8,7 @@ importFrom(gsl, hyperg_1F1)
 
 export(
   bcdcor,
+  calc_dist,
   D_center,
   Dcenter,
   dcor,
@@ -30,6 +31,7 @@ export(
   eqdist.e,
   eqdist.etest,
   indep.test,
+  is.dmatrix,
   kgroups,
   ksample.e,
   mutualIndep.test,
