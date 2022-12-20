@@ -1,15 +1,15 @@
- ### disco tests - implementation of DIStance COmponents methods in:
- ###
- ### Rizzo, M.L. and Szekely, G.J. (2010) "DISCO Analysis: A Nonparametric
- ### Extension of Analysis of Variance, Annals of Applied Statistics
- ###  Vol. 4, No. 2, 1034-1055.
- ###
- ### disco: computes the decomposition and test using F ratio
- ### disco.between: statistic and test using between component
- ### .disco1: internal computations for one factor
- ### .disco1stat, .disco1Bstat: internal for boot function
- ###
- ###
+### disco tests - implementation of DIStance COmponents methods in:
+###
+### Rizzo, M.L. and Szekely, G.J. (2010) "DISCO Analysis: A Nonparametric
+### Extension of Analysis of Variance, Annals of Applied Statistics
+###  Vol. 4, No. 2, 1034-1055.
+###
+### disco: computes the decomposition and test using F ratio
+### disco.between: statistic and test using between component
+### .disco1: internal computations for one factor
+### .disco1stat, .disco1Bstat: internal for boot function
+###
+###
 
 
 
@@ -20,8 +20,8 @@ disco <- function(x, factors, distance = FALSE, index = 1, R,
   ## distance, otherwise FALSE index is the exponent on distance, in (0,2]
   ## R is number of replicates for test method: use F ratio (default) or
   ## between component (discoB) disco method is currently alias for discoF
-
-  if(missing(R)) R <- 0
+  
+  
   method <- match.arg(method)
   factors <- data.frame(factors)
   if (inherits(x, "dist")) distance <- TRUE
@@ -36,10 +36,10 @@ disco <- function(x, factors, distance = FALSE, index = 1, R,
     stop("distance==TRUE but first argument is not distance")
   if (!isTRUE(all.equal(index, 1)))
     dst <- dst^index
-
+  
   stats <- matrix(0, nfactors, 6)
   colnames(stats) <- c("Trt", "Within", "df1", "df2", "Stat", "p-value")
-
+  
   for (j in 1:nfactors) {
     trt <- factors[, j]
     stats[j, 1:4] <- .disco1(trt = trt, dst = dst)
@@ -53,7 +53,7 @@ disco <- function(x, factors, distance = FALSE, index = 1, R,
       stats[j, 6] <- NA
     }
   }
-
+  
   methodname <- "DISCO (F ratio)"
   dataname <- deparse(substitute(x))
   total <- sum(stats[1, 1:2])
@@ -89,7 +89,7 @@ disco.between <- function(x, factors, distance = FALSE, index = 1, R) {
   ## object factors is a matrix or data frame of group labels
   ## distance=TRUE if x is distance, otherwise FALSE index is the exponent
   ## on distance, in (0,2]
-
+  
   factors <- data.frame(factors)
   nfactors <- NCOL(factors)
   if (nfactors > 1)
@@ -101,7 +101,7 @@ disco.between <- function(x, factors, distance = FALSE, index = 1, R) {
     stop("distance==TRUE but first argument is not distance")
   if (!isTRUE(all.equal(index, 1)))
     dst <- dst^index
-
+  
   trt <- factors[, 1]
   if (R > 0) {
     b <- boot::boot(data = dst, statistic = .disco1Bstat, sim = "permutation",
@@ -115,14 +115,14 @@ disco.between <- function(x, factors, distance = FALSE, index = 1, R) {
   }
   if (R == 0)
     return(between)
-
+  
   methodname <- "DISCO (Between-sample)"
   dataname <- deparse(substitute(x))
-
+  
   names(between) <- "DISCO between statistic"
   e <- list(call = match.call(), method = methodname, statistic = between,
             p.value = pval, data.name = dataname)
-
+  
   class(e) <- "htest"
   e
 }
@@ -130,7 +130,7 @@ disco.between <- function(x, factors, distance = FALSE, index = 1, R) {
 .disco1 <- function(trt, dst) {
   ## dst is Euclidean distance matrix or power of it trt is the treatment,
   ## a factor
-
+  
   trt <- factor(trt)
   k <- nlevels(trt)
   n <- tabulate(trt)
@@ -169,15 +169,14 @@ print.disco <- function(x, ...) {
   f0 <- x$statistic
   print(x$call)
   cat(sprintf("\nDistance Components: index %5.2f\n", x$index))
-  cat(sprintf("%-15s %4s %10s %10s %10s %8s\n", "Source", "Df", "Sum Dist",
+  cat(sprintf("%-20s %4s %10s %10s %10s %10s\n", "Source", "Df", "Sum Dist",
               "Mean Dist", "F-ratio", "p-value"))
   for (i in 1:k) {
     fname <- x$factor.names[i]
-    cat(sprintf("%-15s %4d %10.5f %10.5f %10.3f %8s\n", fname, x$Df.trt[i],
+    cat(sprintf("%-20s %4d %10.5f %10.5f %10.3f %10s\n", fname, x$Df.trt[i],
                 x$between[i], md1[i], f0[i], format.pval(x$p.value[i])))
   }
-  cat(sprintf("%-15s %4d %10.5f %10.5f\n", "Within", x$Df.e, x$within,
+  cat(sprintf("%-20s %4d %10.5f %10.5f\n", "Within", x$Df.e, x$within,
               md2))
-  cat(sprintf("%-15s %4d %10.5f\n", "Total", x$N - 1, x$total))
+  cat(sprintf("%-20s %4d %10.5f\n", "Total", x$N - 1, x$total))
 }
-
