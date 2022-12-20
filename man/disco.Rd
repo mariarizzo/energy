@@ -13,7 +13,7 @@ disco.between(x, factors, distance, index=1.0, R)
 }
 \arguments{
   \item{x}{ data matrix or distance matrix or dist object}
-  \item{factors}{ matrix of factor labels or integers (not design matrix)}
+  \item{factors}{ matrix or data frame of factor labels or integers (not design matrix)}
   \item{distance}{ logical, TRUE if x is distance matrix}
   \item{index}{ exponent on Euclidean distance in (0,2]}
   \item{R}{ number of replicates for a permutation test}
@@ -92,6 +92,12 @@ function \code{edist}, and energy tests for equality of distribution
       data(warpbreaks)
       attach(warpbreaks)
       disco(breaks, factors=wool, R=99)
+      
+      ## warpbreaks two-way wool+tension
+      disco(breaks, factors=data.frame(wool, tension), R=0)
+
+      ## warpbreaks two-way wool*tension
+      disco(breaks, factors=data.frame(wool, tension, wool:tension), R=0)
 
       ## When index=2 for univariate data, we get ANOVA decomposition
       disco(breaks, factors=tension, index=2.0, R=99)
