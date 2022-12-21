@@ -169,14 +169,15 @@ print.disco <- function(x, ...) {
   f0 <- x$statistic
   print(x$call)
   cat(sprintf("\nDistance Components: index %5.2f\n", x$index))
-  cat(sprintf("%-20s %4s %10s %10s %10s %10s\n", "Source", "Df", "Sum Dist",
+  cat(sprintf("%-15s %4s %10s %10s %9s %9s\n", "Source", "Df", "Sum Dist",
               "Mean Dist", "F-ratio", "p-value"))
+  fabb <- abbreviate(x$factor.names, minlength=12)
   for (i in 1:k) {
-    fname <- x$factor.names[i]
-    cat(sprintf("%-20s %4d %10.5f %10.5f %10.3f %10s\n", fname, x$Df.trt[i],
+    fname <- fabb[i]
+    cat(sprintf("%-15s %4d %10.5f %10.5f %9.3f %9s\n", fname, x$Df.trt[i],
                 x$between[i], md1[i], f0[i], format.pval(x$p.value[i])))
   }
-  cat(sprintf("%-20s %4d %10.5f %10.5f\n", "Within", x$Df.e, x$within,
+  cat(sprintf("%-15s %4d %10.5f %10.5f\n", "Within", x$Df.e, x$within,
               md2))
-  cat(sprintf("%-20s %4d %10.5f\n", "Total", x$N - 1, x$total))
+  cat(sprintf("%-15s %4d %10.5f\n", "Total", x$N - 1, x$total))
 }
