@@ -18,7 +18,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">energy</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7-10</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7-11</span>
       </span>
     </div>
 
@@ -55,18 +55,21 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">indep.e</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span>
-<span class="fu">indep.etest</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, <span class="va">R</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">indep.e</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span></span>
+<span><span class="fu">indep.etest</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, <span class="va">R</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>x</dt>
 <dd><p>matrix: first sample, observations in rows</p></dd>
-<dt>y</dt>
+
+  <dt>y</dt>
 <dd><p>matrix: second sample, observations in rows</p></dd>
-<dt>R</dt>
+
+  <dt>R</dt>
 <dd><p>number of replicates</p></dd>
+
 </dl></div>
     <div id="details">
     <h2>Details</h2>
@@ -81,17 +84,24 @@
     </div>
     <div id="value">
     <h2>Value</h2>
-    <p>The sample coefficient \(\mathcal I\) is returned by <code>indep.e</code>.
- The function <code>indep.etest</code> returns a list with class
-<code>htest</code> containing</p>
+    
+
+<p>The sample coefficient \(\mathcal I\) is returned by <code>indep.e</code>.
+ The function <code>indep.etest</code> returns a list with class</p>
+<p></p>
+<p><code>htest</code> containing</p>
 <dl><dt>method</dt>
 <dd><p>description of test</p></dd>
-<dt>statistic</dt>
+
+ <dt>statistic</dt>
 <dd><p>observed value of the coefficient \(\mathcal I\)</p></dd>
-<dt>p.value</dt>
+
+ <dt>p.value</dt>
 <dd><p>approximate p-value of the test</p></dd>
-<dt>data.name</dt>
+
+ <dt>data.name</dt>
 <dd><p>description of data</p></dd>
+
 </dl></div>
     <div id="references">
     <h2>References</h2>
@@ -117,7 +127,7 @@ Gabor J. Szekely</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

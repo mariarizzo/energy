@@ -19,7 +19,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">energy</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7-10</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7-11</span>
       </span>
     </div>
 
@@ -57,20 +57,24 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">dcov.test</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, index <span class="op">=</span> <span class="fl">1.0</span>, R <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span>
-<span class="fu">dcor.test</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, index <span class="op">=</span> <span class="fl">1.0</span>, <span class="va">R</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">dcov.test</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, index <span class="op">=</span> <span class="fl">1.0</span>, R <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span>
+<span><span class="fu">dcor.test</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, index <span class="op">=</span> <span class="fl">1.0</span>, <span class="va">R</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>x</dt>
 <dd><p>data or distances of first sample</p></dd>
-<dt>y</dt>
+
+  <dt>y</dt>
 <dd><p>data or distances of second sample</p></dd>
-<dt>R</dt>
+
+  <dt>R</dt>
 <dd><p>number of replicates</p></dd>
-<dt>index</dt>
+
+  <dt>index</dt>
 <dd><p>exponent on Euclidean distance, in (0,2]</p></dd>
+
 </dl></div>
     <div id="details">
     <h2>Details</h2>
@@ -78,9 +82,16 @@
  tests of multivariate independence. The test decision is
  obtained via permutation bootstrap, with <code>R</code> replicates.</p>
 <p>The sample sizes (number of rows) of the two samples must
- agree, and samples must not contain missing values. Arguments
- <code>x</code>, <code>y</code> can optionally be <code><a href="https://rdrr.io/r/stats/dist.html" class="external-link">dist</a></code> objects;
- otherwise these arguments are treated as data.</p>
+ agree, and samples must not contain missing values.</p> 
+<p>The <code>index</code> is an optional exponent on Euclidean distance.
+Valid exponents for energy are in (0, 2) excluding 2.</p>
+<p>Argument types supported are 
+numeric data matrix, data.frame, or tibble, with observations in rows;
+numeric vector; ordered or unordered factors. In case of unordered factors
+a 0-1 distance matrix is computed.</p>
+<p>Optionally pre-computed distances can be input as class "dist" objects or as distance matrices. 
+For data types of arguments,
+distance matrices are computed internally.</p>
 <p>The <code>dcov</code> test statistic is
  \(n \mathcal V_n^2\) where
  \(\mathcal V_n(x,y)\) = dcov(x,y),
@@ -114,25 +125,36 @@ theoretical properties of the test, including statistical consistency.</p>
     </div>
     <div id="value">
     <h2>Value</h2>
-    <p><code>dcov.test</code> or <code>dcor.test</code> returns a list with class <code>htest</code> containing</p>
+    
+
+<p><code>dcov.test</code> or <code>dcor.test</code> returns a list with class <code>htest</code> containing</p>
 <dl><dt>     method</dt>
 <dd><p>description of test</p></dd>
-<dt>  statistic</dt>
+
+   <dt>  statistic</dt>
 <dd><p>observed value of the test statistic</p></dd>
-<dt>   estimate</dt>
+
+   <dt>   estimate</dt>
 <dd><p>dCov(x,y) or dCor(x,y)</p></dd>
-<dt>  estimates</dt>
+
+   <dt>  estimates</dt>
 <dd><p>a vector: [dCov(x,y), dCor(x,y), dVar(x), dVar(y)]</p></dd>
-<dt>  condition</dt>
+
+   <dt>  condition</dt>
 <dd><p>logical, permutation test applied</p></dd>
-<dt> replicates</dt>
+
+   <dt> replicates</dt>
 <dd><p>replicates of the test statistic</p></dd>
-<dt>    p.value</dt>
+
+   <dt>    p.value</dt>
 <dd><p>approximate p-value of the test</p></dd>
-<dt>          n</dt>
+
+   <dt>          n</dt>
 <dd><p>sample size</p></dd>
-<dt>  data.name</dt>
+
+   <dt>  data.name</dt>
 <dd><p>description of data</p></dd>
+
 </dl></div>
     <div id="note">
     <h2>Note</h2>
@@ -143,6 +165,7 @@ the distance covariance test statistic is the V-statistic
     <div id="see-also">
     <h2>See also</h2>
     <div class="dont-index"><p><code><a href="dcov.html">dcov</a> </code> <code><a href="dcov.html">dcor</a> </code> 
+ <code><a href="pdcor.html">pdcov.test</a></code> <code><a href="pdcor.html">pdcor.test</a></code> 
  <code><a href="energy-deprecated.html">dcor.ttest</a></code></p></div>
     </div>
     <div id="references">
@@ -150,12 +173,12 @@ the distance covariance test statistic is the V-statistic
     <p>Szekely, G.J., Rizzo, M.L., and Bakirov, N.K. (2007),
  Measuring and Testing Dependence by Correlation of Distances,
  <em>Annals of Statistics</em>, Vol. 35 No. 6, pp. 2769-2794.
- <br> doi: <a href="https://doi.org/10.1214/009053607000000505" class="external-link">10.1214/009053607000000505</a></p>
+ <br><a href="https://doi.org/10.1214/009053607000000505" class="external-link">doi:10.1214/009053607000000505</a></p>
 <p>Szekely, G.J. and Rizzo, M.L. (2009),
  Brownian Distance Covariance,
  <em>Annals of Applied Statistics</em>,
  Vol. 3, No. 4, 1236-1265.
- <br> doi: <a href="https://doi.org/10.1214/09-AOAS312" class="external-link">10.1214/09-AOAS312</a></p>
+ <br><a href="https://doi.org/10.1214/09-AOAS312" class="external-link">doi:10.1214/09-AOAS312</a></p>
 <p>Szekely, G.J. and Rizzo, M.L. (2009),
  Rejoinder: Brownian Distance Covariance,
  <em>Annals of Applied Statistics</em>, Vol. 3, No. 4, 1303-1308.</p>
@@ -168,10 +191,10 @@ Gabor J. Szekely</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"> <span class="va">x</span> <span class="op">&lt;-</span> <span class="va">iris</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">50</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span></span>
-<span class="r-in"> <span class="va">y</span> <span class="op">&lt;-</span> <span class="va">iris</span><span class="op">[</span><span class="fl">51</span><span class="op">:</span><span class="fl">100</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span></span>
-<span class="r-in"> <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
-<span class="r-in"> <span class="fu">dcor.test</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/dist.html" class="external-link">dist</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/stats/dist.html" class="external-link">dist</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span>, R<span class="op">=</span><span class="fl">199</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span> <span class="va">x</span> <span class="op">&lt;-</span> <span class="va">iris</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">50</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span></span></span>
+<span class="r-in"><span> <span class="va">y</span> <span class="op">&lt;-</span> <span class="va">iris</span><span class="op">[</span><span class="fl">51</span><span class="op">:</span><span class="fl">100</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span></span></span>
+<span class="r-in"><span> <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span></span>
+<span class="r-in"><span> <span class="fu">dcor.test</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/dist.html" class="external-link">dist</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/stats/dist.html" class="external-link">dist</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span>, R<span class="op">=</span><span class="fl">199</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 	dCor independence test (permutation test)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
@@ -181,8 +204,8 @@ Gabor J. Szekely</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      dCov      dCor   dVar(X)   dVar(Y) </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 0.1025087 0.3060479 0.2712927 0.4135274 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-in"> <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
-<span class="r-in"> <span class="fu">dcov.test</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, R<span class="op">=</span><span class="fl">199</span><span class="op">)</span></span>
+<span class="r-in"><span> <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span></span>
+<span class="r-in"><span> <span class="fu">dcov.test</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, R<span class="op">=</span><span class="fl">199</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 	dCov independence test (permutation test)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
@@ -206,7 +229,7 @@ Gabor J. Szekely</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

@@ -18,7 +18,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">energy</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7-10</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7-11</span>
       </span>
     </div>
 
@@ -55,24 +55,30 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">disco</span><span class="op">(</span><span class="va">x</span>, <span class="va">factors</span>, <span class="va">distance</span>, index<span class="op">=</span><span class="fl">1.0</span>, <span class="va">R</span>, method<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"disco"</span>,<span class="st">"discoB"</span>,<span class="st">"discoF"</span><span class="op">)</span><span class="op">)</span>
-<span class="fu">disco.between</span><span class="op">(</span><span class="va">x</span>, <span class="va">factors</span>, <span class="va">distance</span>, index<span class="op">=</span><span class="fl">1.0</span>, <span class="va">R</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">disco</span><span class="op">(</span><span class="va">x</span>, <span class="va">factors</span>, <span class="va">distance</span>, index<span class="op">=</span><span class="fl">1.0</span>, <span class="va">R</span>, method<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"disco"</span>,<span class="st">"discoB"</span>,<span class="st">"discoF"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu">disco.between</span><span class="op">(</span><span class="va">x</span>, <span class="va">factors</span>, <span class="va">distance</span>, index<span class="op">=</span><span class="fl">1.0</span>, <span class="va">R</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>x</dt>
 <dd><p>data matrix or distance matrix or dist object</p></dd>
-<dt>factors</dt>
-<dd><p>matrix of factor labels or integers (not design matrix)</p></dd>
-<dt>distance</dt>
+
+  <dt>factors</dt>
+<dd><p>matrix or data frame of factor labels or integers (not design matrix)</p></dd>
+
+  <dt>distance</dt>
 <dd><p>logical, TRUE if x is distance matrix</p></dd>
-<dt>index</dt>
+
+  <dt>index</dt>
 <dd><p>exponent on Euclidean distance in (0,2]</p></dd>
-<dt>R</dt>
+
+  <dt>R</dt>
 <dd><p>number of replicates for a permutation test</p></dd>
-<dt>method</dt>
+
+  <dt>method</dt>
 <dd><p>test statistic</p></dd>
+
 </dl></div>
     <div id="details">
     <h2>Details</h2>
@@ -88,47 +94,71 @@
     </div>
     <div id="value">
     <h2>Value</h2>
-    <p>When <code>method="discoF"</code>, <code>disco</code> returns a list similar to the
+    
+
+<p>When <code>method="discoF"</code>, <code>disco</code> returns a list similar to the
   return value from <code>anova.lm</code>, and the <code>print.disco</code> method is
-  provided to format the output into a similar table. Details:
-<code>disco</code> returns a class <code>disco</code> object, which is a list containing</p>
+  provided to format the output into a similar table. Details:</p>
+
+
+<p><code>disco</code> returns a class <code>disco</code> object, which is a list containing</p>
 <dl><dt>call</dt>
 <dd><p>call</p></dd>
+
 <dt>method</dt>
 <dd><p>method</p></dd>
+
 <dt>statistic</dt>
 <dd><p>vector of observed statistics</p></dd>
+
 <dt>p.value</dt>
 <dd><p>vector of p-values</p></dd>
+
 <dt>k</dt>
 <dd><p>number of factors</p></dd>
+
 <dt>N</dt>
 <dd><p>number of observations</p></dd>
+
 <dt>between</dt>
 <dd><p>between-sample distance components</p></dd>
+
 <dt>withins</dt>
 <dd><p>one-way within-sample distance components</p></dd>
+
 <dt>within</dt>
 <dd><p>within-sample distance component</p></dd>
+
 <dt>total</dt>
 <dd><p>total dispersion</p></dd>
+
 <dt>Df.trt</dt>
 <dd><p>degrees of freedom for treatments</p></dd>
+
 <dt>Df.e</dt>
 <dd><p>degrees of freedom for error</p></dd>
+
 <dt>index</dt>
 <dd><p>index (exponent on distance)</p></dd>
+
 <dt>factor.names</dt>
 <dd><p>factor names</p></dd>
+
 <dt>factor.levels</dt>
 <dd><p>factor levels</p></dd>
+
 <dt>sample.sizes</dt>
 <dd><p>sample sizes</p></dd>
+
 <dt>stats</dt>
 <dd><p>matrix containing decomposition</p></dd>
+
+
 </dl><p>When <code>method="discoB"</code>, <code>disco</code> passes the arguments to
-<code>disco.between</code>, which returns a class <code>htest</code> object.
-<code>disco.between</code> returns a class <code>htest</code> object, where the test
+<code>disco.between</code>, which returns a class <code>htest</code> object.</p>
+
+
+<p><code>disco.between</code> returns a class <code>htest</code> object, where the test
 statistic is the between-sample statistic (proportional to the numerator of the F ratio
 of the <code>disco</code> test.</p>
     </div>
@@ -138,7 +168,7 @@ of the <code>disco</code> test.</p>
 DISCO Analysis: A Nonparametric Extension of
 Analysis of Variance, Annals of Applied Statistics,
 Vol. 4, No. 2, 1034-1055.
-<br> doi: <a href="https://doi.org/10.1214/09-AOAS245" class="external-link">10.1214/09-AOAS245</a></p>
+<br><a href="https://doi.org/10.1214/09-AOAS245" class="external-link">doi:10.1214/09-AOAS245</a></p>
     </div>
     <div id="note">
     <h2>Note</h2>
@@ -163,28 +193,55 @@ function <code>edist</code>, and energy tests for equality of distribution
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in">      <span class="co">## warpbreaks one-way decompositions</span></span>
-<span class="r-in">      <span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">warpbreaks</span><span class="op">)</span></span>
-<span class="r-in">      <span class="kw"><a href="https://rdrr.io/r/base/attach.html" class="external-link">attach</a></span><span class="op">(</span><span class="va">warpbreaks</span><span class="op">)</span></span>
-<span class="r-in">      <span class="fu">disco</span><span class="op">(</span><span class="va">breaks</span>, factors<span class="op">=</span><span class="va">wool</span>, R<span class="op">=</span><span class="fl">99</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span>      <span class="co">## warpbreaks one-way decompositions</span></span></span>
+<span class="r-in"><span>      <span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">warpbreaks</span><span class="op">)</span></span></span>
+<span class="r-in"><span>      <span class="kw"><a href="https://rdrr.io/r/base/attach.html" class="external-link">attach</a></span><span class="op">(</span><span class="va">warpbreaks</span><span class="op">)</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> The following objects are masked from warpbreaks (pos = 3):</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     breaks, tension, wool</span>
+<span class="r-in"><span>      <span class="fu">disco</span><span class="op">(</span><span class="va">breaks</span>, factors<span class="op">=</span><span class="va">wool</span>, R<span class="op">=</span><span class="fl">99</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> disco(x = breaks, factors = wool, R = 99)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Distance Components: index  1.00</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Source                 Df   Sum Dist  Mean Dist    F-ratio    p-value</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> factors                 1   10.77778   10.77778      1.542       0.21</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Within                 52  363.55556    6.99145</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Total                  53  374.33333</span>
-<span class="r-in"></span>
-<span class="r-in">      <span class="co">## When index=2 for univariate data, we get ANOVA decomposition</span></span>
-<span class="r-in">      <span class="fu">disco</span><span class="op">(</span><span class="va">breaks</span>, factors<span class="op">=</span><span class="va">tension</span>, index<span class="op">=</span><span class="fl">2.0</span>, R<span class="op">=</span><span class="fl">99</span><span class="op">)</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Source            Df   Sum Dist  Mean Dist   F-ratio   p-value</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> factors            1   10.77778   10.77778     1.542      0.21</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Within            52  363.55556    6.99145</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Total             53  374.33333</span>
+<span class="r-in"><span>      </span></span>
+<span class="r-in"><span>      <span class="co">## warpbreaks two-way wool+tension</span></span></span>
+<span class="r-in"><span>      <span class="fu">disco</span><span class="op">(</span><span class="va">breaks</span>, factors<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span><span class="va">wool</span>, <span class="va">tension</span><span class="op">)</span>, R<span class="op">=</span><span class="fl">0</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> disco(x = breaks, factors = data.frame(wool, tension), R = 0)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Distance Components: index  1.00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Source            Df   Sum Dist  Mean Dist   F-ratio   p-value</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> wool               1   10.77778   10.77778     1.542        NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> tension            2   47.00000   23.50000     3.661        NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Within            50  316.55556    6.33111</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Total             53  374.33333</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span>      <span class="co">## warpbreaks two-way wool*tension</span></span></span>
+<span class="r-in"><span>      <span class="fu">disco</span><span class="op">(</span><span class="va">breaks</span>, factors<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span><span class="va">wool</span>, <span class="va">tension</span>, <span class="va">wool</span><span class="op">:</span><span class="va">tension</span><span class="op">)</span>, R<span class="op">=</span><span class="fl">0</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> disco(x = breaks, factors = data.frame(wool, tension, wool:tension), </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     R = 0)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Distance Components: index  1.00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Source            Df   Sum Dist  Mean Dist   F-ratio   p-value</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> wool               1   10.77778   10.77778     1.542        NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> tension            2   47.00000   23.50000     3.661        NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> wool.tension       5   85.00000   17.00000     2.820        NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Within            45  231.55556    5.14568</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Total             53  374.33333</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span>      <span class="co">## When index=2 for univariate data, we get ANOVA decomposition</span></span></span>
+<span class="r-in"><span>      <span class="fu">disco</span><span class="op">(</span><span class="va">breaks</span>, factors<span class="op">=</span><span class="va">tension</span>, index<span class="op">=</span><span class="fl">2.0</span>, R<span class="op">=</span><span class="fl">99</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> disco(x = breaks, factors = tension, index = 2, R = 99)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Distance Components: index  2.00</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Source                 Df   Sum Dist  Mean Dist    F-ratio    p-value</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> factors                 2 2034.25926 1017.12963      7.206       0.01</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Within                 51 7198.55556  141.14815</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Total                  53 9232.81481</span>
-<span class="r-in">      <span class="fu"><a href="https://rdrr.io/r/stats/aov.html" class="external-link">aov</a></span><span class="op">(</span><span class="va">breaks</span> <span class="op">~</span> <span class="va">tension</span><span class="op">)</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Source            Df   Sum Dist  Mean Dist   F-ratio   p-value</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> factors            2 2034.25926 1017.12963     7.206      0.01</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Within            51 7198.55556  141.14815</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Total             53 9232.81481</span>
+<span class="r-in"><span>      <span class="fu"><a href="https://rdrr.io/r/stats/aov.html" class="external-link">aov</a></span><span class="op">(</span><span class="va">breaks</span> <span class="op">~</span> <span class="va">tension</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Call:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    aov(formula = breaks ~ tension)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
@@ -195,50 +252,50 @@ function <code>edist</code>, and energy tests for equality of distribution
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Residual standard error: 11.88058</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Estimated effects may be unbalanced</span>
-<span class="r-in"></span>
-<span class="r-in">      <span class="co">## Multivariate response</span></span>
-<span class="r-in">      <span class="co">## Example on producing plastic film from Krzanowski (1998, p. 381)</span></span>
-<span class="r-in">      <span class="va">tear</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">6.5</span>, <span class="fl">6.2</span>, <span class="fl">5.8</span>, <span class="fl">6.5</span>, <span class="fl">6.5</span>, <span class="fl">6.9</span>, <span class="fl">7.2</span>, <span class="fl">6.9</span>, <span class="fl">6.1</span>, <span class="fl">6.3</span>,</span>
-<span class="r-in">                <span class="fl">6.7</span>, <span class="fl">6.6</span>, <span class="fl">7.2</span>, <span class="fl">7.1</span>, <span class="fl">6.8</span>, <span class="fl">7.1</span>, <span class="fl">7.0</span>, <span class="fl">7.2</span>, <span class="fl">7.5</span>, <span class="fl">7.6</span><span class="op">)</span></span>
-<span class="r-in">      <span class="va">gloss</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">9.5</span>, <span class="fl">9.9</span>, <span class="fl">9.6</span>, <span class="fl">9.6</span>, <span class="fl">9.2</span>, <span class="fl">9.1</span>, <span class="fl">10.0</span>, <span class="fl">9.9</span>, <span class="fl">9.5</span>, <span class="fl">9.4</span>,</span>
-<span class="r-in">                 <span class="fl">9.1</span>, <span class="fl">9.3</span>, <span class="fl">8.3</span>, <span class="fl">8.4</span>, <span class="fl">8.5</span>, <span class="fl">9.2</span>, <span class="fl">8.8</span>, <span class="fl">9.7</span>, <span class="fl">10.1</span>, <span class="fl">9.2</span><span class="op">)</span></span>
-<span class="r-in">      <span class="va">opacity</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">4.4</span>, <span class="fl">6.4</span>, <span class="fl">3.0</span>, <span class="fl">4.1</span>, <span class="fl">0.8</span>, <span class="fl">5.7</span>, <span class="fl">2.0</span>, <span class="fl">3.9</span>, <span class="fl">1.9</span>, <span class="fl">5.7</span>,</span>
-<span class="r-in">                   <span class="fl">2.8</span>, <span class="fl">4.1</span>, <span class="fl">3.8</span>, <span class="fl">1.6</span>, <span class="fl">3.4</span>, <span class="fl">8.4</span>, <span class="fl">5.2</span>, <span class="fl">6.9</span>, <span class="fl">2.7</span>, <span class="fl">1.9</span><span class="op">)</span></span>
-<span class="r-in">      <span class="va">Y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">tear</span>, <span class="va">gloss</span>, <span class="va">opacity</span><span class="op">)</span></span>
-<span class="r-in">      <span class="va">rate</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/gl.html" class="external-link">gl</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">10</span><span class="op">)</span>, labels<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Low"</span>, <span class="st">"High"</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in">      <span class="co">## test for equal distributions by rate</span></span>
-<span class="r-in">      <span class="fu">disco</span><span class="op">(</span><span class="va">Y</span>, factors<span class="op">=</span><span class="va">rate</span>, R<span class="op">=</span><span class="fl">99</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span>      <span class="co">## Multivariate response</span></span></span>
+<span class="r-in"><span>      <span class="co">## Example on producing plastic film from Krzanowski (1998, p. 381)</span></span></span>
+<span class="r-in"><span>      <span class="va">tear</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">6.5</span>, <span class="fl">6.2</span>, <span class="fl">5.8</span>, <span class="fl">6.5</span>, <span class="fl">6.5</span>, <span class="fl">6.9</span>, <span class="fl">7.2</span>, <span class="fl">6.9</span>, <span class="fl">6.1</span>, <span class="fl">6.3</span>,</span></span>
+<span class="r-in"><span>                <span class="fl">6.7</span>, <span class="fl">6.6</span>, <span class="fl">7.2</span>, <span class="fl">7.1</span>, <span class="fl">6.8</span>, <span class="fl">7.1</span>, <span class="fl">7.0</span>, <span class="fl">7.2</span>, <span class="fl">7.5</span>, <span class="fl">7.6</span><span class="op">)</span></span></span>
+<span class="r-in"><span>      <span class="va">gloss</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">9.5</span>, <span class="fl">9.9</span>, <span class="fl">9.6</span>, <span class="fl">9.6</span>, <span class="fl">9.2</span>, <span class="fl">9.1</span>, <span class="fl">10.0</span>, <span class="fl">9.9</span>, <span class="fl">9.5</span>, <span class="fl">9.4</span>,</span></span>
+<span class="r-in"><span>                 <span class="fl">9.1</span>, <span class="fl">9.3</span>, <span class="fl">8.3</span>, <span class="fl">8.4</span>, <span class="fl">8.5</span>, <span class="fl">9.2</span>, <span class="fl">8.8</span>, <span class="fl">9.7</span>, <span class="fl">10.1</span>, <span class="fl">9.2</span><span class="op">)</span></span></span>
+<span class="r-in"><span>      <span class="va">opacity</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">4.4</span>, <span class="fl">6.4</span>, <span class="fl">3.0</span>, <span class="fl">4.1</span>, <span class="fl">0.8</span>, <span class="fl">5.7</span>, <span class="fl">2.0</span>, <span class="fl">3.9</span>, <span class="fl">1.9</span>, <span class="fl">5.7</span>,</span></span>
+<span class="r-in"><span>                   <span class="fl">2.8</span>, <span class="fl">4.1</span>, <span class="fl">3.8</span>, <span class="fl">1.6</span>, <span class="fl">3.4</span>, <span class="fl">8.4</span>, <span class="fl">5.2</span>, <span class="fl">6.9</span>, <span class="fl">2.7</span>, <span class="fl">1.9</span><span class="op">)</span></span></span>
+<span class="r-in"><span>      <span class="va">Y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">tear</span>, <span class="va">gloss</span>, <span class="va">opacity</span><span class="op">)</span></span></span>
+<span class="r-in"><span>      <span class="va">rate</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/gl.html" class="external-link">gl</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">10</span><span class="op">)</span>, labels<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Low"</span>, <span class="st">"High"</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span>      <span class="co">## test for equal distributions by rate</span></span></span>
+<span class="r-in"><span>      <span class="fu">disco</span><span class="op">(</span><span class="va">Y</span>, factors<span class="op">=</span><span class="va">rate</span>, R<span class="op">=</span><span class="fl">99</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> disco(x = Y, factors = rate, R = 99)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Distance Components: index  1.00</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Source                 Df   Sum Dist  Mean Dist    F-ratio    p-value</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> factors                 1    1.27003    1.27003      0.981       0.38</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Within                 18   23.30105    1.29450</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Total                  19   24.57108</span>
-<span class="r-in">      <span class="fu">disco</span><span class="op">(</span><span class="va">Y</span>, factors<span class="op">=</span><span class="va">rate</span>, R<span class="op">=</span><span class="fl">99</span>, method<span class="op">=</span><span class="st">"discoB"</span><span class="op">)</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Source            Df   Sum Dist  Mean Dist   F-ratio   p-value</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> factors            1    1.27003    1.27003     0.981      0.38</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Within            18   23.30105    1.29450</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Total             19   24.57108</span>
+<span class="r-in"><span>      <span class="fu">disco</span><span class="op">(</span><span class="va">Y</span>, factors<span class="op">=</span><span class="va">rate</span>, R<span class="op">=</span><span class="fl">99</span>, method<span class="op">=</span><span class="st">"discoB"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 	DISCO (Between-sample)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> data:  x</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> DISCO between statistic = 1.27, p-value = 0.3535</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-in"></span>
-<span class="r-in">      <span class="co">## Just extract the decomposition table</span></span>
-<span class="r-in">      <span class="fu">disco</span><span class="op">(</span><span class="va">Y</span>, factors<span class="op">=</span><span class="va">rate</span>, R<span class="op">=</span><span class="fl">0</span><span class="op">)</span><span class="op">$</span><span class="va">stats</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span>      <span class="co">## Just extract the decomposition table</span></span></span>
+<span class="r-in"><span>      <span class="fu">disco</span><span class="op">(</span><span class="va">Y</span>, factors<span class="op">=</span><span class="va">rate</span>, R<span class="op">=</span><span class="fl">0</span><span class="op">)</span><span class="op">$</span><span class="va">stats</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>           Trt   Within df1 df2      Stat p-value</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1,] 1.270028 23.30105   1  18 0.9810934      NA</span>
-<span class="r-in"></span>
-<span class="r-in">      <span class="co">## Compare eqdist.e methods for rate</span></span>
-<span class="r-in">      <span class="co">## disco between stat is half of original when sample sizes equal</span></span>
-<span class="r-in">      <span class="fu"><a href="eqdist.etest.html">eqdist.e</a></span><span class="op">(</span><span class="va">Y</span>, sizes<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">10</span><span class="op">)</span>, method<span class="op">=</span><span class="st">"original"</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span>      <span class="co">## Compare eqdist.e methods for rate</span></span></span>
+<span class="r-in"><span>      <span class="co">## disco between stat is half of original when sample sizes equal</span></span></span>
+<span class="r-in"><span>      <span class="fu"><a href="eqdist.etest.html">eqdist.e</a></span><span class="op">(</span><span class="va">Y</span>, sizes<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">10</span><span class="op">)</span>, method<span class="op">=</span><span class="st">"original"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> E-statistic </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    2.540056 </span>
-<span class="r-in">      <span class="fu"><a href="eqdist.etest.html">eqdist.e</a></span><span class="op">(</span><span class="va">Y</span>, sizes<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">10</span><span class="op">)</span>, method<span class="op">=</span><span class="st">"discoB"</span><span class="op">)</span></span>
+<span class="r-in"><span>      <span class="fu"><a href="eqdist.etest.html">eqdist.e</a></span><span class="op">(</span><span class="va">Y</span>, sizes<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">10</span><span class="op">)</span>, method<span class="op">=</span><span class="st">"discoB"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1.270028</span>
-<span class="r-in"></span>
-<span class="r-in">      <span class="co">## The between-sample distance component</span></span>
-<span class="r-in">      <span class="fu">disco.between</span><span class="op">(</span><span class="va">Y</span>, factors<span class="op">=</span><span class="va">rate</span>, R<span class="op">=</span><span class="fl">0</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span>      <span class="co">## The between-sample distance component</span></span></span>
+<span class="r-in"><span>      <span class="fu">disco.between</span><span class="op">(</span><span class="va">Y</span>, factors<span class="op">=</span><span class="va">rate</span>, R<span class="op">=</span><span class="fl">0</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1.270028</span>
 </code></pre></div>
     </div>
@@ -254,7 +311,7 @@ function <code>edist</code>, and energy tests for equality of distribution
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

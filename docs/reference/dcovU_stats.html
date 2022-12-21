@@ -19,7 +19,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">energy</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7-10</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7-11</span>
       </span>
     </div>
 
@@ -57,15 +57,17 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">dcovU_stats</span><span class="op">(</span><span class="va">Dx</span>, <span class="va">Dy</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">dcovU_stats</span><span class="op">(</span><span class="va">Dx</span>, <span class="va">Dy</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>Dx</dt>
 <dd><p>distance matrix of first sample</p></dd>
-<dt>Dy</dt>
+
+  <dt>Dy</dt>
 <dd><p>distance matrix of second sample</p></dd>
+
 </dl></div>
     <div id="details">
     <h2>Details</h2>
@@ -77,7 +79,9 @@
     </div>
     <div id="value">
     <h2>Value</h2>
-    <p><code>dcovU_stats</code> returns a vector of the components of bias-corrected
+    
+
+<p><code>dcovU_stats</code> returns a vector of the components of bias-corrected
 dcor: [dCovU, bcdcor, dVarXU, dVarYU].</p>
     </div>
     <div id="note">
@@ -99,12 +103,12 @@ square root as with dCor.</p>
 <p>Szekely, G.J., Rizzo, M.L., and Bakirov, N.K. (2007),
  Measuring and Testing Dependence by Correlation of Distances,
  <em>Annals of Statistics</em>, Vol. 35 No. 6, pp. 2769-2794.
- <br> doi: <a href="https://doi.org/10.1214/009053607000000505" class="external-link">10.1214/009053607000000505</a></p>
+ <br><a href="https://doi.org/10.1214/009053607000000505" class="external-link">doi:10.1214/009053607000000505</a></p>
 <p>Szekely, G.J. and Rizzo, M.L. (2009),
  Brownian Distance Covariance,
  <em>Annals of Applied Statistics</em>,
  Vol. 3, No. 4, 1236-1265.
- <br> doi: <a href="https://doi.org/10.1214/09-AOAS312" class="external-link">10.1214/09-AOAS312</a></p>
+ <br><a href="https://doi.org/10.1214/09-AOAS312" class="external-link">doi:10.1214/09-AOAS312</a></p>
     </div>
     <div id="author">
     <h2>Author</h2>
@@ -114,14 +118,14 @@ Gabor J. Szekely</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"> <span class="va">x</span> <span class="op">&lt;-</span> <span class="va">iris</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">50</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span></span>
-<span class="r-in"> <span class="va">y</span> <span class="op">&lt;-</span> <span class="va">iris</span><span class="op">[</span><span class="fl">51</span><span class="op">:</span><span class="fl">100</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span></span>
-<span class="r-in"> <span class="va">Dx</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">as.matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/dist.html" class="external-link">dist</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"> <span class="va">Dy</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">as.matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/dist.html" class="external-link">dist</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"> <span class="fu">dcovU_stats</span><span class="op">(</span><span class="va">Dx</span>, <span class="va">Dy</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span> <span class="va">x</span> <span class="op">&lt;-</span> <span class="va">iris</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">50</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span></span></span>
+<span class="r-in"><span> <span class="va">y</span> <span class="op">&lt;-</span> <span class="va">iris</span><span class="op">[</span><span class="fl">51</span><span class="op">:</span><span class="fl">100</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span></span></span>
+<span class="r-in"><span> <span class="va">Dx</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">as.matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/dist.html" class="external-link">dist</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span> <span class="va">Dy</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">as.matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/dist.html" class="external-link">dist</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span> <span class="fu">dcovU_stats</span><span class="op">(</span><span class="va">Dx</span>, <span class="va">Dy</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>        dCovU       bcdcor       dVarXU       dVarYU </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> -0.002748351 -0.027170902  0.065242693  0.156821104 </span>
-<span class="r-in"> </span>
+<span class="r-in"><span> </span></span>
 </code></pre></div>
     </div>
   </div>
@@ -136,7 +140,7 @@ Gabor J. Szekely</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

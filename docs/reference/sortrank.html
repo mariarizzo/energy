@@ -18,7 +18,7 @@ equivalent to sort(x), order(x), rank(x, ties.method = "first").'><!-- mathjax -
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">energy</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7-10</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7-11</span>
       </span>
     </div>
 
@@ -55,13 +55,14 @@ equivalent to sort(x), order(x), rank(x, ties.method = "first").</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">sortrank</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">sortrank</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>x</dt>
 <dd><p>vector compatible with sort(x)</p></dd>
+
 </dl></div>
     <div id="details">
     <h2>Details</h2>
@@ -69,13 +70,18 @@ equivalent to sort(x), order(x), rank(x, ties.method = "first").</p>
     </div>
     <div id="value">
     <h2>Value</h2>
-    <p>A list with components</p>
+    
+
+<p>A list with components</p>
 <dl><dt>x</dt>
 <dd><p>the sorted input vector x</p></dd>
-<dt>ix</dt>
+
+  <dt>ix</dt>
 <dd><p>the permutation = order(x) which rearranges x into ascending order</p></dd>
-<dt>r</dt>
+
+  <dt>r</dt>
 <dd><p>the ranks of x</p></dd>
+
 </dl></div>
     <div id="note">
     <h2>Note</h2>
@@ -92,7 +98,7 @@ equivalent to sort(x), order(x), rank(x, ties.method = "first").</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu">sortrank</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">sortrank</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $x</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] -0.5785381 -0.4833321  0.6799946  0.8886331  1.6365181</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
@@ -116,7 +122,7 @@ equivalent to sort(x), order(x), rank(x, ties.method = "first").</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

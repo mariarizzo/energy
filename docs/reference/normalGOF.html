@@ -18,7 +18,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">energy</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7-10</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7-11</span>
       </span>
     </div>
 
@@ -55,18 +55,21 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">normal.test</span><span class="op">(</span><span class="va">x</span>, method<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"mc"</span>,<span class="st">"limit"</span><span class="op">)</span>, <span class="va">R</span><span class="op">)</span>
-<span class="fu">normal.e</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">normal.test</span><span class="op">(</span><span class="va">x</span>, method<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"mc"</span>,<span class="st">"limit"</span><span class="op">)</span>, <span class="va">R</span><span class="op">)</span></span>
+<span><span class="fu">normal.e</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>x</dt>
 <dd><p>univariate data vector</p></dd>
-<dt>method</dt>
+
+  <dt>method</dt>
 <dd><p>method for p-value</p></dd>
-<dt>R</dt>
+
+  <dt>R</dt>
 <dd><p>number of replications if Monte Carlo method</p></dd>
+
 </dl></div>
     <div id="details">
     <h2>Details</h2>
@@ -92,17 +95,24 @@ samples because it applies the asymptotic distribution.</p>
     </div>
     <div id="value">
     <h2>Value</h2>
-    <p><code>normal.e</code> returns the energy goodness-of-fit statistic for
-a univariate sample. 
-<code>normal.test</code> returns a list with class <code>htest</code> containing</p>
+    
+
+<p><code>normal.e</code> returns the energy goodness-of-fit statistic for
+a univariate sample.</p>
+<p></p>
+<p><code>normal.test</code> returns a list with class <code>htest</code> containing</p>
 <dl><dt>statistic</dt>
 <dd><p>observed value of the test statistic</p></dd>
-<dt>p.value</dt>
+
+ <dt>p.value</dt>
 <dd><p>p-value of the test</p></dd>
-<dt>estimate</dt>
+
+ <dt>estimate</dt>
 <dd><p>sample estimates: mean, sd</p></dd>
-<dt>data.name</dt>
+
+ <dt>data.name</dt>
 <dd><p>description of data</p></dd>
+
 </dl></div>
     <div id="see-also">
     <h2>See also</h2>
@@ -115,7 +125,7 @@ a univariate sample.
     <p>Szekely, G. J. and Rizzo, M. L. (2005) A New Test for
  Multivariate Normality, <em>Journal of Multivariate Analysis</em>,
  93/1, 58-80,
- doi: <a href="https://doi.org/10.1016/j.jmva.2003.12.002" class="external-link">10.1016/j.jmva.2003.12.002</a>
+ <a href="https://doi.org/10.1016/j.jmva.2003.12.002" class="external-link">doi:10.1016/j.jmva.2003.12.002</a>
 .</p>
 <p>Mori, T. F., Szekely, G. J. and Rizzo, M. L. "On energy tests of normality." Journal of Statistical Planning and Inference 213 (2021): 1-15.</p>
 <p>Rizzo, M. L. (2002). A New Rotation Invariant Goodness-of-Fit Test,
@@ -132,20 +142,20 @@ Gabor J. Szekely</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in">  <span class="va">x</span> <span class="op">&lt;-</span> <span class="va">iris</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">50</span>, <span class="fl">1</span><span class="op">]</span></span>
-<span class="r-in">  <span class="fu">normal.e</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span>  <span class="va">x</span> <span class="op">&lt;-</span> <span class="va">iris</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">50</span>, <span class="fl">1</span><span class="op">]</span></span></span>
+<span class="r-in"><span>  <span class="fu">normal.e</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.4650295</span>
-<span class="r-in">  <span class="fu">normal.test</span><span class="op">(</span><span class="va">x</span>, R<span class="op">=</span><span class="fl">199</span><span class="op">)</span></span>
+<span class="r-in"><span>  <span class="fu">normal.test</span><span class="op">(</span><span class="va">x</span>, R<span class="op">=</span><span class="fl">199</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 	Energy test of normality: estimated parameters</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> data:  x, sample size 50, dimension 1, replicates 199</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> E-statistic = 0.46503, p-value = 0.3317</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> E-statistic = 0.46503, p-value = 0.3518</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> sample estimates:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      mean        sd </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 5.0060000 0.3524897 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-in">  <span class="fu">normal.test</span><span class="op">(</span><span class="va">x</span>, method<span class="op">=</span><span class="st">"limit"</span><span class="op">)</span></span>
+<span class="r-in"><span>  <span class="fu">normal.test</span><span class="op">(</span><span class="va">x</span>, method<span class="op">=</span><span class="st">"limit"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 	Energy test of normality: limit distribution</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
@@ -169,7 +179,7 @@ Gabor J. Szekely</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

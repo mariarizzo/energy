@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">energy</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7-10</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7-11</span>
       </span>
     </div>
 
@@ -53,21 +53,24 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">poisson.e</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-<span class="fu">poisson.m</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-<span class="fu">poisson.etest</span><span class="op">(</span><span class="va">x</span>, <span class="va">R</span><span class="op">)</span>
-<span class="fu">poisson.mtest</span><span class="op">(</span><span class="va">x</span>, <span class="va">R</span><span class="op">)</span>
-<span class="fu">poisson.tests</span><span class="op">(</span><span class="va">x</span>, <span class="va">R</span>, test<span class="op">=</span><span class="st">"all"</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">poisson.e</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span><span class="fu">poisson.m</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span><span class="fu">poisson.etest</span><span class="op">(</span><span class="va">x</span>, <span class="va">R</span><span class="op">)</span></span>
+<span><span class="fu">poisson.mtest</span><span class="op">(</span><span class="va">x</span>, <span class="va">R</span><span class="op">)</span></span>
+<span><span class="fu">poisson.tests</span><span class="op">(</span><span class="va">x</span>, <span class="va">R</span>, test<span class="op">=</span><span class="st">"all"</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>x</dt>
 <dd><p>vector of nonnegative integers, the sample data</p></dd>
-<dt>R</dt>
+
+  <dt>R</dt>
 <dd><p>number of bootstrap replicates</p></dd>
-<dt>test</dt>
+
+  <dt>test</dt>
 <dd><p>name of test(s)</p></dd>
+
 </dl></div>
     <div id="details">
     <h2>Details</h2>
@@ -97,27 +100,39 @@ where X and X' are iid with the hypothesized null distribution. For a test of H:
     </div>
     <div id="value">
     <h2>Value</h2>
-    <p>The functions <code>poisson.m</code> and <code>poisson.e</code> return the test statistics. The function
+    
+
+<p>The functions <code>poisson.m</code> and <code>poisson.e</code> return the test statistics. The function
 <code>poisson.mtest</code> or <code>poisson.etest</code> return an <code>htest</code> object containing</p>
 <dl><dt>method</dt>
 <dd><p>Description of test</p></dd>
-<dt>statistic</dt>
+
+ <dt>statistic</dt>
 <dd><p>observed value of the test statistic</p></dd>
-<dt>p.value</dt>
+
+ <dt>p.value</dt>
 <dd><p>approximate p-value of the test</p></dd>
-<dt>data.name</dt>
+
+ <dt>data.name</dt>
 <dd><p>replicates R</p></dd>
-<dt>estimate</dt>
+
+ <dt>estimate</dt>
 <dd><p>sample mean</p></dd>
+
+ 
 </dl><p><code>poisson.tests</code> returns "M-CvM test", "M-AD test" and "Energy test" results in a data frame with columns</p>
 <dl><dt>estimate</dt>
 <dd><p>sample mean</p></dd>
-<dt>statistic</dt>
+
+ <dt>statistic</dt>
 <dd><p>observed value of the test statistic</p></dd>
-<dt>p.value</dt>
+
+ <dt>p.value</dt>
 <dd><p>approximate p-value of the test</p></dd>
-<dt>method</dt>
+
+ <dt>method</dt>
 <dd><p>Description of test</p></dd>
+
 </dl><p>which can be coerced to a <code>tibble</code>.</p>
     </div>
     <div id="note">
@@ -127,12 +142,12 @@ where X and X' are iid with the hypothesized null distribution. For a test of H:
     <div id="references">
     <h2>References</h2>
     <p>Szekely, G. J. and Rizzo, M. L. (2004) Mean Distance Test of Poisson Distribution, <em>Statistics and Probability Letters</em>,
-67/3, 241-247. doi: <a href="https://doi.org/10.1016/j.spl.2004.01.005" class="external-link">10.1016/j.spl.2004.01.005</a>
+67/3, 241-247. <a href="https://doi.org/10.1016/j.spl.2004.01.005" class="external-link">doi:10.1016/j.spl.2004.01.005</a>
 .</p>
 <p>Szekely, G. J. and Rizzo, M. L. (2005) A New Test for
  Multivariate Normality, <em>Journal of Multivariate Analysis</em>,
  93/1, 58-80,
- doi: <a href="https://doi.org/10.1016/j.jmva.2003.12.002" class="external-link">10.1016/j.jmva.2003.12.002</a>
+ <a href="https://doi.org/10.1016/j.jmva.2003.12.002" class="external-link">doi:10.1016/j.jmva.2003.12.002</a>
 .</p>
     </div>
     <div id="author">
@@ -143,15 +158,15 @@ Gabor J. Szekely</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"> <span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Poisson.html" class="external-link">rpois</a></span><span class="op">(</span><span class="fl">50</span>, <span class="fl">2</span><span class="op">)</span></span>
-<span class="r-in"> <span class="fu">poisson.m</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span> <span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Poisson.html" class="external-link">rpois</a></span><span class="op">(</span><span class="fl">50</span>, <span class="fl">2</span><span class="op">)</span></span></span>
+<span class="r-in"><span> <span class="fu">poisson.m</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      M-CvM       M-AD </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 0.07368603 0.42332826 </span>
-<span class="r-in"> <span class="fu">poisson.e</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span class="r-in"><span> <span class="fu">poisson.e</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>         E </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 0.6370008 </span>
-<span class="r-in"> <span class="co"># \donttest{</span></span>
-<span class="r-in"> <span class="fu">poisson.etest</span><span class="op">(</span><span class="va">x</span>, R<span class="op">=</span><span class="fl">199</span><span class="op">)</span></span>
+<span class="r-in"><span> <span class="co"># \donttest{</span></span></span>
+<span class="r-in"><span> <span class="fu">poisson.etest</span><span class="op">(</span><span class="va">x</span>, R<span class="op">=</span><span class="fl">199</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 	Poisson E-test</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
@@ -160,7 +175,7 @@ Gabor J. Szekely</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> sample estimates:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 2.06</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-in"> <span class="fu">poisson.mtest</span><span class="op">(</span><span class="va">x</span>, R<span class="op">=</span><span class="fl">199</span><span class="op">)</span></span>
+<span class="r-in"><span> <span class="fu">poisson.mtest</span><span class="op">(</span><span class="va">x</span>, R<span class="op">=</span><span class="fl">199</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 	Poisson M-test</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
@@ -169,12 +184,12 @@ Gabor J. Szekely</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> sample estimates:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 2.06</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-in"> <span class="fu">poisson.tests</span><span class="op">(</span><span class="va">x</span>, R<span class="op">=</span><span class="fl">199</span><span class="op">)</span></span>
+<span class="r-in"><span> <span class="fu">poisson.tests</span><span class="op">(</span><span class="va">x</span>, R<span class="op">=</span><span class="fl">199</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       estimate  statistic   p.value      method</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> M-CvM     2.06 0.07368603 0.4773869  M-CvM test</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> M-AD      2.06 0.42332826 0.4673367   M-AD test</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> E         2.06 0.63700084 0.4673367 Energy test</span>
-<span class="r-in"> <span class="co"># }</span></span>
+<span class="r-in"><span> <span class="co"># }</span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -189,7 +204,7 @@ Gabor J. Szekely</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

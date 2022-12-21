@@ -18,7 +18,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">energy</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7-10</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7-11</span>
       </span>
     </div>
 
@@ -55,27 +55,36 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">dcov</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, index <span class="op">=</span> <span class="fl">1.0</span><span class="op">)</span>
-<span class="fu">dcor</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, index <span class="op">=</span> <span class="fl">1.0</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">dcov</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, index <span class="op">=</span> <span class="fl">1.0</span><span class="op">)</span></span>
+<span><span class="fu">dcor</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, index <span class="op">=</span> <span class="fl">1.0</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>x</dt>
 <dd><p>data or distances of first sample</p></dd>
-<dt>y</dt>
+
+  <dt>y</dt>
 <dd><p>data or distances of second sample</p></dd>
-<dt>index</dt>
+
+  <dt>index</dt>
 <dd><p>exponent on Euclidean distance, in (0,2]</p></dd>
+
 </dl></div>
     <div id="details">
     <h2>Details</h2>
     <p><code>dcov</code> and <code>dcor</code> compute distance
  covariance and distance correlation statistics.</p>
 <p>The sample sizes (number of rows) of the two samples must
-  agree, and samples must not contain missing values. Arguments
-  <code>x</code>, <code>y</code> can optionally be <code><a href="https://rdrr.io/r/stats/dist.html" class="external-link">dist</a></code> objects;
- otherwise these arguments are treated as data.</p>
+  agree, and samples must not contain missing values.</p>  
+<p>The <code>index</code> is an optional exponent on Euclidean distance.
+Valid exponents for energy are in (0, 2) excluding 2.</p>
+<p>Argument types supported are 
+numeric data matrix, data.frame, or tibble, with observations in rows;
+numeric vector; ordered or unordered factors. In case of unordered factors
+a 0-1 distance matrix is computed.</p>
+<p>Optionally pre-computed distances can be input as class "dist" objects or as distance matrices. 
+ For data types of arguments, distance matrices are computed internally.</p>
 <p>Distance correlation is a new measure of dependence between random
 vectors introduced by Szekely, Rizzo, and Bakirov (2007).
 For all distributions with finite first moments, distance
@@ -130,16 +139,14 @@ based on the distance covariance statistic.</p>
     </div>
     <div id="value">
     <h2>Value</h2>
-    <p><code>dcov</code> returns the sample distance covariance and
+    
+
+<p><code>dcov</code> returns the sample distance covariance and
 <code>dcor</code> returns the sample distance correlation.</p>
     </div>
     <div id="note">
     <h2>Note</h2>
-    <p>Two methods of computing the statistics are provided. 
-<code>dcov</code> and <code>dcor</code> provide R interfaces to the C
-implementation, which is usually faster. <code>dcov</code> and <code>dcor</code>
-call an internal function <code>.dcov</code>.</p>
-<p>Note that it is inefficient to compute dCor by:</p>
+    <p>Note that it is inefficient to compute dCor by:</p>
 <p>square root of
 <code>dcov(x,y)/sqrt(dcov(x,x)*dcov(y,y))</code></p>
 <p>because the individual
@@ -147,20 +154,21 @@ calls to <code>dcov</code> involve unnecessary repetition of calculations.</p>
     </div>
     <div id="see-also">
     <h2>See also</h2>
-    <div class="dont-index"><p><code><a href="dcovu.html">bcdcor</a></code>  <code><a href="dcovu.html">dcovU</a></code>  <code><a href="pdcor.html">pdcor</a></code>
-<code><a href="dcov.test.html">dcov.test</a></code> <code><a href="energy-deprecated.html">dcor.ttest</a></code>  <code><a href="pdcor.html">pdcor.test</a></code></p></div>
+    <div class="dont-index"><p><code><a href="dcov2d.html">dcov2d</a></code> <code><a href="dcov2d.html">dcor2d</a></code> 
+<code><a href="dcovu.html">bcdcor</a></code>  <code><a href="dcovu.html">dcovU</a></code>  <code><a href="pdcor.html">pdcor</a></code>
+<code><a href="dcov.test.html">dcov.test</a></code> <code><a href="dcov.test.html">dcor.test</a></code>  <code><a href="pdcor.html">pdcor.test</a></code></p></div>
     </div>
     <div id="references">
     <h2>References</h2>
     <p>Szekely, G.J., Rizzo, M.L., and Bakirov, N.K. (2007),
  Measuring and Testing Dependence by Correlation of Distances,
  <em>Annals of Statistics</em>, Vol. 35 No. 6, pp. 2769-2794.
- <br> doi: <a href="https://doi.org/10.1214/009053607000000505" class="external-link">10.1214/009053607000000505</a></p>
+ <br><a href="https://doi.org/10.1214/009053607000000505" class="external-link">doi:10.1214/009053607000000505</a></p>
 <p>Szekely, G.J. and Rizzo, M.L. (2009),
  Brownian Distance Covariance,
  <em>Annals of Applied Statistics</em>,
  Vol. 3, No. 4, 1236-1265.
- <br> doi: <a href="https://doi.org/10.1214/09-AOAS312" class="external-link">10.1214/09-AOAS312</a></p>
+ <br><a href="https://doi.org/10.1214/09-AOAS312" class="external-link">doi:10.1214/09-AOAS312</a></p>
 <p>Szekely, G.J. and Rizzo, M.L. (2009),
  Rejoinder: Brownian Distance Covariance,
  <em>Annals of Applied Statistics</em>, Vol. 3, No. 4, 1303-1308.</p>
@@ -173,18 +181,12 @@ Gabor J. Szekely</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"> <span class="va">x</span> <span class="op">&lt;-</span> <span class="va">iris</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">50</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span></span>
-<span class="r-in"> <span class="va">y</span> <span class="op">&lt;-</span> <span class="va">iris</span><span class="op">[</span><span class="fl">51</span><span class="op">:</span><span class="fl">100</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span></span>
-<span class="r-in"> <span class="fu">dcov</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span> <span class="va">x</span> <span class="op">&lt;-</span> <span class="va">iris</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">50</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span></span></span>
+<span class="r-in"><span> <span class="va">y</span> <span class="op">&lt;-</span> <span class="va">iris</span><span class="op">[</span><span class="fl">51</span><span class="op">:</span><span class="fl">100</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span></span></span>
+<span class="r-in"><span> <span class="fu">dcov</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.1025087</span>
-<span class="r-in"> <span class="fu">dcov</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/dist.html" class="external-link">dist</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/stats/dist.html" class="external-link">dist</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span><span class="op">)</span>  <span class="co">#same thing</span></span>
+<span class="r-in"><span> <span class="fu">dcov</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/dist.html" class="external-link">dist</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/stats/dist.html" class="external-link">dist</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span><span class="op">)</span>  <span class="co">#same thing</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.1025087</span>
-<span class="r-in"></span>
-<span class="r-in"> <span class="co">## C implementation</span></span>
-<span class="r-in"> <span class="fu">dcov</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, <span class="fl">1.5</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.08956717</span>
-<span class="r-in"> <span class="fu">dcor</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, <span class="fl">1.5</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.186289</span>
 </code></pre></div>
     </div>
   </div>
@@ -199,7 +201,7 @@ Gabor J. Szekely</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

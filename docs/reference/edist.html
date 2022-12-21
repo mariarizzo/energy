@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">energy</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7-10</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7-11</span>
       </span>
     </div>
 
@@ -53,24 +53,30 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">edist</span><span class="op">(</span><span class="va">x</span>, <span class="va">sizes</span>, distance <span class="op">=</span> <span class="cn">FALSE</span>, ix <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">sizes</span><span class="op">)</span>, alpha <span class="op">=</span> <span class="fl">1</span>,
-        method <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"cluster"</span>,<span class="st">"discoB"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">edist</span><span class="op">(</span><span class="va">x</span>, <span class="va">sizes</span>, distance <span class="op">=</span> <span class="cn">FALSE</span>, ix <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">sizes</span><span class="op">)</span>, alpha <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>        method <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"cluster"</span>,<span class="st">"discoB"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>x</dt>
 <dd><p>data matrix of pooled sample or Euclidean distances</p></dd>
-<dt>sizes</dt>
+
+  <dt>sizes</dt>
 <dd><p>vector of sample sizes</p></dd>
-<dt>distance</dt>
+
+  <dt>distance</dt>
 <dd><p>logical: if TRUE, x is a distance matrix</p></dd>
-<dt>ix</dt>
+
+  <dt>ix</dt>
 <dd><p>a permutation of the row indices of x</p></dd>
-<dt>alpha</dt>
+
+  <dt>alpha</dt>
 <dd><p>distance exponent in (0,2]</p></dd>
-<dt>method</dt>
+
+  <dt>method</dt>
 <dd><p>how to weight the statistics</p></dd>
+
 </dl></div>
     <div id="details">
     <h2>Details</h2>
@@ -109,7 +115,9 @@
     </div>
     <div id="value">
     <h2>Value</h2>
-    <p>A object of class <code>dist</code> containing the lower triangle of the
+    
+
+<p>A object of class <code>dist</code> containing the lower triangle of the
  e-distance matrix of cluster distances corresponding to the permutation
  of indices <code>ix</code> is returned. The <code>method</code> attribute of the
  distance object is assigned a value of type, index.</p>
@@ -119,12 +127,12 @@
     <p>Szekely, G. J. and Rizzo, M. L. (2005) Hierarchical Clustering
  via Joint Between-Within Distances: Extending Ward's Minimum
  Variance Method, <em>Journal of Classification</em> 22(2) 151-183.
- <br> doi: <a href="https://doi.org/10.1007/s00357-005-0012-9" class="external-link">10.1007/s00357-005-0012-9</a></p>
+ <br><a href="https://doi.org/10.1007/s00357-005-0012-9" class="external-link">doi:10.1007/s00357-005-0012-9</a></p>
 <p>M. L. Rizzo and G. J. Szekely (2010).
 DISCO Analysis: A Nonparametric Extension of
 Analysis of Variance, Annals of Applied Statistics,
 Vol. 4, No. 2, 1034-1055.
- <br> doi: <a href="https://doi.org/10.1214/09-AOAS245" class="external-link">10.1214/09-AOAS245</a></p>
+ <br><a href="https://doi.org/10.1214/09-AOAS245" class="external-link">doi:10.1214/09-AOAS245</a></p>
 <p>Szekely, G. J. and Rizzo, M. L. (2004) Testing for Equal
  Distributions in High Dimension, InterStat, November (5).</p>
 <p>Szekely, G. J. (2000) Technical Report 03-05,
@@ -147,35 +155,35 @@ Gabor J. Szekely</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in">     <span class="co">## compute cluster e-distances for 3 samples of iris data</span></span>
-<span class="r-in">     <span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span></span>
-<span class="r-in">     <span class="fu">edist</span><span class="op">(</span><span class="va">iris</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">50</span>,<span class="fl">50</span>,<span class="fl">50</span><span class="op">)</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span>     <span class="co">## compute cluster e-distances for 3 samples of iris data</span></span></span>
+<span class="r-in"><span>     <span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span></span></span>
+<span class="r-in"><span>     <span class="fu">edist</span><span class="op">(</span><span class="va">iris</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">50</span>,<span class="fl">50</span>,<span class="fl">50</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>           1         2</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2 123.55381          </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 3 195.30396  38.85415</span>
-<span class="r-in">    </span>
-<span class="r-in">     <span class="co">## pairwise disco statistics</span></span>
-<span class="r-in">     <span class="fu">edist</span><span class="op">(</span><span class="va">iris</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">50</span>,<span class="fl">50</span>,<span class="fl">50</span><span class="op">)</span>, method<span class="op">=</span><span class="st">"discoB"</span><span class="op">)</span>  </span>
+<span class="r-in"><span>    </span></span>
+<span class="r-in"><span>     <span class="co">## pairwise disco statistics</span></span></span>
+<span class="r-in"><span>     <span class="fu">edist</span><span class="op">(</span><span class="va">iris</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">50</span>,<span class="fl">50</span>,<span class="fl">50</span><span class="op">)</span>, method<span class="op">=</span><span class="st">"discoB"</span><span class="op">)</span>  </span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>          1        2</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2 41.18460         </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 3 65.10132 12.95138</span>
-<span class="r-in"></span>
-<span class="r-in">     <span class="co">## compute e-distances from a distance object</span></span>
-<span class="r-in">     <span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span></span>
-<span class="r-in">     <span class="fu">edist</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/dist.html" class="external-link">dist</a></span><span class="op">(</span><span class="va">iris</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">50</span>, <span class="fl">50</span>, <span class="fl">50</span><span class="op">)</span>, distance<span class="op">=</span><span class="cn">TRUE</span>, alpha <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span>     <span class="co">## compute e-distances from a distance object</span></span></span>
+<span class="r-in"><span>     <span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span></span></span>
+<span class="r-in"><span>     <span class="fu">edist</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/dist.html" class="external-link">dist</a></span><span class="op">(</span><span class="va">iris</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">50</span>, <span class="fl">50</span>, <span class="fl">50</span><span class="op">)</span>, distance<span class="op">=</span><span class="cn">TRUE</span>, alpha <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>           1         2</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2 123.55381          </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 3 195.30396  38.85415</span>
-<span class="r-in"></span>
-<span class="r-in">     <span class="co">## compute e-distances from a distance matrix</span></span>
-<span class="r-in">     <span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span></span>
-<span class="r-in">     <span class="va">d</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">as.matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/dist.html" class="external-link">dist</a></span><span class="op">(</span><span class="va">iris</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in">     <span class="fu">edist</span><span class="op">(</span><span class="va">d</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">50</span>, <span class="fl">50</span>, <span class="fl">50</span><span class="op">)</span>, distance<span class="op">=</span><span class="cn">TRUE</span>, alpha <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span>     <span class="co">## compute e-distances from a distance matrix</span></span></span>
+<span class="r-in"><span>     <span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span></span></span>
+<span class="r-in"><span>     <span class="va">d</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">as.matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/dist.html" class="external-link">dist</a></span><span class="op">(</span><span class="va">iris</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span>     <span class="fu">edist</span><span class="op">(</span><span class="va">d</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">50</span>, <span class="fl">50</span>, <span class="fl">50</span><span class="op">)</span>, distance<span class="op">=</span><span class="cn">TRUE</span>, alpha <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>           1         2</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2 123.55381          </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 3 195.30396  38.85415</span>
-<span class="r-in"></span>
-<span class="r-in"> </span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span> </span></span>
 </code></pre></div>
     </div>
   </div>
@@ -190,7 +198,7 @@ Gabor J. Szekely</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

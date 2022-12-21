@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">energy</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7-10</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7-11</span>
       </span>
     </div>
 
@@ -53,15 +53,17 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">energy.hclust</span><span class="op">(</span><span class="va">dst</span>, alpha <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">energy.hclust</span><span class="op">(</span><span class="va">dst</span>, alpha <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>dst</dt>
 <dd><p><code>dist</code> object</p></dd>
-<dt>alpha</dt>
+
+  <dt>alpha</dt>
 <dd><p>distance exponent</p></dd>
+
 </dl></div>
     <div id="details">
     <h2>Details</h2>
@@ -93,7 +95,9 @@
     </div>
     <div id="value">
     <h2>Value</h2>
-    <p>An object of class <code>hclust</code> which describes the tree produced by
+    
+
+<p>An object of class <code>hclust</code> which describes the tree produced by
      the clustering process. The object is a list with components:</p>
 <dl><dt>merge:</dt>
 <dd><p>an n-1 by 2 matrix, where row i of <code>merge</code> describes the
@@ -101,22 +105,29 @@
      row is negative, then observation -j was merged at this
      stage. If j is positive then the merge was with the cluster
      formed at the (earlier) stage j of the algorithm.</p></dd>
+
 <dt>height:</dt>
 <dd><p>the clustering height: a vector of n-1 non-decreasing
      real numbers (the e-distance between merging clusters)</p></dd>
+
 <dt>order:</dt>
 <dd><p>a vector giving a permutation of the indices of
      original observations suitable for plotting, in the sense that a
      cluster plot using this ordering and matrix <code>merge</code> will not have
      crossings of the branches.</p></dd>
+
 <dt>labels:</dt>
 <dd><p>labels for each of the objects being clustered.</p></dd>
+
 <dt>call:</dt>
 <dd><p>the call which produced the result.</p></dd>
+
 <dt>method:</dt>
 <dd><p>the cluster method that has been used (e-distance).</p></dd>
+
 <dt>dist.method:</dt>
 <dd><p>the distance that has been used to create <code>dst</code>.</p></dd>
+
 </dl></div>
     <div id="note">
     <h2>Note</h2>
@@ -130,7 +141,7 @@ energy distance method is easily implemented by <code>hclust</code>. (Some "Ward
     <p>Szekely, G. J. and Rizzo, M. L. (2005) Hierarchical Clustering
      via Joint Between-Within Distances: Extending Ward's Minimum
      Variance Method, <em>Journal of Classification</em> 22(2) 151-183.
-     <br> doi: <a href="https://doi.org/10.1007/s00357-005-0012-9" class="external-link">10.1007/s00357-005-0012-9</a></p>
+     <br><a href="https://doi.org/10.1007/s00357-005-0012-9" class="external-link">doi:10.1007/s00357-005-0012-9</a></p>
 <p>Szekely, G. J. and Rizzo, M. L. (2004) Testing for Equal
      Distributions in High Dimension, <em>InterStat</em>, November (5).</p>
 <p>Szekely, G. J. (2000) Technical Report 03-05:
@@ -150,30 +161,30 @@ energy distance method is easily implemented by <code>hclust</code>. (Some "Ward
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in">   <span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in">   <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://svn.r-project.org/R-packages/trunk/cluster/" class="external-link">cluster</a></span><span class="op">)</span></span>
-<span class="r-in">   <span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">animals</span><span class="op">)</span></span>
-<span class="r-in">   <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu">energy.hclust</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/dist.html" class="external-link">dist</a></span><span class="op">(</span><span class="va">animals</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in">   <span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">USArrests</span><span class="op">)</span></span>
-<span class="r-in">   <span class="va">ecl</span> <span class="op">&lt;-</span> <span class="fu">energy.hclust</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/dist.html" class="external-link">dist</a></span><span class="op">(</span><span class="va">USArrests</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in">   <span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">ecl</span><span class="op">)</span></span>
-<span class="r-in">   <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">ecl</span><span class="op">)</span></span>
-<span class="r-in">   <span class="fu"><a href="https://rdrr.io/r/stats/cutree.html" class="external-link">cutree</a></span><span class="op">(</span><span class="va">ecl</span>, k<span class="op">=</span><span class="fl">3</span><span class="op">)</span></span>
-<span class="r-in">   <span class="fu"><a href="https://rdrr.io/r/stats/cutree.html" class="external-link">cutree</a></span><span class="op">(</span><span class="va">ecl</span>, h<span class="op">=</span><span class="fl">150</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in">   <span class="co">## compare performance of e-clustering, Ward's method, group average method</span></span>
-<span class="r-in">   <span class="co">## when sampled populations have equal means: n=200, d=5, two groups</span></span>
-<span class="r-in">   <span class="va">z</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">rbind</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">1000</span><span class="op">)</span>, nrow<span class="op">=</span><span class="fl">200</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">1000</span>, <span class="fl">0</span>, <span class="fl">5</span><span class="op">)</span>, nrow<span class="op">=</span><span class="fl">200</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in">   <span class="va">g</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">200</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">200</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in">   <span class="va">d</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/dist.html" class="external-link">dist</a></span><span class="op">(</span><span class="va">z</span><span class="op">)</span></span>
-<span class="r-in">   <span class="va">e</span> <span class="op">&lt;-</span> <span class="fu">energy.hclust</span><span class="op">(</span><span class="va">d</span><span class="op">)</span></span>
-<span class="r-in">   <span class="va">a</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/hclust.html" class="external-link">hclust</a></span><span class="op">(</span><span class="va">d</span>, method<span class="op">=</span><span class="st">"average"</span><span class="op">)</span></span>
-<span class="r-in">   <span class="va">w</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/hclust.html" class="external-link">hclust</a></span><span class="op">(</span><span class="va">d</span><span class="op">^</span><span class="fl">2</span>, method<span class="op">=</span><span class="st">"ward.D2"</span><span class="op">)</span></span>
-<span class="r-in">   <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"E"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/cutree.html" class="external-link">cutree</a></span><span class="op">(</span><span class="va">e</span>, k<span class="op">=</span><span class="fl">2</span><span class="op">)</span> <span class="op">==</span> <span class="va">g</span><span class="op">)</span>, <span class="st">"Ward"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/cutree.html" class="external-link">cutree</a></span><span class="op">(</span><span class="va">w</span>, k<span class="op">=</span><span class="fl">2</span><span class="op">)</span> <span class="op">==</span> <span class="va">g</span><span class="op">)</span>,</span>
-<span class="r-in">    <span class="st">"Avg"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/cutree.html" class="external-link">cutree</a></span><span class="op">(</span><span class="va">a</span>, k<span class="op">=</span><span class="fl">2</span><span class="op">)</span> <span class="op">==</span> <span class="va">g</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in">  <span class="op">}</span></span>
-<span class="r-in"> </span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span>   <span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span>   <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://svn.r-project.org/R-packages/trunk/cluster/" class="external-link">cluster</a></span><span class="op">)</span></span></span>
+<span class="r-in"><span>   <span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">animals</span><span class="op">)</span></span></span>
+<span class="r-in"><span>   <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu">energy.hclust</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/dist.html" class="external-link">dist</a></span><span class="op">(</span><span class="va">animals</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span>   <span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">USArrests</span><span class="op">)</span></span></span>
+<span class="r-in"><span>   <span class="va">ecl</span> <span class="op">&lt;-</span> <span class="fu">energy.hclust</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/dist.html" class="external-link">dist</a></span><span class="op">(</span><span class="va">USArrests</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span>   <span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">ecl</span><span class="op">)</span></span></span>
+<span class="r-in"><span>   <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">ecl</span><span class="op">)</span></span></span>
+<span class="r-in"><span>   <span class="fu"><a href="https://rdrr.io/r/stats/cutree.html" class="external-link">cutree</a></span><span class="op">(</span><span class="va">ecl</span>, k<span class="op">=</span><span class="fl">3</span><span class="op">)</span></span></span>
+<span class="r-in"><span>   <span class="fu"><a href="https://rdrr.io/r/stats/cutree.html" class="external-link">cutree</a></span><span class="op">(</span><span class="va">ecl</span>, h<span class="op">=</span><span class="fl">150</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span>   <span class="co">## compare performance of e-clustering, Ward's method, group average method</span></span></span>
+<span class="r-in"><span>   <span class="co">## when sampled populations have equal means: n=200, d=5, two groups</span></span></span>
+<span class="r-in"><span>   <span class="va">z</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">rbind</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">1000</span><span class="op">)</span>, nrow<span class="op">=</span><span class="fl">200</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">1000</span>, <span class="fl">0</span>, <span class="fl">5</span><span class="op">)</span>, nrow<span class="op">=</span><span class="fl">200</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span>   <span class="va">g</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">200</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">200</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span>   <span class="va">d</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/dist.html" class="external-link">dist</a></span><span class="op">(</span><span class="va">z</span><span class="op">)</span></span></span>
+<span class="r-in"><span>   <span class="va">e</span> <span class="op">&lt;-</span> <span class="fu">energy.hclust</span><span class="op">(</span><span class="va">d</span><span class="op">)</span></span></span>
+<span class="r-in"><span>   <span class="va">a</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/hclust.html" class="external-link">hclust</a></span><span class="op">(</span><span class="va">d</span>, method<span class="op">=</span><span class="st">"average"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>   <span class="va">w</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/hclust.html" class="external-link">hclust</a></span><span class="op">(</span><span class="va">d</span><span class="op">^</span><span class="fl">2</span>, method<span class="op">=</span><span class="st">"ward.D2"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>   <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"E"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/cutree.html" class="external-link">cutree</a></span><span class="op">(</span><span class="va">e</span>, k<span class="op">=</span><span class="fl">2</span><span class="op">)</span> <span class="op">==</span> <span class="va">g</span><span class="op">)</span>, <span class="st">"Ward"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/cutree.html" class="external-link">cutree</a></span><span class="op">(</span><span class="va">w</span>, k<span class="op">=</span><span class="fl">2</span><span class="op">)</span> <span class="op">==</span> <span class="va">g</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>    <span class="st">"Avg"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/cutree.html" class="external-link">cutree</a></span><span class="op">(</span><span class="va">a</span>, k<span class="op">=</span><span class="fl">2</span><span class="op">)</span> <span class="op">==</span> <span class="va">g</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="op">}</span></span></span>
+<span class="r-in"><span> </span></span>
 </code></pre></div>
     </div>
   </div>
@@ -188,7 +199,7 @@ energy distance method is easily implemented by <code>hclust</code>. (Some "Ward
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

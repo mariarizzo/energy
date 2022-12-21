@@ -18,7 +18,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">energy</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7-10</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7-11</span>
       </span>
     </div>
 
@@ -55,28 +55,34 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">eqdist.etest</span><span class="op">(</span><span class="va">x</span>, <span class="va">sizes</span>, distance <span class="op">=</span> <span class="cn">FALSE</span>,
-    method<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"original"</span>,<span class="st">"discoB"</span>,<span class="st">"discoF"</span><span class="op">)</span>, <span class="va">R</span><span class="op">)</span>
-<span class="fu">eqdist.e</span><span class="op">(</span><span class="va">x</span>, <span class="va">sizes</span>, distance <span class="op">=</span> <span class="cn">FALSE</span>,
-    method<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"original"</span>,<span class="st">"discoB"</span>,<span class="st">"discoF"</span><span class="op">)</span><span class="op">)</span>
-<span class="fu">ksample.e</span><span class="op">(</span><span class="va">x</span>, <span class="va">sizes</span>, distance <span class="op">=</span> <span class="cn">FALSE</span>,
-    method<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"original"</span>,<span class="st">"discoB"</span>,<span class="st">"discoF"</span><span class="op">)</span>, ix <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">sizes</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">eqdist.etest</span><span class="op">(</span><span class="va">x</span>, <span class="va">sizes</span>, distance <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>    method<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"original"</span>,<span class="st">"discoB"</span>,<span class="st">"discoF"</span><span class="op">)</span>, <span class="va">R</span><span class="op">)</span></span>
+<span><span class="fu">eqdist.e</span><span class="op">(</span><span class="va">x</span>, <span class="va">sizes</span>, distance <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>    method<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"original"</span>,<span class="st">"discoB"</span>,<span class="st">"discoF"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu">ksample.e</span><span class="op">(</span><span class="va">x</span>, <span class="va">sizes</span>, distance <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>    method<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"original"</span>,<span class="st">"discoB"</span>,<span class="st">"discoF"</span><span class="op">)</span>, ix <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">sizes</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>x</dt>
 <dd><p>data matrix of pooled sample</p></dd>
-<dt>sizes</dt>
+
+  <dt>sizes</dt>
 <dd><p>vector of sample sizes</p></dd>
-<dt>distance</dt>
+
+  <dt>distance</dt>
 <dd><p>logical: if TRUE, first argument is a distance matrix</p></dd>
-<dt>method</dt>
+
+  <dt>method</dt>
 <dd><p>use original (default) or distance components (discoB, discoF)</p></dd>
-<dt>R</dt>
+
+  <dt>R</dt>
 <dd><p>number of bootstrap replicates</p></dd>
-<dt>ix</dt>
+
+  <dt>ix</dt>
 <dd><p>a permutation of the row indices of x</p></dd>
+
 </dl></div>
     <div id="details">
     <h2>Details</h2>
@@ -127,16 +133,23 @@
     </div>
     <div id="value">
     <h2>Value</h2>
-    <p>A list with class <code>htest</code> containing</p>
+    
+
+<p>A list with class <code>htest</code> containing</p>
 <dl><dt>method</dt>
 <dd><p>description of test</p></dd>
-<dt>statistic</dt>
+
+ <dt>statistic</dt>
 <dd><p>observed value of the test statistic</p></dd>
-<dt>p.value</dt>
+
+ <dt>p.value</dt>
 <dd><p>approximate p-value of the test</p></dd>
-<dt>data.name</dt>
+
+ <dt>data.name</dt>
 <dd><p>description of data</p></dd>
-</dl><p><code>eqdist.e</code> returns test statistic only.</p>
+
+
+ </dl><p><code>eqdist.e</code> returns test statistic only.</p>
     </div>
     <div id="note">
     <h2>Note</h2>
@@ -151,7 +164,7 @@ computed by the <code>edist</code> function, which returns a <code>dist</code> o
  DISCO Analysis: A Nonparametric Extension of
  Analysis of Variance, Annals of Applied Statistics,
  Vol. 4, No. 2, 1034-1055.
-<br> doi: <a href="https://doi.org/10.1214/09-AOAS245" class="external-link">10.1214/09-AOAS245</a></p>
+<br><a href="https://doi.org/10.1214/09-AOAS245" class="external-link">doi:10.1214/09-AOAS245</a></p>
 <p>Szekely, G. J. (2000) Technical Report 03-05:
  \(\mathcal{E}\)-statistics: Energy of
  Statistical Samples, Department of Mathematics and Statistics, Bowling
@@ -173,58 +186,58 @@ Gabor J. Szekely</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"> <span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"> <span class="co">## test if the 3 varieties of iris data (d=4) have equal distributions</span></span>
-<span class="r-in"> <span class="fu">eqdist.etest</span><span class="op">(</span><span class="va">iris</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">50</span>,<span class="fl">50</span>,<span class="fl">50</span><span class="op">)</span>, R <span class="op">=</span> <span class="fl">199</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span> <span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span> <span class="co">## test if the 3 varieties of iris data (d=4) have equal distributions</span></span></span>
+<span class="r-in"><span> <span class="fu">eqdist.etest</span><span class="op">(</span><span class="va">iris</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">50</span>,<span class="fl">50</span>,<span class="fl">50</span><span class="op">)</span>, R <span class="op">=</span> <span class="fl">199</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 	Multivariate 3-sample E-test of equal distributions</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> data:  sample sizes 50 50 50, replicates 199</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> E-statistic = 357.71, p-value = 0.005</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-in"></span>
-<span class="r-in"> <span class="co">## example that uses method="disco"</span></span>
-<span class="r-in">  <span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span>, nrow<span class="op">=</span><span class="fl">20</span><span class="op">)</span></span>
-<span class="r-in">  <span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span>, nrow<span class="op">=</span><span class="fl">20</span><span class="op">)</span></span>
-<span class="r-in">  <span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">rbind</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span></span>
-<span class="r-in">  <span class="va">d</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/dist.html" class="external-link">dist</a></span><span class="op">(</span><span class="va">X</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in">  <span class="co"># should match edist default statistic</span></span>
-<span class="r-in">  <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">1234</span><span class="op">)</span></span>
-<span class="r-in">  <span class="fu">eqdist.etest</span><span class="op">(</span><span class="va">d</span>, sizes<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">20</span>, <span class="fl">20</span><span class="op">)</span>, distance<span class="op">=</span><span class="cn">TRUE</span>, R <span class="op">=</span> <span class="fl">199</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span> <span class="co">## example that uses method="disco"</span></span></span>
+<span class="r-in"><span>  <span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span>, nrow<span class="op">=</span><span class="fl">20</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span>, nrow<span class="op">=</span><span class="fl">20</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">rbind</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">d</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/dist.html" class="external-link">dist</a></span><span class="op">(</span><span class="va">X</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span>  <span class="co"># should match edist default statistic</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">1234</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="fu">eqdist.etest</span><span class="op">(</span><span class="va">d</span>, sizes<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">20</span>, <span class="fl">20</span><span class="op">)</span>, distance<span class="op">=</span><span class="cn">TRUE</span>, R <span class="op">=</span> <span class="fl">199</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 	2-sample E-test of equal distributions</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> data:  sample sizes 20 20, replicates 199</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> E-statistic = 1.9739, p-value = 0.91</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> E-statistic = 1.9307, p-value = 0.93</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-in"></span>
-<span class="r-in">  <span class="co"># comparison with edist</span></span>
-<span class="r-in">  <span class="fu"><a href="edist.html">edist</a></span><span class="op">(</span><span class="va">d</span>, sizes<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">20</span>, <span class="fl">10</span><span class="op">)</span>, distance<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span>  <span class="co"># comparison with edist</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="edist.html">edist</a></span><span class="op">(</span><span class="va">d</span>, sizes<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">20</span>, <span class="fl">10</span><span class="op">)</span>, distance<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>          1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2 2.279913</span>
-<span class="r-in"></span>
-<span class="r-in">  <span class="co"># for comparison</span></span>
-<span class="r-in">  <span class="va">g</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">as.factor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">20</span>, <span class="fl">20</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in">  <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">1234</span><span class="op">)</span></span>
-<span class="r-in">  <span class="fu"><a href="disco.html">disco</a></span><span class="op">(</span><span class="va">d</span>, factors<span class="op">=</span><span class="va">g</span>, distance<span class="op">=</span><span class="cn">TRUE</span>, R<span class="op">=</span><span class="fl">199</span><span class="op">)</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2 1.954117</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span>  <span class="co"># for comparison</span></span></span>
+<span class="r-in"><span>  <span class="va">g</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">as.factor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">20</span>, <span class="fl">20</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">1234</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="disco.html">disco</a></span><span class="op">(</span><span class="va">d</span>, factors<span class="op">=</span><span class="va">g</span>, distance<span class="op">=</span><span class="cn">TRUE</span>, R<span class="op">=</span><span class="fl">199</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> disco(x = d, factors = g, distance = TRUE, R = 199)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Distance Components: index  1.00</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Source                 Df   Sum Dist  Mean Dist    F-ratio    p-value</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> factors                 1    0.98696    0.98696      0.643       0.91</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Within                 38   58.29942    1.53420</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Total                  39   59.28638</span>
-<span class="r-in"></span>
-<span class="r-in">  <span class="co"># should match statistic in edist method="discoB", above</span></span>
-<span class="r-in">  <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">1234</span><span class="op">)</span></span>
-<span class="r-in">  <span class="fu"><a href="disco.html">disco.between</a></span><span class="op">(</span><span class="va">d</span>, factors<span class="op">=</span><span class="va">g</span>, distance<span class="op">=</span><span class="cn">TRUE</span>, R<span class="op">=</span><span class="fl">199</span><span class="op">)</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Source            Df   Sum Dist  Mean Dist   F-ratio   p-value</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> factors            1    0.96533    0.96533     0.625      0.93</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Within            38   58.67770    1.54415</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Total             39   59.64303</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span>  <span class="co"># should match statistic in edist method="discoB", above</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">1234</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="disco.html">disco.between</a></span><span class="op">(</span><span class="va">d</span>, factors<span class="op">=</span><span class="va">g</span>, distance<span class="op">=</span><span class="cn">TRUE</span>, R<span class="op">=</span><span class="fl">199</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 	DISCO (Between-sample)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> data:  d</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> DISCO between statistic = 0.98696, p-value = 0.9095</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> DISCO between statistic = 0.96533, p-value = 0.9296</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 </code></pre></div>
     </div>
@@ -240,7 +253,7 @@ Gabor J. Szekely</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>
