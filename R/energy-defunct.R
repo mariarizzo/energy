@@ -1,17 +1,13 @@
 ## defunct functions from the energy package
 
-indep.e<-
-  function(x, y) {
-    # energy statistic for multivariate independence (deprecated)
-    .Defunct(new = "mvI", package = "energy")
-  }
+dcor.ttest <- function(x, y, distance=FALSE) {
+  .Defunct(new = "dcorT.test", package = "energy",
+              msg = "dcort.ttest replaced by dcorT.test")
+}
 
-
-indep.etest<-
-  function(x, y, R) {
-    # energy test for multivariate independence (deprecated)
-    .Defunct(new = "indep.test", package = "energy",
-             msg = "indep.etest removed; use indep.test with method mvI.")
-  }
+dcor.t <- function(x, y, distance=FALSE) {
+  .Deprecated(new = "dcorT", package = "energy",
+              msg = "dcor.t replaced by dcorT")
+}
 
 
