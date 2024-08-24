@@ -29,6 +29,14 @@ kgroups_start <- function(x, k, clus, iter_max, distance) {
     .Call(`_energy_kgroups_start`, x, k, clus, iter_max, distance)
 }
 
+Istat <- function(Dx, Dy) {
+    .Call(`_energy_Istat`, Dx, Dy)
+}
+
+Istats <- function(Dx, Dy, R) {
+    .Call(`_energy_Istats`, Dx, Dy, R)
+}
+
 partial_dcor <- function(Dx, Dy, Dz) {
     .Call(`_energy_partial_dcor`, Dx, Dy, Dz)
 }

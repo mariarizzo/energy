@@ -5,7 +5,7 @@
    github.com/mariarizzo/energy
 
    alloc_matrix, alloc_int_matrix, free_matrix, free_int_matrix:
-     use R (Calloc, Free) instead of C (calloc, free) for memory management
+     use R_Calloc, R_Free instead of Calloc, Free for memory management
 
    permute            permutes the first n elements of an integer vector
    row_order          converts arg from column order to row order
@@ -45,9 +45,9 @@ double **alloc_matrix(int r, int c)
     /* allocate a matrix with r rows and c columns */
     int i;
     double **matrix;
-    matrix = Calloc(r, double *);
+    matrix = R_Calloc(r, double *);
     for (i = 0; i < r; i++)
-    matrix[i] = Calloc(c, double);
+    matrix[i] = R_Calloc(c, double);
     return matrix;
 }
 
@@ -57,9 +57,9 @@ int **alloc_int_matrix(int r, int c)
     /* allocate an integer matrix with r rows and c columns */
     int i;
     int **matrix;
-    matrix = Calloc(r, int *);
+    matrix = R_Calloc(r, int *);
     for (i = 0; i < r; i++)
-    matrix[i] = Calloc(c, int);
+    matrix[i] = R_Calloc(c, int);
     return matrix;
 }
 
@@ -67,16 +67,16 @@ void free_matrix(double **matrix, int r, int c)
 {
     /* free a matrix with r rows and c columns */
     int i;
-    for (i = 0; i < r; i++) Free(matrix[i]);
-    Free(matrix);
+    for (i = 0; i < r; i++) R_Free(matrix[i]);
+    R_Free(matrix);
 }
 
 void free_int_matrix(int **matrix, int r, int c)
 {
     /* free an integer matrix with r rows and c columns */
     int i;
-    for (i = 0; i < r; i++) Free(matrix[i]);
-    Free(matrix);
+    for (i = 0; i < r; i++) R_Free(matrix[i]);
+    R_Free(matrix);
 }
 
 void permute(int *J, int n)
@@ -131,7 +131,7 @@ void roworder(double *x, int *byrow, int r, int c) {
     int    i, j, k, n=r*c;
     double *y;
     if (*byrow == TRUE) return;
-    y = Calloc(n, double);
+    y = R_Calloc(n, double);
     i = 0;
     for (j=0; j<r; j++) {
         for (k=0; k<n; k+=r) {
@@ -141,7 +141,7 @@ void roworder(double *x, int *byrow, int r, int c) {
     }
     for (i=0; i<n; i++)
         x[i] = y[i];
-    Free(y);
+    R_Free(y);
     *byrow = TRUE;
     return;
 }

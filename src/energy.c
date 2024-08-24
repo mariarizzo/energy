@@ -33,65 +33,63 @@ extern void   vector2matrix(double *x, double **y, int N, int d, int isroworder)
 extern void   distance(double **bxy, double **D, int N, int d);
 extern void   Euclidean_distance(double *x, double **Dx, int n, int d);
 extern void   index_distance(double *x, double **Dx, int n, int d, double index);
-extern void   sumdist(double *x, int *byrow, int *nrow, int *ncol, double *lowersum);
-
-
-void E2sample(double *x, int *sizes, int *dim, double *stat) {
-    /*
-      compute test statistic *stat for testing H:F=G
-      does not store distance matrix
-      x must be in row order: x=as.double(t(x)) where
-      x is pooled sample in matrix sum(en) by dim
-    */
-    int    m=sizes[0], n=sizes[1], d=(*dim);
-    int    i, j, k, p, q;
-    double dif, dsum, sumxx, sumxy, sumyy, w;
-
-    sumxy = 0.0;
-    for (i=0; i<m; i++) {
-        p = i*d;
-        for (j=m; j<m+n; j++) {
-            dsum = 0.0;
-            q = j*d;
-            for (k=0; k<d; k++) {
-                dif = *(x+p+k) - *(x+q+k);
-                dsum += dif*dif;
-            }
-            sumxy += sqrt(dsum);
-        }
-    }
-    sumxy /= (double)(m*n);
-    sumxx = 0.0;
-    for (i=1; i<m; i++) {
-        p = i*d;
-        for (j=0; j<i; j++) {
-            dsum = 0.0;
-            q = j*d;
-            for (k=0; k<d; k++) {
-                dif = *(x+p+k) - *(x+q+k);
-                dsum += dif*dif;
-            }
-            sumxx += sqrt(dsum);
-        }
-    }
-    sumxx /= (double)(m*m);  /* half the sum */
-    sumyy = 0.0;
-    for (i=m+1; i<m+n; i++) {
-        p = i*d;
-        for (j=m; j<i; j++) {
-            dsum = 0.0;
-            q = j*d;
-            for (k=0; k<d; k++) {
-                dif = *(x+p+k) - *(x+q+k);
-                dsum += dif*dif;
-            }
-            sumyy += sqrt(dsum);
-        }
-    }
-    sumyy /= (double)(n*n);  /* half the sum */
-    w = (double)(m*n)/(double)(m+n);
-    *stat = 2.0*w*(sumxy - sumxx - sumyy);
-}
+// 
+// void E2sample(double *x, int *sizes, int *dim, double *stat) {
+//     /*
+//       compute test statistic *stat for testing H:F=G
+//       does not store distance matrix
+//       x must be in row order: x=as.double(t(x)) where
+//       x is pooled sample in matrix sum(en) by dim
+//     */
+//     int    m=sizes[0], n=sizes[1], d=(*dim);
+//     int    i, j, k, p, q;
+//     double dif, dsum, sumxx, sumxy, sumyy, w;
+// 
+//     sumxy = 0.0;
+//     for (i=0; i<m; i++) {
+//         p = i*d;
+//         for (j=m; j<m+n; j++) {
+//             dsum = 0.0;
+//             q = j*d;
+//             for (k=0; k<d; k++) {
+//                 dif = *(x+p+k) - *(x+q+k);
+//                 dsum += dif*dif;
+//             }
+//             sumxy += sqrt(dsum);
+//         }
+//     }
+//     sumxy /= (double)(m*n);
+//     sumxx = 0.0;
+//     for (i=1; i<m; i++) {
+//         p = i*d;
+//         for (j=0; j<i; j++) {
+//             dsum = 0.0;
+//             q = j*d;
+//             for (k=0; k<d; k++) {
+//                 dif = *(x+p+k) - *(x+q+k);
+//                 dsum += dif*dif;
+//             }
+//             sumxx += sqrt(dsum);
+//         }
+//     }
+//     sumxx /= (double)(m*m);  /* half the sum */
+//     sumyy = 0.0;
+//     for (i=m+1; i<m+n; i++) {
+//         p = i*d;
+//         for (j=m; j<i; j++) {
+//             dsum = 0.0;
+//             q = j*d;
+//             for (k=0; k<d; k++) {
+//                 dif = *(x+p+k) - *(x+q+k);
+//                 dsum += dif*dif;
+//             }
+//             sumyy += sqrt(dsum);
+//         }
+//     }
+//     sumyy /= (double)(n*n);  /* half the sum */
+//     w = (double)(m*n)/(double)(m+n);
+//     *stat = 2.0*w*(sumxy - sumxx - sumyy);
+// }
 
 void ksampleEtest(double *x, int *byrow,
                   int *nsamples, int *sizes, int *dim,
@@ -119,7 +117,7 @@ void ksampleEtest(double *x, int *byrow,
     N = 0;
     for (k=0; k<K; k++)
         N += sizes[k];
-    perm = Calloc(N, int);
+    perm = R_Calloc(N, int);
     for (i=0; i<N; i++)
         perm[i] = i;
     D   = alloc_matrix(N, N);      /* distance matrix */
@@ -148,7 +146,7 @@ void ksampleEtest(double *x, int *byrow,
     }
 
     free_matrix(D, N, N);
-    Free(perm);
+    R_Free(perm);
 }
 
 
@@ -218,7 +216,7 @@ double multisampleE(double **D, int nsamples, int *sizes, int *perm)
     int *M;
     double e;
 
-    M = Calloc(nsamples, int);
+    M = R_Calloc(nsamples, int);
     M[0] = 0;
     for (k=1; k<nsamples; k++)
         M[k] = M[k-1] + sizes[k-1]; /* index where sample k begins */
@@ -231,7 +229,7 @@ double multisampleE(double **D, int nsamples, int *sizes, int *perm)
             e += twosampleE(D, m, n, perm+M[i], perm+M[j]);
         }
     }
-    Free(M);
+    R_Free(M);
     return(e);
 }
 

@@ -1,3 +1,13 @@
+# energy 1.7-12
+
+*  User level changes
+    - Defunct functions indep.e and indep.etest removed (previously replaced by mvI and mvI.test) 
+    - indep.test is now deprecated. 
+    - dcor.t and dcor.ttest (deprecated) are now defunct; replaced by dcorT and dcorT.test starting in v. 1.7-7.
+    
+*  Internal changes
+    - In mvI and mvI.test, .C calls replaced by Rcpp functions Istat and Istats. Unused C functions indepE and indepEtest removed. 
+
 # energy 1.7-11
 
 *  User level changes
@@ -91,7 +101,6 @@
 
 # energy 1.7-2
  
-
 *  User level changes
      -  Provided new dcor.test function, similar to dcov.test but using the
         distance correlation as the test statistic.
@@ -103,7 +112,6 @@
 
 # energy 1.7-0
  
-
 *  Partial Distance Correlation statistics and tests added
      - pdcov, pdcor, pdcov.test, pdcor.test
      - dcovU: unbiased estimator of distance covariance
@@ -123,13 +131,11 @@
 
 # energy 1.6.2
  
-
 *  inserted GetRNGstate() .. PutRNGState around repl.
      loop in dcov.c.
 
 # energy 1.6.1
  
-
 *  replace Depends with Imports in DESCRIPTION file
 
 # energy 1.6.0

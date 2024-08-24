@@ -94,6 +94,31 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// Istat
+double Istat(NumericMatrix Dx, NumericMatrix Dy);
+RcppExport SEXP _energy_Istat(SEXP DxSEXP, SEXP DySEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericMatrix >::type Dx(DxSEXP);
+    Rcpp::traits::input_parameter< NumericMatrix >::type Dy(DySEXP);
+    rcpp_result_gen = Rcpp::wrap(Istat(Dx, Dy));
+    return rcpp_result_gen;
+END_RCPP
+}
+// Istats
+NumericVector Istats(NumericMatrix Dx, NumericMatrix Dy, int R);
+RcppExport SEXP _energy_Istats(SEXP DxSEXP, SEXP DySEXP, SEXP RSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericMatrix >::type Dx(DxSEXP);
+    Rcpp::traits::input_parameter< NumericMatrix >::type Dy(DySEXP);
+    Rcpp::traits::input_parameter< int >::type R(RSEXP);
+    rcpp_result_gen = Rcpp::wrap(Istats(Dx, Dy, R));
+    return rcpp_result_gen;
+END_RCPP
+}
 // partial_dcor
 NumericVector partial_dcor(NumericMatrix Dx, NumericMatrix Dy, NumericMatrix Dz);
 RcppExport SEXP _energy_partial_dcor(SEXP DxSEXP, SEXP DySEXP, SEXP DzSEXP) {

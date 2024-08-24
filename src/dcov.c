@@ -12,7 +12,6 @@
  
  */
 
-
 #include <R.h>
 #include <Rmath.h>
 
@@ -84,7 +83,7 @@ void dCOVtest(double *x, double *y, int *nrow, int *nreps,
 	if (R > 0) {
 		/* compute the replicates */
 		if (DCOV[1] > 0.0) {
-			perm = Calloc(n, int);
+			perm = R_Calloc(n, int);
 			M = 0;
 			for (i=0; i<n; i++) perm[i] = i;
       GetRNGstate();
@@ -105,7 +104,7 @@ void dCOVtest(double *x, double *y, int *nrow, int *nreps,
 			}
 			*pval = (double) (M+1) / (double) (R+1);
       PutRNGstate();
-			Free(perm);
+			R_Free(perm);
 		} else {
 		    *pval = 1.0;
 			}
@@ -178,7 +177,7 @@ double Akl(double **akl, double **A, int n) {
     double *akbar;
     double abar;
 
-    akbar = Calloc(n, double);
+    akbar = R_Calloc(n, double);
     abar = 0.0;
     for (k=0; k<n; k++) {
         akbar[k] = 0.0;
@@ -195,6 +194,6 @@ double Akl(double **akl, double **A, int n) {
             A[k][j] = akl[k][j] - akbar[k] - akbar[j] + abar;
             A[j][k] = A[k][j];
         }
-    Free(akbar);
+    R_Free(akbar);
     return(abar);
 }

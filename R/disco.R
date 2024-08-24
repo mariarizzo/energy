@@ -108,7 +108,7 @@ disco.between <- function(x, factors, distance = FALSE, index = 1, R) {
                     R = R, trt = trt)
     between <- b$t0
     reps <- b$t
-    pval <- mean(reps >= between)
+    pval <- (1+sum(reps > between)) / (R+1)
   } else {
     between <- .disco1Bstat(dst, i = 1:nrow(dst), trt = trt)
     pval <- NA

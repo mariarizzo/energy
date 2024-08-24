@@ -14,8 +14,6 @@
 /* .C calls */
 extern void dCOV(void *, void *, void *, void *);
 extern void dCOVtest(void *, void *, void *, void *, void *, void *, void *);
-extern void indepE(void *, void *, void *, void *, void *);
-extern void indepEtest(void *, void *, void *, void *, void *, void *, void *);
 extern void ksampleEtest(void *, void *, void *, void *, void *, void *, void *, void *, void *);
 extern void permute_check(void *, void *);
 
@@ -31,14 +29,12 @@ extern SEXP _energy_U_product(SEXP, SEXP);
 extern SEXP _energy_Btree_sum(SEXP, SEXP);
 extern SEXP _energy_kgroups_start(SEXP, SEXP, SEXP, SEXP, SEXP);
 extern SEXP _energy_calc_dist(SEXP);
-extern SEXP _energy_dCov2(SEXP, SEXP, SEXP);
-extern SEXP _energy_dCov2stats(SEXP, SEXP, SEXP);
+extern SEXP _energy_Istat(SEXP, SEXP);
+extern SEXP _energy_Istats(SEXP, SEXP, SEXP);
 
 static const R_CMethodDef CEntries[] = {
   {"dCOV",         (DL_FUNC) &dCOV,         4},
   {"dCOVtest",     (DL_FUNC) &dCOVtest,     7},
-  {"indepE",       (DL_FUNC) &indepE,       5},
-  {"indepEtest",   (DL_FUNC) &indepEtest,   7},
   {"ksampleEtest", (DL_FUNC) &ksampleEtest, 9},
   {"permute_check",(DL_FUNC) &permute_check,2},
   {NULL, NULL, 0}
@@ -47,6 +43,8 @@ static const R_CMethodDef CEntries[] = {
 static const R_CallMethodDef CallEntries[] = {
   {"_energy_D_center",       (DL_FUNC) &_energy_D_center,      1},
   {"_energy_dcovU_stats",    (DL_FUNC) &_energy_dcovU_stats,   2},
+  {"_energy_Istat",          (DL_FUNC) &_energy_Istat,         2},
+  {"_energy_Istats",         (DL_FUNC) &_energy_Istats,        3},
   {"_energy_partial_dcor",   (DL_FUNC) &_energy_partial_dcor,  3},
   {"_energy_partial_dcov",   (DL_FUNC) &_energy_partial_dcov,  3},
   {"_energy_poisMstat",      (DL_FUNC) &_energy_poisMstat,     1},
