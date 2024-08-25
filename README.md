@@ -11,4 +11,6 @@ of ANOVA), and goodness-of-fit tests are examples of some of the methods include
 energy is named based on the analogy with potential energy in physics. See
 the references in the manual for more details. 
 
+<!-- badges: start -->
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/energy)]https://cran.r-project.org/package=energy)
+<!-- badges: end -->
