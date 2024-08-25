@@ -80,7 +80,7 @@
  samples must not contain missing values.</p>
 <p>Historically this is the first energy test of independence. The
  distance covariance test  <code><a href="dcov.test.html">dcov.test</a></code>, distance correlation <code><a href="dcov.html">dcor</a></code>, and related methods are more recent (2007, 2009).</p>
-<p>The distance covariance test <code><a href="dcov.test.html">dcov.test</a></code> and distance correlation test <code><a href="dcov.test.html">dcor.test</a></code> are much faster and have  different properties than <code>mvI.test</code>. All are based on a population independence coefficient that characterizes independence and of these tests are statistically consistent. However, dCor is scale invariant while \(I_n\) is not. In applications <code><a href="dcov.test.html">dcor.test</a></code> or <code><a href="dcov.test.html">dcov.test</a></code> are the recommended tests.</p>
+<p>The distance covariance test <code><a href="dcov.test.html">dcov.test</a></code> and distance correlation test <code><a href="dcov.test.html">dcor.test</a></code> are much faster and have  different properties than <code>mvI.test</code>. All are based on a population independence coefficient that characterizes independence and all of these tests are statistically consistent. However, dCor is scale invariant while \(\mathcal I_n\) is not. In applications <code><a href="dcov.test.html">dcor.test</a></code> or <code><a href="dcov.test.html">dcov.test</a></code> are the recommended tests.</p>
 <p>Computing formula from Bakirov, Rizzo, and Szekely (2006), equation (2):</p>
 <p>Suppose the two samples are \(X_1,\dots,X_n \in R^p\) and \(Y_1,\dots,Y_n \in R^q\). Define \(Z_{kl} = (X_k, Y_l) \in R^{p+q}.\)</p>
 <p>The independence coefficient \(\mathcal I_n\) is defined
@@ -98,7 +98,7 @@ $$y= \frac{1}{n^2} \sum_{k,l=1}^n |Y_{k}-Y_{l}|_q.$$</p>
 <li><p>\(\mathcal I_n\) is invariant to shifts and orthogonal transformations of X and Y.</p></li>
 <li><p>\(\sqrt{n} \, \mathcal I_n\) determines a statistically consistent test of independence against all fixed dependent alternatives (Corollary 1).</p></li>
 <li><p>The population independence coefficient \(\mathcal I\) is a normalized distance between the joint characteristic function and the product of the marginal characteristic functions. \(\mathcal I_n\) converges almost surely to \(\mathcal I\) as \(n \to \infty\). X and Y are independent if and only if \(\mathcal I(X, Y) = 0\).
-See the reference below for more details.</p></li>
+See the 2006 reference below for more details.</p></li>
 </ul></div>
     <div id="value">
     <h2>Value</h2>
@@ -152,8 +152,7 @@ Gabor J. Szekely</p>
  <code> <a href="dcov.test.html">dcor.test</a> </code>
  <code> <a href="dcov.html">dcor</a> </code>
  <code> <a href="dcov2d.html">dcov2d</a> </code>
- <code> <a href="dcov2d.html">dcor2d</a> </code>
- <code> <a href="indep-deprecated.html">indep.test</a> </code></p></div>
+ <code> <a href="dcov2d.html">dcor2d</a> </code></p></div>
     </div>
 
     <div id="ref-examples">
