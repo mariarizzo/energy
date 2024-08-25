@@ -23,7 +23,7 @@
 Historically this is the first energy test of independence. The
  distance covariance test  \code{\link{dcov.test}}, distance correlation \code{\link{dcor}}, and related methods are more recent (2007, 2009).
  
-The distance covariance test \code{\link{dcov.test}} and distance correlation test \code{\link{dcor.test}} are much faster and have  different properties than \code{mvI.test}. All are based on a population independence coefficient that characterizes independence and of these tests are statistically consistent. However, dCor is scale invariant while \eqn{I_n}{I_n} is not. In applications \code{\link{dcor.test}} or \code{\link{dcov.test}} are the recommended tests. 
+The distance covariance test \code{\link{dcov.test}} and distance correlation test \code{\link{dcor.test}} are much faster and have  different properties than \code{mvI.test}. All are based on a population independence coefficient that characterizes independence and all of these tests are statistically consistent. However, dCor is scale invariant while \eqn{\mathcal I_n}{I_n} is not. In applications \code{\link{dcor.test}} or \code{\link{dcov.test}} are the recommended tests. 
 
 Computing formula from Bakirov, Rizzo, and Szekely (2006), equation (2): 
 
@@ -49,7 +49,7 @@ Large values of \eqn{n \mathcal I_n^2} (or \eqn{\mathcal I_n})  support the alte
 \item \eqn{\mathcal I_n} is invariant to shifts and orthogonal transformations of X and Y.  
 \item \eqn{\sqrt{n} \, \mathcal I_n} determines a statistically consistent test of independence against all fixed dependent alternatives (Corollary 1).
 \item The population independence coefficient \eqn{\mathcal I} is a normalized distance between the joint characteristic function and the product of the marginal characteristic functions. \eqn{\mathcal I_n} converges almost surely to \eqn{\mathcal I} as \eqn{n \to \infty}. X and Y are independent if and only if \eqn{\mathcal I(X, Y) = 0}.
-See the reference below for more details. 
+See the 2006 reference below for more details. 
 }}
 \value{
 \code{mvI} returns the statistic. \code{mvI.test} returns
@@ -94,7 +94,6 @@ mvI.test(iris[1:25, 1], iris[1:25, 2], R=99)
  \code{ \link{dcor} }
  \code{ \link{dcov2d} }
  \code{ \link{dcor2d} }
- \code{ \link{indep.test} }
  }
  \keyword{ htest }
  \keyword{ multivariate }
